@@ -21,7 +21,6 @@ return new class extends Migration
             $table->smallInteger('bathrooms');
             $table->mediumInteger('meters_square');
             $table->string('address');
-            $table->string('address');
             $table->float('latitude', 10, 6);
             $table->float('longitude', 10, 6);
             $table->string('main_img');
