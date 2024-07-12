@@ -13,4 +13,6 @@ class Service extends Model
     {
         return $this->belongsToMany(Flat::class);
     }
+
+    protected $fillable = ['name', 'icon'];
 }
