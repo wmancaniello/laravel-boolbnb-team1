@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('flat_id')->nullable()->after('id');
+            $table->unsignedBigInteger('flat_id')->nullable();
             $table->string('image');
             $table->timestamps();
             
