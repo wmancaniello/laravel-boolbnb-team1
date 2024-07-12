@@ -62,6 +62,7 @@ class UsersTableSeeder extends Seeder
             $newUser->fill($user);
             $newUser->save();
         }
+        
 
 
     }
