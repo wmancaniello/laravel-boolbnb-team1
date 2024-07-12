@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('flat_id');
+            $table->unsignedBigInteger('flat_id')->nullable();
             $table->string('email');
             $table->string('name');
             $table->string('text');
