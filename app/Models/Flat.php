@@ -8,6 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Flat extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'max_guests',
+        'rooms',
+        'beds',
+        'bathrooms',
+        'meters_square',
+        'address',
+        'latitude',
+        'longitude',
+        'main_img',
+        'visible',
+        'description',
+    ];
     
     public function views()
     {
@@ -38,4 +53,5 @@ class Flat extends Model
     {
         return $this->belongsToMany(Sponsor::class);
     }
+
 }
