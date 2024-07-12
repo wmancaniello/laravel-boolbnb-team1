@@ -13,4 +13,9 @@ class Sponsor extends Model
     {
         return $this->belongsToMany(Flat::class);
     }
+
+    protected $fillable = [
+        'price',
+        'duration',
+    ];
 }
