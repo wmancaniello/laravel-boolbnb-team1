@@ -17,9 +17,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('ip_address');
             $table->timestamps();
-            // foreign key
-            $table->foreign('flat_id')->references('id')->on('flats')->nullOnDelete();
-
+            
         });
     }
 
