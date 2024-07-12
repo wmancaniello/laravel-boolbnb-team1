@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('image');
             $table->timestamps();
             
-            $table->foreign('flat_id')->references('id')->on('flats')->cascadeOnDelete();
         });
     }
 
