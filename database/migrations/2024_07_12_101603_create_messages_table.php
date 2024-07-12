@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('text');
             $table->timestamps();
+
+            $table->foreign('flat_id')->references('id')->on('flats')->nullOnDelete();
         });
     }
 
