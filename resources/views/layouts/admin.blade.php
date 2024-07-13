@@ -69,8 +69,8 @@
                             </li>
                             {{-- ----------- MESSAGGI --------------- --}}
                             <li class="nav-item">
-                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.create' ? 'bg-primary' : '' }}"
-                                    href="{{ route('admin.flats.create') }}">
+                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-primary' : 'bg-danger' }}"
+                                    href="{{ route('admin.messages.index') }}">
                                     <i class="fa-solid fa-building"></i> Notifiche
                                 </a>
                             </li>
