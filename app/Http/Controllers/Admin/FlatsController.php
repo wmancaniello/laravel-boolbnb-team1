@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
+use App\Models\Flat;
 use Illuminate\Http\Request;
 
 class FlatsController extends Controller
@@ -29,7 +30,9 @@ class FlatsController extends Controller
      */
     public function store(StoreFlatRequest $request)
     {
-        //
+        $newFlat = new Flat();
+        $newFlat->fill($request->validated());
+        $newFlat->save();
     }
 
     /**
