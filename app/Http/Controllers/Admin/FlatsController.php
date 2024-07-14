@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
 use App\Models\Flat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FlatsController extends Controller
 {
@@ -32,7 +34,10 @@ class FlatsController extends Controller
     {
         $newFlat = new Flat();
         $newFlat->fill($request->validated());
+        $newFlat->user_id = Auth::id();
+        $newFlat->main_img = Storage::put('flats_main', $request->main_img);
         $newFlat->save();
+        return redirect()->route('admin.flats.create');
     }
 
     /**
