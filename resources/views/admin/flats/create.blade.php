@@ -140,8 +140,8 @@
                         </div>
 
                     </div>
-                    <input type="text" name="latitude" id="" class="d-none">
-                    <input type="text" name="longitude" id="" class="d-none">
+                    <input type="text" name="latitude" id="latitude" class="d-none">
+                    <input type="text" name="longitude" id="longitude" class="d-none">
                     <button type="submit" class="btn btn-success">Aggiungi</button>
             </form>
 

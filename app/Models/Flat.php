@@ -19,7 +19,6 @@ class Flat extends Model
         'address',
         'latitude',
         'longitude',
-        'main_img',
         'visible',
         'description',
     ];
