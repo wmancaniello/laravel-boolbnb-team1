@@ -60,7 +60,8 @@ class FlatsController extends Controller
     public function edit(string $slug)
     {
         $flat = Flat::where('slug', $slug)->firstOrFail();
-        return view('admin.flats.edit', compact('flat'));
+        $services = Service::all();
+        return view('admin.flats.edit', compact('flat', 'services'));
     }
 
     /**
