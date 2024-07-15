@@ -88,8 +88,21 @@ class FlatsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+        $flat = Flat::where('slug', $slug)->firstOrFail();;
+        if(Auth::id() === $flat->user_id){
+            // Elimino relazione N:N
+            $flat->sponsors()->detach();
+            $flat->services()->detach();
+            // Check immagine
+            if ($flat->main_img) {
+                Storage::delete($flat->main_img);
+            }
+            $flat->delete();
+            return redirect()->route('admin.flats.index')->with('message', 'Appartamento : ' . $flat->title . ' è stato rimosso con successo.');
+        } else {
+            abort(403);
+        }
     }
 }
