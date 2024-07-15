@@ -3,25 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
- 
+
 
 class MessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $datas = Message::with('flat')->get();
+        $selectedMessage = null;
 
-        $datas = DB::table('messages')->get();
-        
-        return view('admin.messages.index', compact('datas'));
+        if ($request->has('selected_id')) {
+            $selectedMessage = Message::with('flat')->find($request->input('selected_id'));
+        }
 
-        //dsdv
+        return view('admin.messages.index', compact('datas', 'selectedMessage'));
     }
 
     /**
@@ -45,7 +48,13 @@ class MessagesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $message = Message::with('flat')->find($id);
+
+        if (!$message) {
+            return response()->json(['error' => 'Message not found.'], 404);
+        }
+
+        return response()->json($message);
     }
 
     /**

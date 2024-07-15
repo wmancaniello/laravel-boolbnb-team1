@@ -21,9 +21,10 @@
 <body>
     <div id="app">
 
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
-            <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolBnB</a>
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 h10vh">
+            <div class="row justify-content-center align-items-center col-3 h-100 font-monospace">
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 w-100 text-center fw-bold fs-2"
+                    href="/">BOOLKING</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -43,16 +44,15 @@
                 </div>
             </div>
         </header>
-        <div class="container-fluid vh-100">
+        <div class="container-fluid h90vh">
             <div class="row h-100">
                 <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky py-3">
                         <ul class="nav flex-column">
                             {{-- ----------- DASHBOARD --------------- --}}
-
                             <li class="nav-item">
                                 <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-primary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
@@ -60,7 +60,6 @@
                                 </a>
                             </li>
                             {{-- ----------- ADD APPARTAMENTO --------------- --}}
-
                             <li class="nav-item">
                                 <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.create' ? 'bg-primary' : '' }}"
                                     href="{{ route('admin.flats.create') }}">
@@ -69,26 +68,23 @@
                             </li>
                             {{-- ----------- MESSAGGI --------------- --}}
                             <li class="nav-item">
-                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-primary' : 'bg-danger' }}"
+                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-primary' : '' }}"
                                     href="{{ route('admin.messages.index') }}">
                                     <i class="fa-solid fa-building"></i> Notifiche
                                 </a>
                             </li>
                             {{-- ----------- MESSAGGI--------------- --}}
-
                         </ul>
-
-
                     </div>
                 </nav>
-                <main class="col-md-9 ms-sm-auto col-lg-10 p-0">
+                <main class="col-md-9 ms-sm-auto col-lg-9 p-0">
                     @yield('content')
                 </main>
             </div>
         </div>
-
     </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
