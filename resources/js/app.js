@@ -37,7 +37,7 @@ if(addressElem) {
                     latElem.value = result.position.lat
                     longElem.value = result.position.lon
                     const addr = result.address;
-                    addressElem.value = `${addr.streetName}${addr.streetNumber ? ', ' + addr.streetNumber : '' } - ${addr.localName} (${addr.countrySecondarySubdivision})`
+                    addressElem.value = `${addr.streetName}${addr.streetNumber ? ', ' + addr.streetNumber : '' } - ${addr.municipality} (${addr.countrySecondarySubdivision})`
 
                 }
             )

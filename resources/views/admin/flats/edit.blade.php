@@ -132,6 +132,27 @@
                             </div>
                         </div>
 
+                        <div class="modal-services mb-3">
+                            <h6>
+                                Seleziona i servizi
+                            </h6>
+                            <div class="container">
+                                <div class="row wrapper-check justify-content-center g-1">
+                                    @foreach ($services as $service)
+                                        <div class="col-6 col-lg-3">
+                                            <input type="checkbox" name="services[]" class="check-service"
+                                                id="service-{{ $service->id }}" value="{{ $service->id }}" @checked(in_array($service->id, old('services', []))) >
+                                            <label for="service-{{ $service->id }}">
+                                                <img src="{{ asset('storage/services/' . $service->icon) }}"
+                                                    alt="Icona {{ $service->name }}">
+                                                {{ $service->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-12">
                             <input type="file" class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
                                 id="main_img" placeholder="inserici immagine" name="main_img"
