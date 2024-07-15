@@ -21,3 +21,17 @@ export function mostraAnteprima(event) {
         imageElem.classList.remove('mb-3');
     }
 }
+
+export function mostraToast() {
+    const lineElem = document.querySelector('.ms_line');
+    const toastElem = document.querySelector('.ms_toast');
+    lineElem.classList.toggle('ms_hidden');
+    lineElem.classList.toggle('w-100');
+}
+
+export function nascondiToast() {
+    const lineElem = document.querySelector('.ms_line');
+    const toastElem = document.querySelector('.ms_toast');
+    toastElem.classList.toggle('ms_hidden');
+    lineElem.classList.toggle('ms_hidden');
+}

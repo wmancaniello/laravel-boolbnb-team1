@@ -42,7 +42,6 @@ class FlatsController extends Controller
         $newFlat->main_img = Storage::put('flats_img', $request->main_img);
         $newFlat->save();
         $newFlat->services()->attach($request->services);
-        return redirect()->route('admin.flats.create');
         return redirect()->route('admin.flats.show', $newFlat->slug)->with('success', 'Appartamento aggiunto con successo.');
     }
 
@@ -107,7 +106,7 @@ class FlatsController extends Controller
                 Storage::delete($flat->main_img);
             }
             $flat->delete();
-            return redirect()->route('admin.flats.index')->with('message', 'Appartamento : ' . $flat->title . ' è stato rimosso con successo.');
+            return redirect()->route('admin.flats.index')->with('success', 'Appartamento : ' . $flat->title . ' è stato rimosso con successo.');
         } else {
             abort(403);
         }
