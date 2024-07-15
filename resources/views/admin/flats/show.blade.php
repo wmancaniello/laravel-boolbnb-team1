@@ -11,7 +11,7 @@
         </div>
         {{-- tabella info --}}
         <div>
-            <table class="table">
+            <table class="table mt-3">
                 <tbody>
 
                     <tr>
