@@ -43,9 +43,9 @@ class FlatsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Flat $flat)
     {
-        //
+        return view('admin.flats.show', compact('flat'));
     }
 
     /**
