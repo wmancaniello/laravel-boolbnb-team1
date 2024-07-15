@@ -22,8 +22,9 @@
     <div id="app">
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 h10vh">
-            <div class="row justify-content-center align-items-center bg-danger col-3 h-100 ">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 w-100 text-center" href="/">BoolBnB</a>
+            <div class="row justify-content-center align-items-center col-3 h-100 font-monospace">
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 w-100 text-center fw-bold fs-2"
+                    href="/">BOOLKING</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +53,6 @@
                     <div class="position-sticky py-3">
                         <ul class="nav flex-column">
                             {{-- ----------- DASHBOARD --------------- --}}
-
                             <li class="nav-item">
                                 <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-primary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
@@ -60,7 +60,6 @@
                                 </a>
                             </li>
                             {{-- ----------- ADD APPARTAMENTO --------------- --}}
-
                             <li class="nav-item">
                                 <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.create' ? 'bg-primary' : '' }}"
                                     href="{{ route('admin.flats.create') }}">
@@ -75,10 +74,7 @@
                                 </a>
                             </li>
                             {{-- ----------- MESSAGGI--------------- --}}
-
                         </ul>
-
-
                     </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-9 p-0">
@@ -86,9 +82,9 @@
                 </main>
             </div>
         </div>
-
     </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
