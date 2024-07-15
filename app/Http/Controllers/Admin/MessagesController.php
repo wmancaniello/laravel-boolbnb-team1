@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -17,7 +17,10 @@ class MessagesController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = Message::with('flat')->get();
+        $userId = Auth::id();
+        $datas = Message::whereHas('flat', function($query) use($userId) {
+            $query->where('user_id', $userId);
+        })->get();
         $selectedMessage = null;
 
         if ($request->has('selected_id')) {
