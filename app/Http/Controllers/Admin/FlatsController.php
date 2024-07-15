@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
+use App\Http\Requests\UpdateFlatRequest;
 use App\Models\Flat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,17 +52,34 @@ class FlatsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $flat = Flat::where('slug', $slug)->firstOrFail();
+        return view('admin.flats.edit', compact('flat'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateFlatRequest $request, string $slug)
     {
-        //
+        $flat = Flat::where('slug', $slug)->firstOrFail();
+        $flat->fill($request->validated());
+        if (Auth::id() === $flat->user_id) {
+
+            if ($request->hasFile('main_img')) {
+                if ($flat->main_img) {
+                    Storage::delete($flat->main_img);
+                }
+                $flat->main_img = Storage::put('flats_img', $request->main_img);
+            }
+
+            $flat->save();
+
+            return redirect()->route('admin.flats.show', $flat->slug)->with('success', 'Appartamento modificato con successo.');
+        } else {
+            abort(403);
+        }
     }
 
     /**
