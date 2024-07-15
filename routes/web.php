@@ -27,9 +27,9 @@ Route::middleware('auth')
     ->name('admin.') // inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('flats', FlatsController::class);
+        Route::resource('flats', FlatsController::class)->parameters(['flats' => 'flat:slug']);
         Route::resource('messages', MessagesController::class);
-        
+       
     });
 
 require __DIR__ . '/auth.php';

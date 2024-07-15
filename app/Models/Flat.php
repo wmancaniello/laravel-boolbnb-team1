@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Flat extends Model
 {
@@ -21,6 +22,7 @@ class Flat extends Model
         'longitude',
         'visible',
         'description',
+        'slug',
     ];
     
     public function views()
@@ -53,4 +55,10 @@ class Flat extends Model
         return $this->belongsToMany(Sponsor::class);
     }
 
+    // Mutators
+
+    public function setTitleAttribute($title) {
+        $this->attributes['slug'] = Str::slug($title);
+        $this->attributes['title'] = $title;
+    }
 }
