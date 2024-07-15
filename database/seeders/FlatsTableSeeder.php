@@ -15,6 +15,7 @@ class FlatsTableSeeder extends Seeder
     {
         $flats = [
             [
+                "user_id" => 1,
                 "title" => "GRAN MADRE Suite elegante con terrazzo",
                 "max_guests" => 4,
                 "rooms" => 3,
@@ -29,6 +30,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Elegante suite con terrazzo, situata vicino alla storica Gran Madre."
             ],
             [
+                "user_id" => 2,
                 "title" => "Elegante appartamento con terrazzino vista MOLE",
                 "max_guests" => 3,
                 "rooms" => 2,
@@ -43,6 +45,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Appartamento elegante con terrazzino, splendida vista sulla Mole Antonelliana."
             ],
             [
+                "user_id" => 3,
                 "title" => "Dimora Novecento",
                 "max_guests" => 5,
                 "rooms" => 4,
@@ -57,6 +60,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Dimora storica con interni moderni, situata nel cuore di Torino."
             ],
             [
+                "user_id" => 4,
                 "title" => "Attico Torino Centro con Terrazzo Vista Mole",
                 "max_guests" => 6,
                 "rooms" => 3,
@@ -71,6 +75,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Attico esclusivo con terrazzo, vista mozzafiato sulla Mole Antonelliana."
             ],
             [
+                "user_id" => 5,
                 "title" => "Appartamento Luxury con balcone",
                 "max_guests" => 4,
                 "rooms" => 3,
@@ -84,8 +89,8 @@ class FlatsTableSeeder extends Seeder
                 "visible" => true,
                 "description" => "Appartamento di lusso con balcone, situato nella centralissima Via Roma."
             ],
-
             [
+                "user_id" => 1,
                 "title" => "Atlana",
                 "max_guests" => 4,
                 "rooms" => 3,
@@ -100,6 +105,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Elegante appartamento moderno nel cuore di Venezia, perfetto per famiglie o gruppi di amici."
             ],
             [
+                "user_id" => 2,
                 "title" => "Ca Bella Vista",
                 "max_guests" => 6,
                 "rooms" => 4,
@@ -114,6 +120,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Appartamento spazioso con vista mozzafiato sui canali, ideale per un soggiorno di lusso a Venezia."
             ],
             [
+                "user_id" => 3,
                 "title" => "Ca Rolina",
                 "max_guests" => 3,
                 "rooms" => 2,
@@ -128,6 +135,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Accogliente appartamento nel vivace quartiere di Cannaregio, perfetto per una coppia o una piccola famiglia."
             ],
             [
+                "user_id" => 4,
                 "title" => "Canal Dream",
                 "max_guests" => 5,
                 "rooms" => 3,
@@ -142,6 +150,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Appartamento con una vista panoramica sulla laguna, ideale per un soggiorno rilassante e romantico."
             ],
             [
+                "user_id" => 5,
                 "title" => "Tintoretto",
                 "max_guests" => 2,
                 "rooms" => 2,
@@ -155,8 +164,8 @@ class FlatsTableSeeder extends Seeder
                 "visible" => true,
                 "description" => "Elegante appartamento per due nel cuore di San Marco, ideale per una fuga romantica a Venezia."
             ],
-
             [
+                "user_id" => 1,
                 "title" => "Cottage",
                 "max_guests" => 4,
                 "rooms" => 3,
@@ -171,6 +180,7 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Accogliente cottage situato nel cuore di Firenze, perfetto per famiglie che vogliono esplorare la città."
             ],
             [
+                "user_id" => 2,
                 "title" => "Dame di Toscana",
                 "max_guests" => 6,
                 "rooms" => 4,
@@ -182,251 +192,130 @@ class FlatsTableSeeder extends Seeder
                 "longitude" => 11.2610,
                 "main_img" => "flats_img/thumbnail_Dame_di_Toscana.webp",
                 "visible" => true,
-                "description" => "Elegante appartamento nel vivace quartiere di Santa Croce, ideale per gruppi e famiglie."
+                "description" => "Appartamento elegante e spazioso nel cuore di Firenze, ideale per famiglie o gruppi di amici."
             ],
             [
-                "title" => "Farmer House",
-                "max_guests" => 3,
-                "rooms" => 2,
-                "beds" => 1,
-                "bathrooms" => 1,
-                "meters_square" => 65,
-                "address" => "Via Maggio, 13, 50125 Firenze FI, Italy",
-                "latitude" => 43.7667,
-                "longitude" => 11.2497,
-                "main_img" => "flats_img/thumbnail_Farmer_House.webp",
-                "visible" => true,
-                "description" => "Rustico e accogliente appartamento nel quartiere di Oltrarno, perfetto per una coppia o una piccola famiglia."
-            ],
-            [
-                "title" => "Ottavino",
-                "max_guests" => 5,
-                "rooms" => 3,
-                "beds" => 2,
-                "bathrooms" => 2,
-                "meters_square" => 85,
-                "address" => "Borgo San Jacopo, 2, 50125 Firenze FI, Italy",
-                "latitude" => 43.7679,
-                "longitude" => 11.2522,
-                "main_img" => "flats_img/thumbnail_Ottavino.webp",
-                "visible" => true,
-                "description" => "Appartamento moderno vicino al Ponte Vecchio, perfetto per famiglie o gruppi di amici."
-            ],
-            [
-                "title" => "Storico in Villa",
+                "user_id" => 3,
+                "title" => "Tosca",
                 "max_guests" => 2,
-                "rooms" => 2,
+                "rooms" => 1,
                 "beds" => 1,
                 "bathrooms" => 1,
-                "meters_square" => 60,
-                "address" => "Via de' Ginori, 8, 50123 Firenze FI, Italy",
-                "latitude" => 43.7763,
-                "longitude" => 11.2559,
-                "main_img" => "flats_img/thumbnail_Storico_in_Villa.webp",
+                "meters_square" => 50,
+                "address" => "Via Ghibellina, 90, 50122 Firenze FI, Italy",
+                "latitude" => 43.7699,
+                "longitude" => 11.2634,
+                "main_img" => "flats_img/thumbnail_Tosca.webp",
                 "visible" => true,
-                "description" => "Elegante appartamento storico nel quartiere di San Lorenzo, ideale per una fuga romantica."
+                "description" => "Affascinante monolocale situato vicino al Duomo, perfetto per coppie in visita a Firenze."
             ],
-
             [
-                "title" => "Domus Monamì Luxury Suites",
+                "user_id" => 4,
+                "title" => "L'Arco di San Pierino",
                 "max_guests" => 4,
                 "rooms" => 3,
                 "beds" => 2,
                 "bathrooms" => 2,
-                "meters_square" => 80,
-                "address" => "Via Giulia, 93, 00186 Roma RM",
-                "latitude" => 41.8964,
-                "longitude" => 12.4686,
-                "main_img" => "flats_img/thumbnail_DomusMonamiLuxurySuites.jpg",
+                "meters_square" => 85,
+                "address" => "Via dei Calzaiuoli, 2, 50122 Firenze FI, Italy",
+                "latitude" => 43.7720,
+                "longitude" => 11.2561,
+                "main_img" => "flats_img/thumbnail_L_Arco_di_San_Pierino.webp",
                 "visible" => true,
-                "description" => "Splendida suite di lusso nel cuore di Roma, a due passi da Piazza Navona e il Pantheon. Ideale per soggiorni indimenticabili."
+                "description" => "Elegante appartamento nel centro storico di Firenze, a pochi passi dalle principali attrazioni."
             ],
             [
-                "title" => "Colosseum Home",
-                "max_guests" => 6,
-                "rooms" => 4,
-                "beds" => 2,
-                "bathrooms" => 2,
-                "meters_square" => 90,
-                "address" => "Via di San Giovanni in Laterano, 10, 00184 Roma RM",
-                "latitude" => 41.8899,
-                "longitude" => 12.4989,
-                "main_img" => "flats_img/thumbnail_ColosseumHome.jpg",
-                "visible" => true,
-                "description" => "Appartamento spazioso e moderno, a pochi passi dal Colosseo. Perfetto per famiglie o gruppi di amici."
-            ],
-            [
-                "title" => "Catapecchia House",
-                "max_guests" => 2,
-                "rooms" => 2,
-                "beds" => 1,
-                "bathrooms" => 1,
-                "meters_square" => 50,
-                "address" => "Via del Corso, 500, 00186 Roma RM",
-                "latitude" => 41.9015,
-                "longitude" => 12.4812,
-                "main_img" => "flats_img/thumbnail_CatapecchiaHouse.webp",
-                "visible" => true,
-                "description" => "Accogliente appartamento nel centro di Roma, ideale per una coppia in cerca di una vacanza romantica."
-            ],
-            [
-                "title" => "Campo di Marte",
-                "max_guests" => 3,
-                "rooms" => 2,
-                "beds" => 2,
-                "bathrooms" => 1,
-                "meters_square" => 70,
-                "address" => "Piazza del Popolo, 1, 00187 Roma RM",
-                "latitude" => 41.9102,
-                "longitude" => 12.4768,
-                "main_img" => "flats_img/thumbnail_CampoDiMarte.jpg",
-                "visible" => true,
-                "description" => "Appartamento moderno e ben arredato, situato a pochi passi da Piazza del Popolo e Villa Borghese."
-            ],
-            [
-                "title" => "All Comfort Nomentano",
+                "user_id" => 5,
+                "title" => "Chiara",
                 "max_guests" => 5,
-                "rooms" => 3,
-                "beds" => 2,
+                "rooms" => 4,
+                "beds" => 3,
                 "bathrooms" => 2,
+                "meters_square" => 95,
+                "address" => "Piazza del Duomo, 4, 50122 Firenze FI, Italy",
+                "latitude" => 43.7735,
+                "longitude" => 11.2558,
+                "main_img" => "flats_img/thumbnail_Chiara.webp",
+                "visible" => true,
+                "description" => "Appartamento spazioso con vista sulla cattedrale, perfetto per famiglie o gruppi."
+            ],
+            [
+                "user_id" => 1,
+                "title" => "Ambrogio",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
                 "meters_square" => 75,
-                "address" => "Via Nomentana, 203, 00161 Roma RM",
-                "latitude" => 41.9108,
-                "longitude" => 12.5124,
-                "main_img" => "flats_img/thumbnail_AllComfortNomentano.jpg",
+                "address" => "Via San Damiano, 2, 20122 Milano MI, Italy",
+                "latitude" => 45.4668,
+                "longitude" => 9.2017,
+                "main_img" => "flats_img/thumbnail_Ambrogio.webp",
                 "visible" => true,
-                "description" => "Confortevole appartamento vicino alla stazione Termini, con facile accesso ai principali siti turistici di Roma."
-            ],
-
-            [
-                "title" => "Vesuvio Retreat",
-                "max_guests" => 4,
-                "rooms" => 2,
-                "beds" => 2,
-                "bathrooms" => 1,
-                "meters_square" => 65,
-                "address" => "Via Toledo, 100, 80132 Napoli NA",
-                "latitude" => 40.8375,
-                "longitude" => 14.2499,
-                "main_img" => "flats_img/thumbnail_VesuvioRetreat.jpg",
-                "visible" => true,
-                "description" => "Incantevole appartamento nel cuore di Napoli, a pochi passi da Via Toledo. Perfetto per esplorare la città e gustare la cucina locale."
+                "description" => "Appartamento moderno nel centro di Milano, perfetto per chi vuole esplorare la città."
             ],
             [
-                "title" => "Charming Napoli",
+                "user_id" => 2,
+                "title" => "Bramante",
                 "max_guests" => 3,
                 "rooms" => 2,
                 "beds" => 1,
                 "bathrooms" => 1,
-                "meters_square" => 50,
-                "address" => "Piazza del Plebiscito, 1, 80132 Napoli NA",
-                "latitude" => 40.8351,
-                "longitude" => 14.2465,
-                "main_img" => "flats_img/thumbnail_CharmingNapoli.jpg",
+                "meters_square" => 70,
+                "address" => "Corso Magenta, 24, 20123 Milano MI, Italy",
+                "latitude" => 45.4642,
+                "longitude" => 9.1768,
+                "main_img" => "flats_img/thumbnail_Bramante.webp",
                 "visible" => true,
-                "description" => "Accogliente appartamento con vista sulla storica Piazza del Plebiscito, ideale per coppie in cerca di romanticismo e avventura."
+                "description" => "Appartamento accogliente situato vicino a Santa Maria delle Grazie, perfetto per coppie."
             ],
             [
-                "title" => "Napoli Elegante",
-                "max_guests" => 5,
-                "rooms" => 3,
-                "beds" => 2,
-                "bathrooms" => 2,
-                "meters_square" => 85,
-                "address" => "Via Chiaia, 50, 80121 Napoli NA",
-                "latitude" => 40.8392,
-                "longitude" => 14.2513,
-                "main_img" => "flats_img/thumbnail_NapoliElegante.jpg",
-                "visible" => true,
-                "description" => "Spazioso appartamento elegante nel centro di Napoli, perfetto per famiglie o gruppi. A pochi passi da negozi e ristoranti."
-            ],
-            [
-                "title" => "Vista Mare",
-                "max_guests" => 6,
-                "rooms" => 4,
-                "beds" => 2,
-                "bathrooms" => 1,
-                "meters_square" => 90,
-                "address" => "Lungomare Caracciolo, 100, 80122 Napoli NA",
-                "latitude" => 40.8355,
-                "longitude" => 14.2545,
-                "main_img" => "flats_img/thumbnail_VistaMare.jpg",
-                "visible" => true,
-                "description" => "Appartamento con vista sul mare, ideale per famiglie e gruppi. A pochi passi da ristoranti e attrazioni turistiche."
-            ],
-            [
-                "title" => "Città Antica",
+                "user_id" => 3,
+                "title" => "Leonardo",
                 "max_guests" => 2,
                 "rooms" => 1,
                 "beds" => 1,
                 "bathrooms" => 1,
-                "meters_square" => 40,
-                "address" => "Via San Gregorio Armeno, 30, 80138 Napoli NA",
-                "latitude" => 40.8518,
-                "longitude" => 14.2660,
-                "main_img" => "flats_img/thumbnail_CittaAntica.jpg",
+                "meters_square" => 55,
+                "address" => "Via Monte Napoleone, 10, 20121 Milano MI, Italy",
+                "latitude" => 45.4687,
+                "longitude" => 9.1940,
+                "main_img" => "flats_img/thumbnail_Leonardo.webp",
                 "visible" => true,
-                "description" => "Piccolo ma affascinante appartamento nel centro storico di Napoli, perfetto per una fuga romantica. Vicino a chiese e mercatini."
+                "description" => "Lussuoso monolocale nel cuore del Quadrilatero della Moda, ideale per una coppia."
             ],
-
             [
-                "title" => "PaPa's home",
+                "user_id" => 4,
+                "title" => "Michelangelo",
+                "max_guests" => 5,
+                "rooms" => 3,
+                "beds" => 2,
+                "bathrooms" => 2,
+                "meters_square" => 95,
+                "address" => "Piazza della Scala, 6, 20121 Milano MI, Italy",
+                "latitude" => 45.4665,
+                "longitude" => 9.1891,
+                "main_img" => "flats_img/thumbnail_Michelangelo.webp",
+                "visible" => true,
+                "description" => "Spazioso appartamento con vista su Piazza della Scala, perfetto per famiglie."
+            ],
+            [
+                "user_id" => 5,
+                "title" => "Raffaello",
                 "max_guests" => 4,
                 "rooms" => 3,
                 "beds" => 2,
                 "bathrooms" => 1,
-                "meters_square" => 70,
-                "address" => "Via Sparano, 12, 70121 Bari BA",
-                "latitude" => 41.1265,
-                "longitude" => 16.8692,
-                "main_img" => "flats_img/thumbnail_PaPasHome.webp",
-                "visible" => true,
-                "description" => "Accogliente appartamento nel cuore di Bari, a pochi passi da negozi e ristoranti. Perfetto per famiglie e gruppi di amici."
-            ],
-            [
-                "title" => "Little Suite Picca",
-                "max_guests" => 2,
-                "rooms" => 1,
-                "beds" => 1,
-                "bathrooms" => 1,
-                "meters_square" => 40,
-                "address" => "Piazza del Ferrarese, 2, 70121 Bari BA",
-                "latitude" => 41.1273,
-                "longitude" => 16.8664,
-                "main_img" => "flats_img/thumbnail_LittleSuitePicca.webp",
-                "visible" => true,
-                "description" => "Piccola suite elegante situata in una posizione centrale. Ideale per coppie in cerca di una fuga romantica nella storica Bari."
-            ],
-            [
-                "title" => "Liberty Suite",
-                "max_guests" => 6,
-                "rooms" => 4,
-                "beds" => 2,
-                "bathrooms" => 2,
-                "meters_square" => 90,
-                "address" => "Via Giuseppe Mazzini, 30, 70121 Bari BA",
-                "latitude" => 41.1290,
-                "longitude" => 16.8736,
-                "main_img" => "flats_img/thumbnail_LibertySuite.webp",
-                "visible" => true,
-                "description" => "Ampia suite in stile liberty, perfetta per famiglie o gruppi. Situata vicino alle principali attrazioni turistiche di Bari."
-            ],
-            [
-                "title" => "Casa indipendente per vacanze",
-                "max_guests" => 5,
-                "rooms" => 3,
-                "beds" => 2,
-                "bathrooms" => 1,
                 "meters_square" => 80,
-                "address" => "Via Aurelio Saffi, 10, 70124 Bari BA",
-                "latitude" => 41.1381,
-                "longitude" => 16.8970,
-                "main_img" => "flats_img/thumbnail_CasaIndipendenteVacanze.webp",
+                "address" => "Via Brera, 28, 20121 Milano MI, Italy",
+                "latitude" => 45.4703,
+                "longitude" => 9.1881,
+                "main_img" => "flats_img/thumbnail_Raffaello.webp",
                 "visible" => true,
-                "description" => "Spaziosa casa indipendente, ideale per vacanze in famiglia. A pochi minuti dalla spiaggia e dai ristoranti tipici di Bari."
+                "description" => "Elegante appartamento nel quartiere Brera, ideale per esplorare le attrazioni culturali di Milano."
             ],
-
         ];
+        
 
         foreach ($flats as $flat) {
             $newFlat = new Flat();

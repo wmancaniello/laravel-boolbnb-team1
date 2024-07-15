@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             ServicesTableSeeder::class,
             FlatsTableSeeder::class,
+            MessagesSeeder::class,
         ]);
 
 
