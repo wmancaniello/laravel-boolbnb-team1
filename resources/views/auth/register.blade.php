@@ -42,7 +42,13 @@
                         <div class="mb-4 row">
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">Inserisci la tua data di nascita:</label>
                             <div class="col-md-6">
-                                <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                                <input type="date" class="form-control  @error('date_of_birth') is-invalid @enderror" id="date_of_birth" name="date_of_birth">
+
+                                @error('date_of_birth')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>Data inserita non valida (Età minore 18 anni)</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
