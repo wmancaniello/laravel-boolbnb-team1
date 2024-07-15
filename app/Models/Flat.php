@@ -21,6 +21,7 @@ class Flat extends Model
         'longitude',
         'visible',
         'description',
+        'slug',
     ];
     
     public function views()
