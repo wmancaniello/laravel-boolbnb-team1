@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
 use App\Models\Flat;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -24,7 +25,8 @@ class FlatsController extends Controller
      */
     public function create()
     {
-        return view('admin.flats.create');
+        $services = Service::all();
+        return view('admin.flats.create', compact('services'));
     }
 
     /**
@@ -35,8 +37,9 @@ class FlatsController extends Controller
         $newFlat = new Flat();
         $newFlat->fill($request->validated());
         $newFlat->user_id = Auth::id();
-        $newFlat->main_img = Storage::put('flats_main', $request->main_img);
+        $newFlat->main_img = Storage::put('flats_img', $request->main_img);
         $newFlat->save();
+        $newFlat->services()->attach($request->services);
         return redirect()->route('admin.flats.create');
     }
 
