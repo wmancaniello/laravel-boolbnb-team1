@@ -1,0 +1,34 @@
+.modal-services {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+
+label {
+    cursor: pointer;
+    width: 100%;
+    border: 2px solid #dee2e6;
+    border-radius: 5px;
+    user-select: none;
+    padding: 5px;
+
+    img {
+        max-width: 20px;
+    }
+}
+
+.check-service[type="checkbox"] {
+    display: none;
+}
+
+.check-service[type="checkbox"]:checked+label {
+    color: blue;
+    border: 2px solid blue;
+
+    img {
+        filter: invert(8%) sepia(100%) saturate(6524%) hue-rotate(247deg) brightness(104%) contrast(146%);
+    }
+}
+
