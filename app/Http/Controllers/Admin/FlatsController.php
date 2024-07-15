@@ -45,7 +45,7 @@ class FlatsController extends Controller
         $newFlat->services()->attach($request->services);
         }
         return redirect()->route('admin.flats.create');
-        return redirect()->route('admin.flats.show', $flat->slug)->with('success', 'Appartamento modificato con successo.');
+        return redirect()->route('admin.flats.show', $newFlat->slug)->with('success', 'Appartamento aggiunto con successo.');
     }
 
     /**
