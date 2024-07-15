@@ -69,7 +69,7 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> I tuoi appartamenti
                                 </a>
                             </li>
-                             {{-- ----------- /LISTA APPARTAMENTI --------------- --}}
+                            {{-- ----------- /LISTA APPARTAMENTI --------------- --}}
 
                             {{-- ----------- ADD APPARTAMENTO --------------- --}}
 
