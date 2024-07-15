@@ -82,6 +82,10 @@ class FlatsController extends Controller
 
             $flat->save();
 
+            if($request->has('services')) {
+                $flat->services()->sync($request->services);
+            }
+
             return redirect()->route('admin.flats.show', $flat->slug)->with('success', 'Appartamento modificato con successo.');
         } else {
             abort(403);
