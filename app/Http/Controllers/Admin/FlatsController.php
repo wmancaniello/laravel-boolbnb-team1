@@ -18,7 +18,8 @@ class FlatsController extends Controller
      */
     public function index()
     {
-        //
+        $flats = Flat::where('user_id', Auth::id())->get();
+        return view('admin.flats.index', compact('flats'));
     }
 
     /**
