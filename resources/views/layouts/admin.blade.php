@@ -53,22 +53,24 @@
                         <ul class="nav flex-column">
                             {{-- ----------- DASHBOARD --------------- --}}
 
-
                             <li class="nav-item">
                                 <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-primary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
-
-
+                            @php
+                                use App\Models\Flat;
+                            @endphp
                             {{-- ----------- LISTA APPARTAMENTI --------------- --}}
-                            <li class="nav-item">
-                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.index' ? 'bg-primary' : '' }}"
-                                    href="{{ route('admin.flats.index') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> I tuoi appartamenti
-                                </a>
-                            </li>
+                            @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
+                                <li class="nav-item">
+                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.index' ? 'bg-primary' : '' }}"
+                                        href="{{ route('admin.flats.index') }}">
+                                        <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> I tuoi appartamenti
+                                    </a>
+                                </li>
+                            @endif
                             {{-- ----------- /LISTA APPARTAMENTI --------------- --}}
 
                             {{-- ----------- ADD APPARTAMENTO --------------- --}}
