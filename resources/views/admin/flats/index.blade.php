@@ -4,7 +4,7 @@
     <div class="container">
         <h1>I TUOI APPARTAMENTI:</h1>
 
-        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.create') }}">Inserisci un nuovo appartamento</a>
+        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.create') }}">Inserisci</a>
 
         <div>
             <table class="table">
