@@ -141,9 +141,9 @@
                                     @foreach ($services as $service)
                                         <div class="col-6 col-lg-3">
                                             <input type="checkbox" name="services[]" class="check-service"
-                                                id="service-{{ $service->id }}" value="{{ $service->id }}" @checked(in_array($service->id, old('services', []))) >
+                                                id="service-{{ $service->id }}" value="{{ $service->id }}" @checked($flat->services->contains($service) || in_array($service->id, old('services', []) ) )>
                                             <label for="service-{{ $service->id }}">
-                                                <img src="{{ asset('storage/services/' . $service->icon) }}"
+                                                <img src="{{ asset('storage/services/' . $service->icon) }}" 
                                                     alt="Icona {{ $service->name }}">
                                                 {{ $service->name }}
                                             </label>
