@@ -29,7 +29,7 @@ Route::middleware('auth')
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('flats', FlatsController::class)->parameters(['flats' => 'flat:slug']);
         Route::resource('messages', MessagesController::class);
-       
+    
     });
 
 require __DIR__ . '/auth.php';

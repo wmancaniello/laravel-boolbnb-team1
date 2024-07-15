@@ -2,21 +2,22 @@
     border: 1px solid #dee2e6;
     border-radius: 5px;
     padding: 10px;
-}
-
-
-label {
-    cursor: pointer;
-    width: 100%;
-    border: 2px solid #dee2e6;
-    border-radius: 5px;
-    user-select: none;
-    padding: 5px;
-
-        img {
-            max-width: 20px;
+    
+    label {
+        cursor: pointer;
+        width: 100%;
+        border: 2px solid #dee2e6;
+        border-radius: 5px;
+        user-select: none;
+        padding: 5px;
+    
+            img {
+                max-width: 20px;
+        }
     }
 }
+
+
 
 .check-service[type="checkbox"] {
     display: none;

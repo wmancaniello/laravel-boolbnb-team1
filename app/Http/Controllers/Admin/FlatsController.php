@@ -41,8 +41,11 @@ class FlatsController extends Controller
         $newFlat->user_id = Auth::id();
         $newFlat->main_img = Storage::put('flats_img', $request->main_img);
         $newFlat->save();
+        if($request->has('services')){
         $newFlat->services()->attach($request->services);
+        }
         return redirect()->route('admin.flats.create');
+        return redirect()->route('admin.flats.show', $flat->slug)->with('success', 'Appartamento modificato con successo.');
     }
 
     /**
@@ -59,7 +62,8 @@ class FlatsController extends Controller
     public function edit(string $slug)
     {
         $flat = Flat::where('slug', $slug)->firstOrFail();
-        return view('admin.flats.edit', compact('flat'));
+        $services = Service::all();
+        return view('admin.flats.edit', compact('flat', 'services'));
     }
 
     /**
@@ -79,6 +83,9 @@ class FlatsController extends Controller
             }
 
             $flat->save();
+            if($request->has('services')){
+                $flat->services()->sync($request->services);
+            }
 
             return redirect()->route('admin.flats.show', $flat->slug)->with('success', 'Appartamento modificato con successo.');
         } else {

@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             SponsorsTableSeeder::class,
             UsersTableSeeder::class,
             ServicesTableSeeder::class,
-            
+            FlatsTableSeeder::class,
         ]);
 
 

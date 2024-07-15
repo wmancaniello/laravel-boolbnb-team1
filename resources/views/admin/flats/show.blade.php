@@ -56,6 +56,27 @@
             </table>
         </div>
 
+        <div class="modal-services mb-3">
+            <h6>
+                Servizi appartamento
+            </h6>
+            <div class="container">
+                <div class="row wrapper-check justify-content-center g-1">
+                    @foreach ($flat->services as $service)
+                        <div class="col-6 col-lg-3">
+                            <input type="checkbox" name="services[]" class="check-service"
+                                id="service-{{ $service->id }}" value="{{ $service->id }}" checked disabled>
+                            <label for="service-{{ $service->id }}">
+                                <img src="{{ asset('storage/services/' . $service->icon) }}"
+                                    alt="Icona {{ $service->name }}">
+                                {{ $service->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
     </div>
 
     @endsection
