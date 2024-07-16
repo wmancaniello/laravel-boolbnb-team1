@@ -30,16 +30,16 @@
                                         type="button"class="btn btn-outlime-primary p-0 ms-5">
                                         <i class="fa-solid fa-pencil rounded-1 text-primary border border-primary p-2"></i>
                                     </a>
-                                    <form action="{{ route('admin.flats.destroy', ['flat' => $flat->slug]) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn p-0" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            <i class="fa-solid fa-trash border border-danger text-danger p-2 rounded-1"></i>
+                                    <div>
+                                        <button type="button" class="btn p-0 ms-1" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal{{ $flat->slug }}">
+                                            <i class="fa-solid fa-trash rounded-1 text-danger border border-danger p-2"></i>
                                         </button>
-                                    </form>
+                                    </div>
                                 </div>
+                                {{-- Modale conferma --}}
+                                @include('admin.partials.modal_delete')
+                                {{-- /Modale --}}
                             </td>
                         </tr>
                     </tbody>
