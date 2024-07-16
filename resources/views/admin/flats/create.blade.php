@@ -181,7 +181,10 @@
                                 </div>
                             @enderror
 
-                            {{-- <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3" src=""> --}}
+                            <div id="gallery-preview" class="mb-3">
+
+                            </div>
+                            {{-- <img id="gallery-image" class="img-fluid d-block w-25 m-auto mb-3" src=""> --}}
                         </div>
 
                     </div>
