@@ -48,3 +48,39 @@
     border-radius: 5px;
     padding: 10px;
 }
+
+.mt5vh {
+    width: 100%;
+    margin: 0 auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ms_cell5 {
+    width: calc(100% / 5);
+    height: 100%;
+    border: .1px solid white;
+}
+
+a {
+    text-decoration: none;
+}
+.ms_bg_primary {
+    background-color: #F8F2EB;
+}
+
+.ms_bg_secondary {
+    background-color: #B4B897;
+}
+
+.txtColor {
+    color: #705D3F;
+}
+
+.btnColor {
+    background-color: #705D3F;
+}
+
+.bg_color3 {
+    background-color: #D9C1AE;
+}
