@@ -10,52 +10,44 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str; // Importazione della classe Str
 
 class FlatsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // INDEX
     public function index()
     {
         $flats = Flat::where('user_id', Auth::id())->get();
         return view('admin.flats.index', compact('flats'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // CREATE
     public function create()
     {
         $services = Service::all();
         return view('admin.flats.create', compact('services'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // STORE
     public function store(StoreFlatRequest $request)
     {
         $newFlat = new Flat();
         $newFlat->fill($request->validated());
         $newFlat->user_id = Auth::id();
         $newFlat->main_img = Storage::put('flats_img', $request->main_img);
+        $newFlat->slug = $this->generateUniqueSlug($request->title);
         $newFlat->save();
         $newFlat->services()->attach($request->services);
         return redirect()->route('admin.flats.show', $newFlat->slug)->with('success', 'Appartamento aggiunto con successo.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // SHOW
     public function show(Flat $flat)
     {
         return view('admin.flats.show', compact('flat'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // EDIT
     public function edit(string $slug)
     {
         $flat = Flat::where('slug', $slug)->firstOrFail();
@@ -63,14 +55,16 @@ class FlatsController extends Controller
         return view('admin.flats.edit', compact('flat', 'services'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // UPDATE
     public function update(UpdateFlatRequest $request, string $slug)
     {
         $flat = Flat::where('slug', $slug)->firstOrFail();
-        $flat->fill($request->validated());
         if (Auth::id() === $flat->user_id) {
+            $flat->fill($request->validated());
+
+            if ($request->title !== $flat->title) {
+                $flat->slug = $this->generateUniqueSlug($request->title, $flat->id);
+            }
 
             if ($request->hasFile('main_img')) {
                 if ($flat->main_img) {
@@ -81,7 +75,7 @@ class FlatsController extends Controller
 
             $flat->save();
 
-            if($request->has('services')) {
+            if ($request->has('services')) {
                 $flat->services()->sync($request->services);
             }
 
@@ -91,13 +85,11 @@ class FlatsController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // DESTROY
     public function destroy(string $slug)
     {
-        $flat = Flat::where('slug', $slug)->firstOrFail();;
-        if(Auth::id() === $flat->user_id){
+        $flat = Flat::where('slug', $slug)->firstOrFail();
+        if (Auth::id() === $flat->user_id) {
             // Elimino relazione N:N
             $flat->sponsors()->detach();
             $flat->services()->detach();
@@ -110,5 +102,17 @@ class FlatsController extends Controller
         } else {
             abort(403);
         }
+    }
+
+    // ----------------- FUNC ------------------------
+    private function generateUniqueSlug($title, $id = 0)
+    {
+        $slug = Str::slug($title);
+        $originalSlug = $slug;
+        $count = 1;
+        while (Flat::where('slug', $slug)->where('id', '!=', $id)->exists()) {
+            $slug = $originalSlug . '-' . $count++;
+        }
+        return $slug;
     }
 }

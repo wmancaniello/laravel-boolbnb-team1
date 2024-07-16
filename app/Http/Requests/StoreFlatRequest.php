@@ -22,7 +22,7 @@ class StoreFlatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5|unique:flats,title',
+            'title' => 'required|min:5',
             'max_guests' => 'required|numeric|integer|min:1',
             'rooms' => 'required|numeric|integer|min:1',
             'beds' => 'required|numeric|integer|min:1',
