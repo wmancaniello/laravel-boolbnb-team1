@@ -464,6 +464,18 @@ class FlatsTableSeeder extends Seeder
             $newFlat = new Flat();
             $newFlat->fill($flat);
             $newFlat->save();
+            
+            $services = [];
+            for ($i=0; $i < rand(5,20) ; $i++) { 
+                $num = rand(1,20);
+                if(!in_array($num, $services)) {
+                    $services[] = $num;
+                }
+            }
+    
+            $newFlat->services()->attach($services);
         };
+
+    
     }
 }
