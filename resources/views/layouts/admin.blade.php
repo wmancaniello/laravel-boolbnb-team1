@@ -21,9 +21,9 @@
 <body class="ms_bg_primary">
     <div id="app">
 
-        <header class=" sticky-top btnColor h10vh mt5vh">
+        <header class=" position-fixed top-0 btnColor h10vh mt5vh">
             <div class="ms_cell5">
-                <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="d-flex justify-content-center align-items-center h-100 letter-spacing">
                     <a class="text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'text-primary' : '' }}"
                         href="{{ route('admin.dashboard') }}">
                         Dashboard
@@ -35,32 +35,32 @@
             </div>
             <div class="ms_cell5">
                 @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
-                    <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="d-flex justify-content-center align-items-center h-100 letter-spacing">
                         <a class="text-white {{ Route::currentRouteName() == 'admin.flats.index' ? 'text-primary' : '' }}"
                             href="{{ route('admin.flats.index') }}">
-                            <i class="fa-solid fa-building"></i> I tuoi appartamenti
+                            I tuoi appartamenti
                         </a>
                     </div>
                 @endif
             </div>
             <div class="ms_cell5">
-                <li class="d-flex justify-content-center align-items-center h-100">
+                <div class="d-flex justify-content-center align-items-center h-100 letter-spacing">
                     <a class="text-white {{ Route::currentRouteName() == 'admin.flats.create' ? 'text-primary' : '' }}"
                         href="{{ route('admin.flats.create') }}">
-                        <i class="fa-solid fa-plus"></i> Aggiungi Appartamento
+                        Nuovo Appartamento
                     </a>
-                </li>
+                </div>
             </div>
             <div class="ms_cell5">
-                <li class="d-flex justify-content-center align-items-center h-100">
-                    <a class="text-white {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-primary' : '' }}"
+                <div class="letter-spacing d-flex justify-content-center align-items-center h-100">
+                    <a class="text-white {{ Route::currentRouteName() == 'admin.messages.index' ? 'text-secondary' : '' }}"
                         href="{{ route('admin.messages.index') }}">
-                        <i class="fa-solid fa-bell"></i> Notifiche
+                        Notifiche
                     </a>
-                </li>
+                </div>
             </div>
             <div class="ms_cell5">
-                <div class="nav-item text-nowrap d-flex text-white justify-content-center align-items-center h-100">
+                <div class="letter-spacing d-flex text-white justify-content-center align-items-center h-100">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

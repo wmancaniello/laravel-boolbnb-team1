@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container mt10vh">
         <h1 class=" pt-5">I TUOI APPARTAMENTI:</h1>
 
         <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.create') }}">Inserisci</a>
