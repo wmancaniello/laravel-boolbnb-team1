@@ -39,13 +39,16 @@ export function nascondiToast() {
 export function galleryAnteprima(event) {
     const galleryPreviewElem = document.getElementById('gallery-preview');
     const filePhoto = [...event.target.files];
-
+    galleryPreviewElem.innerHTML = "";
 
 
     filePhoto.forEach(photo => {
-        const imgElem = document.createElement('img');
-        imgElem.classList.add('gallery-image', 'w-25', 'mx-2');
-        galleryPreviewElem.appendChild(imgElem);
+        if (photo.type.includes('image')) {
+            
+            const imgElem = document.createElement('img');
+            imgElem.classList.add('gallery-image', 'w-25', 'm-2');
+            galleryPreviewElem.appendChild(imgElem);
+        }
     });
 
     const galleryElem = document.querySelectorAll('.gallery-image');
@@ -72,7 +75,7 @@ export function galleryAnteprima(event) {
                 reader.readAsDataURL(filePhoto[i]);
             } else {
                 img.src = "";
-                img.classList.remove('mb-3');
+                
             }
         
             i++;

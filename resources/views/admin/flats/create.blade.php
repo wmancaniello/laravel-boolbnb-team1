@@ -155,9 +155,10 @@
                         </div>
 
                         {{-- main_img --}}
-                        <div class="col-12">
+                        <div class="col-12 ms_border mb-3">
+                            <label for="main_img" class="mb-1">Inserisci foto principale:</label>
                             <input type="file" class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
-                                id="main_img" placeholder="inserici immagine" name="main_img"
+                                id="main_img" placeholder="inserici immagine" name="main_img" accept=".jpg,.webp,.png,.svg,.bmp,.heic"
                                 value="{{ old('main_img') }}">
 
                             @error('main_img')
@@ -170,9 +171,10 @@
                         </div>
 
                         {{-- gallery photo --}}
-                        <div class="col-12">
+                        <div class="col-12 ms_border mb-3">
+                            <label for="photos" class="mb-1">Inserisci foto aggiuntive:</label>
                             <input type="file" multiple class="form-control mb-3 ms_file @error('photos') is-invalid @enderror"
-                                id="photos" placeholder="inserici immagine" name="photos[]"
+                                id="photos" placeholder="inserici immagine" name="photos[]" accept=".jpg,.webp,.png,.svg,.bmp,.heic"
                                 value="{{ old('photos') }}">
 
                             @error('photos')
@@ -184,7 +186,6 @@
                             <div id="gallery-preview" class="mb-3">
 
                             </div>
-                            {{-- <img id="gallery-image" class="img-fluid d-block w-25 m-auto mb-3" src=""> --}}
                         </div>
 
                     </div>
