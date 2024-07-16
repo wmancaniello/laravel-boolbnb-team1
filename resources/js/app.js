@@ -8,6 +8,7 @@ const fileElem = document.querySelector('.ms_file');
 const addressElem = document.getElementById('address');
 const toastElem = document.querySelector('.ms_toast');
 const formElem = document.getElementById('register-form');
+const logFormElem = document.getElementById('login-form');
 
 if(fileElem) {
 
@@ -159,3 +160,34 @@ if(formElem){
 
 }
 
+if(logFormElem){
+    logFormElem.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const emailLog = document.getElementById('email');
+        const pswLog = document.getElementById('password');
+
+        const emailError = emailLog.parentElement.querySelector('.invalid-feedback');
+        const pswError = pswLog.parentElement.querySelector('.invalid-feedback');
+
+        //reset errori
+        emailError.innerText = '';
+        pswError.innerText = '';
+
+        emailError.classList.remove('is-invalid');
+        pswError.classList.remove('is-invalid');
+
+        if(!emailLog.value.trim()){
+            emailError.innerText = 'Inserisci la mail';
+            emailLog.classList.add('is-invalid');
+        }
+
+        if(!pswLog.value.trim()){
+            pswError.innerText = 'Inserire la password';
+            pswLog.classList.add('is-invalid');
+        } else if(pswLog.length < 8){
+            pswError.innerText = 'La password deve essere di almeno 8 caratteri'
+        }
+
+    })
+}
