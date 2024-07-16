@@ -9,7 +9,9 @@ const addressElem = document.getElementById('address');
 const toastElem = document.querySelector('.ms_toast');
 
 const formElem = document.getElementById('register-form');
-const logFormElem = document.getElementById('login-form');
+
+// const logFormElem = document.getElementById('login-form');
+const logFormElem = document.querySelectorAll('login-form');
 
 const multipleFileElem = document.getElementById('photos');
 
