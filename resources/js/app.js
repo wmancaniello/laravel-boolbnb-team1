@@ -190,8 +190,10 @@ if(logFormElem){
         if(!pswLog.value.trim()){
             pswError.innerText = 'Inserire la password';
             pswLog.classList.add('is-invalid');
-        } else if(pswLog.length < 8){
-            pswError.innerText = 'La password deve essere di almeno 8 caratteri'
+        } else if(pswLog.value.length < 8){
+            pswError.innerText = 'La password deve essere di almeno 8 caratteri';
+            pswLog.classList.add('is-invalid');
+
         }
 
     })
