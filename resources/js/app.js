@@ -9,7 +9,7 @@ const addressElem = document.getElementById('address');
 const toastElem = document.querySelector('.ms_toast');
 
 const formElem = document.getElementById('register-form');
-const logFormElem = document.getElementById('form-elem');
+const logFormElem = document.querySelector('.form-elem');
 
 
 const multipleFileElem = document.getElementById('photos');
@@ -167,6 +167,8 @@ if(logFormElem){
             pswLog.classList.add('is-invalid');
 
         }
+
+        logFormElem.submit();
 
     })
 }
