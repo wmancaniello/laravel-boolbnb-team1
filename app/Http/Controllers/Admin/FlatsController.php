@@ -39,7 +39,7 @@ class FlatsController extends Controller
         $newFlat->slug = $this->generateUniqueSlug($request->title);
         $newFlat->save();
         $newFlat->services()->attach($request->services);
-        if(isset($request->photos[0])) {
+        if (isset($request->photos[0])) {
             $photos = $request->photos;
             foreach ($photos as $photo) {
                 $newPhoto = new Photo();
@@ -54,18 +54,21 @@ class FlatsController extends Controller
     // SHOW
     public function show(Flat $flat)
     {
-        return view('admin.flats.show', compact('flat'));
+        if ($flat->user_id === Auth::id()) {
+            return view('admin.flats.show', compact('flat'));
+        } else {
+            abort(403);
+        }
     }
 
     // EDIT
     public function edit(string $slug)
     {
         $flat = Flat::where('slug', $slug)->firstOrFail();
-        if($flat->user_id === Auth::id()) {
+        if ($flat->user_id === Auth::id()) {
             $services = Service::all();
             $photos = Photo::where('flat_id', $flat->id)->get();
             return view('admin.flats.edit', compact('flat', 'services', 'photos'));
-
         } else {
             abort(403);
         }
@@ -95,9 +98,9 @@ class FlatsController extends Controller
                 $flat->services()->sync($request->services);
             }
 
-            if(isset($request->photos[0])) {
+            if (isset($request->photos[0])) {
                 $oldImages = Photo::where('flat_id', $flat->id)->get();
-                
+
 
                 foreach ($oldImages as $oldImage) {
                     Storage::delete($oldImage->image);
