@@ -106,6 +106,7 @@
                             </div>
                         </div>
 
+                        {{-- address --}}
                         <div class="col-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
@@ -116,6 +117,7 @@
                                         - {{ $errors->get('address')[0] }}
                                     @enderror
                                 </label>
+                                <div id="dropdown" class="dropdown-content"></div>
                             </div>
                         </div>
 
