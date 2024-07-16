@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+
+        {{-- indietro --}}
+        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index', ['flat' => $flat->slug]) }}"
+            type="button"class="btn btn-outlime-primary p-0 ms-5">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
         <h1>I TUOI APPARTAMENTI:</h1>
 
         <div>
@@ -77,22 +84,29 @@
         </div>
 
 
+        
+
         <div class="d-flex">
+
             {{-- modifica --}}
             <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}"
                 type="button"class="btn btn-outlime-primary p-0 ms-5">
                 modifica
             </a>
-            {{-- elimina --}}
-            <form action="{{ route('admin.flats.destroy', ['flat' => $flat->slug]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger mt-3 mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    elimina
-                </button>
-            </form>
 
+
+            {{-- cancella --}}
+            <div>
+                <button type="button" class="btn btn-danger mt-3 mb-3 ms-3" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal{{ $flat->slug }}">
+                    cancella
+                </button>
+            </div>
+                {{-- modale conferma cancellazione --}}
+                @include('admin.partials.modal_delete')
         </div>
+
+
     </div>
 
     @include('admin.partials.toast')

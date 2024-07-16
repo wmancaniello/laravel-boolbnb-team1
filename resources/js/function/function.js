@@ -82,6 +82,7 @@ export function galleryAnteprima(event) {
     });
 }
 
+
 export function TomTomApi() {
 
     const query = this.value;
