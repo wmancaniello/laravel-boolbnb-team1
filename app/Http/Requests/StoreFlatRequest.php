@@ -35,6 +35,9 @@ class StoreFlatRequest extends FormRequest
             'visible' => 'required|in:si,no',
             'description' => 'required|min:20',
             'services' => 'nullable|exists:services,id',
+            'photos' => 'nullable|array',
+            'photos.*' => 'image'
+
 
         ];
     }
@@ -94,6 +97,8 @@ class StoreFlatRequest extends FormRequest
     
             'services.nullable' => 'Il servizio è opzionale.',
             'services.exists' => 'Il servizio selezionato non è valido.',
+
+            'photos.image' => "Le foto della galleria devono essere un'immagine.",
         ];
     }
     

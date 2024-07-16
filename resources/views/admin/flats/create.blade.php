@@ -132,6 +132,7 @@
                             </div>
                         </div>
 
+                        {{-- services --}}
                         <div class="modal-services mb-3">
                             <h6>
                                 Seleziona i servizi
@@ -153,6 +154,7 @@
                             </div>
                         </div>
 
+                        {{-- main_img --}}
                         <div class="col-12">
                             <input type="file" class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
                                 id="main_img" placeholder="inserici immagine" name="main_img"
@@ -167,12 +169,27 @@
                             <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3" src="">
                         </div>
 
+                        {{-- gallery photo --}}
+                        <div class="col-12">
+                            <input type="file" multiple class="form-control mb-3 ms_file @error('photos') is-invalid @enderror"
+                                id="photos" placeholder="inserici immagine" name="photos[]"
+                                value="{{ old('photos') }}">
+
+                            @error('photos')
+                                <div class="alert alert-danger">
+                                    {{ $errors->get('photos')[0] }}
+                                </div>
+                            @enderror
+
+                            {{-- <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3" src=""> --}}
+                        </div>
+
                     </div>
 
 
 
-                    <input type="text" name="latitude" id="latitude" class="d-none">
-                    <input type="text" name="longitude" id="longitude" class="d-none">
+                    <input type="text" name="latitude" id="latitude" class="d-none" value="{{old('latitude')}}">
+                    <input type="text" name="longitude" id="longitude" class="d-none" value="{{old('longitude')}}">
                     <button type="submit" class="btn btn-success">Aggiungi</button>
             </form>
 

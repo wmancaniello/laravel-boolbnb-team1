@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
 use App\Http\Requests\UpdateFlatRequest;
 use App\Models\Flat;
+use App\Models\Photo;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,15 @@ class FlatsController extends Controller
         $newFlat->main_img = Storage::put('flats_img', $request->main_img);
         $newFlat->save();
         $newFlat->services()->attach($request->services);
+        if($request->photos) {
+            $photos = $request->photos;
+            foreach ($photos as $photo) {
+                $newPhoto = new Photo();
+                $newPhoto->flat_id = $newFlat->id;
+                $newPhoto->image = Storage::put('flats_img', $photo);
+                $newPhoto->save();
+            }
+        }
         return redirect()->route('admin.flats.show', $newFlat->slug)->with('success', 'Appartamento aggiunto con successo.');
     }
 
