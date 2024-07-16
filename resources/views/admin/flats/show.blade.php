@@ -3,6 +3,13 @@
 @section('content')
 
     <div class="container">
+
+        {{-- indietro --}}
+        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index', ['flat' => $flat->slug]) }}"
+            type="button"class="btn btn-outlime-primary p-0 ms-5">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
         <h1>I TUOI APPARTAMENTI:</h1>
 
         <div>
