@@ -2,13 +2,17 @@ import "./bootstrap";
 import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
-import { mostraAnteprima, mostraToast, nascondiToast} from "./function/function";
+import { galleryAnteprima, mostraAnteprima, mostraToast, nascondiToast} from "./function/function";
 
 const fileElem = document.querySelector('.ms_file');
 const addressElem = document.getElementById('address');
 const toastElem = document.querySelector('.ms_toast');
+
 const formElem = document.getElementById('register-form');
 const logFormElem = document.getElementById('login-form');
+
+const multipleFileElem = document.getElementById('photos');
+
 
 if(fileElem) {
 
@@ -57,6 +61,7 @@ if(toastElem) {
     
     const time = setTimeout(nascondiToast, 5000);
 }
+
 
 if(formElem){
     formElem.addEventListener('submit', function(e){
@@ -191,3 +196,8 @@ if(logFormElem){
 
     })
 }
+
+if(multipleFileElem) {
+    multipleFileElem.addEventListener('change', galleryAnteprima);
+}
+

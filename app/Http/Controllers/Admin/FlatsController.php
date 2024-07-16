@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
 use App\Http\Requests\UpdateFlatRequest;
 use App\Models\Flat;
+use App\Models\Photo;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,15 @@ class FlatsController extends Controller
         $newFlat->slug = $this->generateUniqueSlug($request->title);
         $newFlat->save();
         $newFlat->services()->attach($request->services);
+        if(isset($request->photos[0])) {
+            $photos = $request->photos;
+            foreach ($photos as $photo) {
+                $newPhoto = new Photo();
+                $newPhoto->flat_id = $newFlat->id;
+                $newPhoto->image = Storage::put('flats_img', $photo);
+                $newPhoto->save();
+            }
+        }
         return redirect()->route('admin.flats.show', $newFlat->slug)->with('success', 'Appartamento aggiunto con successo.');
     }
 
@@ -51,8 +61,14 @@ class FlatsController extends Controller
     public function edit(string $slug)
     {
         $flat = Flat::where('slug', $slug)->firstOrFail();
-        $services = Service::all();
-        return view('admin.flats.edit', compact('flat', 'services'));
+        if($flat->user_id === Auth::id()) {
+            $services = Service::all();
+            $photos = Photo::where('flat_id', $flat->id)->get();
+            return view('admin.flats.edit', compact('flat', 'services', 'photos'));
+
+        } else {
+            abort(403);
+        }
     }
 
     // UPDATE
@@ -77,6 +93,24 @@ class FlatsController extends Controller
 
             if ($request->has('services')) {
                 $flat->services()->sync($request->services);
+            }
+
+            if(isset($request->photos[0])) {
+                $oldImages = Photo::where('flat_id', $flat->id)->get();
+                
+
+                foreach ($oldImages as $oldImage) {
+                    Storage::delete($oldImage->image);
+                    $oldImage->delete();
+                }
+
+                $photos = $request->photos;
+                foreach ($photos as $photo) {
+                    $newPhoto = new Photo();
+                    $newPhoto->flat_id = $flat->id;
+                    $newPhoto->image = Storage::put('flats_img', $photo);
+                    $newPhoto->save();
+                }
             }
 
             return redirect()->route('admin.flats.show', $flat->slug)->with('success', 'Appartamento modificato con successo.');
