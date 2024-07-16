@@ -96,15 +96,14 @@
 
 
             {{-- cancella --}}
-            <form action="{{ route('admin.flats.destroy', ['flat' => $flat->slug]) }}"
-                method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger mt-3 mb-3 ms-3" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    elimina
+            <div>
+                <button type="button" class="btn btn-danger mt-3 mb-3 ms-3" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal{{ $flat->slug }}">
+                    cancella
                 </button>
-            </form>
+            </div>
+                {{-- modale conferma cancellazione --}}
+                @include('admin.partials.modal_delete')
         </div>
 
 
