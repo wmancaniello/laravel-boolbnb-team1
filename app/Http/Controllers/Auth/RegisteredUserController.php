@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'surname' => ['string', 'max:255', 'min:5'],
+            'surname' => ['string', 'max:255', 'min:3'],
             'date_of_birth' => [
             'nullable',
             'date',
