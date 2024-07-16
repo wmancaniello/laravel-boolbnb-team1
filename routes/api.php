@@ -19,5 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/flats', [FlatsController::class, 'index']);
-Route::get('/flats/{flat}', [FlatsController::class, 'show']);
+

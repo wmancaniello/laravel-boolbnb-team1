@@ -10,9 +10,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Titolo</th>
-                        <th scope="col">Slug</th>
                         <th scope="col">Indirizzo</th>
                         <th scope="col">Azioni</th>
                     </tr>
@@ -21,9 +19,7 @@
                 @foreach ($flats as $flat)
                     <tbody>
                         <tr class="h-100">
-                            <th scope="row">{{ $flat->id }}</th>
                             <td>{{ $flat->title }}</td>
-                            <td>{{ $flat->slug }}</td>
                             <td>{{ $flat->address }}</td>
 
                             <td class="text-nowrap h-100">
