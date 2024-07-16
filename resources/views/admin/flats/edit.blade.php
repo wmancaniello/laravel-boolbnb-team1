@@ -160,7 +160,9 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        {{-- main_img --}}
+                        <div class="col-12 ms_border mb-3">
+                            <label for="main_img" class="mb-1">Inserisci foto principale:</label>
                             <input type="file" class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
                                 id="main_img" placeholder="inserici immagine" name="main_img"
                                 value="{{ old('main_img') }}">
@@ -177,6 +179,26 @@
                             @else
                                 <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3" src="">
                             @endif
+                        </div>
+
+                        {{-- gallery photo --}}
+                        <div class="col-12 ms_border mb-3">
+                            <label for="photos" class="mb-1">Inserisci foto aggiuntive:</label>
+                            <input type="file" multiple class="form-control mb-3 ms_file @error('photos') is-invalid @enderror"
+                                id="photos" placeholder="inserici immagine" name="photos[]" accept=".jpg,.webp,.png,.svg,.bmp,.heic"
+                                value="{{ old('photos') }}">
+
+                            @error('photos')
+                                <div class="alert alert-danger">
+                                    {{ $errors->get('photos')[0] }}
+                                </div>
+                            @enderror
+
+                            <div id="gallery-preview" class="mb-3">
+                                @foreach ($photos as $photo)
+                                    <img src="{{asset('storage/'.$photo->image)}}" alt="" class="gallery-image w-25 m-2">
+                                @endforeach
+                            </div>
                         </div>
 
                     </div>
