@@ -95,7 +95,7 @@ export function TomTomApi() {
     const ext = 'json';
     const url = `https://api.tomtom.com/search/${versionNumber}/search/${query}.${ext}?key=${apiKey}&typeahead=true&limit=10&countrySet=IT`;
 
-    fetch(url)
+        fetch(url)
         .then(response => response.json())
         .then(data => {
             const suggestions = data.results;
@@ -129,6 +129,7 @@ export function TomTomApi() {
         .catch(error => {
             console.error('Errore nella richiesta:', error);
         });
+    
 
 
 }
