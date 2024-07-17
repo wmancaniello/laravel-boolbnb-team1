@@ -4,8 +4,8 @@
     <div class="container mt10vh">
 
         {{-- Pulsante Indietro --}}
-        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index') }}">
-            <i class="fa-solid fa-arrow-left"></i> Indietro
+        <a class="btn ms_brown_btn mt-3 mb-3" href="{{ route('admin.flats.index') }}">
+            <i class="fa-solid fa-arrow-left"></i> Torna indietro
         </a>
 
         <h1 class="mb-4">Dettagli Appartamento</h1>
@@ -73,14 +73,14 @@
         </div>
 
         {{-- Pulsanti Azione --}}
-        <div class="d-flex">
+        <div class="d-flex mb-5">
             {{-- Modifica --}}
-            <a class="btn btn-warning me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
+            <a class="btn ms_brown_btn2 me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
                 <i class="fa-solid fa-pencil"></i> Modifica
             </a>
 
             {{-- Cancella --}}
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $flat->slug }}">
+            <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $flat->slug }}">
                 <i class="fa-solid fa-trash"></i> Cancella
             </button>
 

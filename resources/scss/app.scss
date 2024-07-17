@@ -16,6 +16,10 @@
 
 }
 
+.ms_mt {
+    margin-top: 100px !important;
+}
+
 .ms_toast {
     position: fixed;
     z-index: 999;
@@ -144,8 +148,31 @@ a {
     }
 }
 
+.ms_brown_btn2 {
+    background-color: white;
+    border: 1px solid #705D3F;
+    &:hover {
+        background-color: #705D3F;
+        color: white;
+        .fa-pencil {
+            color: white;
+        }
+    }
+}
+
 .ms_boolbnb {
     color: #565452;
 }
 
+.fa-pencil, .fa-trash {
+    color: #705D3F;
+}
+
+.btn-outline-primary, .btn-outline-danger {
+    border: 1px solid #705D3F;
+    &:hover {
+       background-color: #F8F2EB;
+       border: 1px solid #F8F2EB; 
+    }
+}
 

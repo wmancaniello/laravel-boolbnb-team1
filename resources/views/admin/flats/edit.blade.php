@@ -3,11 +3,16 @@
 @section('content')
     <div class="container">
 
+        {{-- Pulsante Indietro --}}
+        <a class="btn ms_brown_btn ms_mt" href="{{ route('admin.flats.index') }}">
+            <i class="fa-solid fa-arrow-left"></i> Torna indietro
+        </a>
+
         {{-- indietro --}}
-        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index', ['flat' => $flat->slug]) }}"
+        {{-- <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index', ['flat' => $flat->slug]) }}"
             type="button"class="btn btn-outlime-primary p-0 ms-5">
             <i class="fa-solid fa-arrow-left"></i>
-        </a>
+        </a> --}}
 
         <div class="row text-center">
             <div class="col-12 my-4">
@@ -222,7 +227,7 @@
                         value="{{ old('latitude', $flat->latitude) }}">
                     <input type="text" name="longitude" id="longitude" class="d-none"
                         value="{{ old('longitude', $flat->longitude) }}">
-                    <button type="submit" class="btn btn-success">Aggiorna</button>
+                    <button type="submit" class="btn ms_brown_btn">Aggiorna</button>
                 </div>
             </form>
         </div>
