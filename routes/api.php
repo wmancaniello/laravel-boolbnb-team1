@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\FlatsController;
+use App\Http\Controllers\Api\FlatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,7 @@ use App\Http\Controllers\Admin\FlatsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/flats', [FlatController::class, 'index']);
+
 
 
