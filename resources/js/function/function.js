@@ -156,7 +156,8 @@ export function validationFormFlats() {
     const latElem = document.getElementById('latitude');
     const lonElem = document.getElementById('longitude');
     const servicesElem = document.querySelectorAll('[name^="service"]:checked');
-    const mainImgElem = document.getElementById('main_img').files;
+    const mainImgElem = document.getElementById('main_img') ? document.getElementById('main_img').files : null;
+    const mainImgEditElem = document.getElementById('main_img-edit') ? document.getElementById('main_img-edit').files : null;
     const photosElem = [...document.getElementById('photos').files];
     console.log(photosElem);
 
@@ -340,6 +341,22 @@ export function validationFormFlats() {
                 boxmainImg.classList.remove('ms_border');
                 labelMainImg.innerHTML = "Inserisci foto principale: * <br> L'immagine di copertina è obbligatoria"
         }
+    }
+
+    if (mainImgEditElem && mainImgEditElem.length > 0) {
+        const boxmainImg = document.getElementById('box-main-img');
+
+            if(!mainImgEditElem[0].type.includes('image')) {
+                boxmainImg.classList.add('ms_is-invalid');
+                boxmainImg.classList.remove('ms_border');
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+            } else {
+                boxmainImg.classList.remove('ms_is-invalid');
+                boxmainImg.classList.add('ms_border');
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+            
+            }
+
     }
 
     if (photosElem && photosElem.length > 0) {
