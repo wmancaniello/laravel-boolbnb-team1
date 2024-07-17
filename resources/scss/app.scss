@@ -51,6 +51,7 @@
     padding: 10px;
 }
 
+
 .mt5vh {
     width: 100%;
     margin: 0 auto 0;
@@ -123,3 +124,22 @@ a {
     justify-content: center;
     background-color: rgba(95, 85, 85, 0.264);
 }
+.ms_nav {
+    background-color: #F8F2EB;
+}
+
+.ms_login_header {
+    background-color: #F8F2EB;
+}
+
+.ms_login_btn {
+    background-color: #705D3F;
+    border: 1px solid #705D3F;
+    &:hover {
+        background-color: #F8F2EB;
+        transition: all 0.7s;
+        color: black;
+        border: 1px solid #F8F2EB;
+    }
+}
+
