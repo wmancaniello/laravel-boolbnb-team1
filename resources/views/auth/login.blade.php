@@ -5,18 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header ms_login_header">{{ __('Login') }}</div>
+                <div class="card-header ms_form_header">{{ __('Accedi') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" class="form-elem">
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
-
                                 <span class="invalid-feedback" role="alert">
                                 </span>
                             </div>
@@ -38,7 +37,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Ricordami') }}
                                     </label>
                                 </div>
                             </div>
@@ -46,8 +45,8 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary ms_login_btn">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn-primary ms_brown_btn">
+                                    {{ __('Accedi') }}
                                 </button>
                             </div>
                         </div>
