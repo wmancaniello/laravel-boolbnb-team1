@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="col-12">
-                            <div class="modal-services mb-3">
+                            <div class="modal-services ms_border mb-3">
                                 <h6>
                                     Seleziona i servizi
                                 </h6>
@@ -196,7 +196,7 @@
                         </div>
 
                         {{-- gallery photo --}}
-                        <div class="col-12 ms_border mb-3">
+                        <div class="col-12 mb-3">
                             <div class="ms_border">
                                 <label for="photos" class="mb-1">Inserisci foto aggiuntive:</label>
                                 <input type="file" multiple class="form-control mb-3 ms_file @error('photos') is-invalid @enderror"

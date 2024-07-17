@@ -158,7 +158,7 @@
 
                         {{-- services --}}
                         <div class="col-12">
-                            <div class="modal-services mb-3">
+                            <div class="modal-services ms_border mb-3">
                                 <h6>
                                     Seleziona i servizi
                                 </h6>
