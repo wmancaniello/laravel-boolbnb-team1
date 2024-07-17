@@ -19,7 +19,7 @@
                 <h4>Modifica appartamento</h4>
             </div>
 
-            <form action="{{ route('admin.flats.update', $flat->slug) }}" method="post" class="mb-3"
+            <form action="{{ route('admin.flats.update', $flat->slug) }}" method="post" class="mb-3" id="form-flats"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')   
@@ -30,7 +30,7 @@
                         <div class="col-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                    id="title" name="title" placeholder="Inserisci Titolo" required
+                                    id="title" name="title" placeholder="Inserisci Titolo" 
                                     value="{{ old('title', $flat->title) }}">
                                 <label for="title">Modifica il titolo *
                                     @error('title')
@@ -44,7 +44,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control @error('max_guests') is-invalid @enderror"
-                                    id="max_guests" name="max_guests" placeholder="Numero Ospiti" required
+                                    id="max_guests" name="max_guests" placeholder="Numero Ospiti" 
                                     value="{{ old('max_guests', $flat->max_guests) }}">
                                 <label for="max_guests">Numero Ospiti *
                                     @error('max_guests')
@@ -58,7 +58,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control @error('rooms') is-invalid @enderror"
-                                    id="rooms" name="rooms" placeholder="Numero Stanze" min="1" required
+                                    id="rooms" name="rooms" placeholder="Numero Stanze" 
                                     value="{{ old('rooms', $flat->rooms) }}">
                                 <label for="rooms">Numero Stanze *
                                     @error('rooms')
@@ -72,7 +72,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control @error('beds') is-invalid @enderror"
-                                    id="beds" name="beds" placeholder="Numero Letti" min="1" required
+                                    id="beds" name="beds" placeholder="Numero Letti" 
                                     value="{{ old('beds', $flat->beds) }}">
                                 <label for="beds">Numero Letti *
                                     @error('beds')
@@ -86,7 +86,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control @error('bathrooms') is-invalid @enderror"
-                                    id="bathrooms" name="bathrooms" placeholder="Numero Bagni" min="1" required
+                                    id="bathrooms" name="bathrooms" placeholder="Numero Bagni" 
                                     value="{{ old('bathrooms', $flat->bathrooms) }}">
                                 <label for="bathrooms">Numero Bagni *
                                     @error('bathrooms')
@@ -100,8 +100,8 @@
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control @error('meters_square') is-invalid @enderror"
-                                    id="meters_square" name="meters_square" placeholder="Metri quadrati" min="5"
-                                    required value="{{ old('meters_square', $flat->meters_square) }}">
+                                    id="meters_square" name="meters_square" placeholder="Metri quadrati"
+                                     value="{{ old('meters_square', $flat->meters_square) }}">
                                 <label for="meters_square">Metri quadrati *
                                     @error('meters_square')
                                         - {{ $errors->get('meters_square')[0] }}
@@ -130,7 +130,7 @@
                         <div class="col-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    id="address" name="address" placeholder="Indirizzo" min="5" required
+                                    id="address" name="address" placeholder="Indirizzo" 
                                     value="{{ old('address', $flat->address) }}">
                                 <label for="address">Indirizzo *
                                     @error('address')
@@ -155,8 +155,8 @@
                         </div>
 
                         <div class="col-12">
-                            <div class="modal-services mb-3">
-                                <h6>
+                            <div class="modal-services ms_border mb-3">
+                                <h6 id="title-service">
                                     Seleziona i servizi
                                 </h6>
                                 <div class="container">
@@ -179,11 +179,11 @@
 
                         {{-- main_img --}}
                         <div class="col-12 mb-3">
-                            <div class="ms_border">
+                            <div class="ms_border" id="box-main-img">
                                 <label for="main_img" class="mb-1">Inserisci foto principale: *</label>
                                 <input type="file" class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
-                                    id="main_img" placeholder="inserici immagine" name="main_img"
-                                    value="{{ old('main_img') }}">
+                                    id="main_img-edit" placeholder="inserici immagine" name="main_img"
+                                    value="{{ old('main_img', $flat->main_img) }}" accept=".jpg,.webp,.png,.svg,.bmp,.heic">
     
                                 @error('main_img')
                                     <div class="alert alert-danger">
@@ -201,12 +201,12 @@
                         </div>
 
                         {{-- gallery photo --}}
-                        <div class="col-12 ms_border mb-3">
-                            <div class="ms_border">
+                        <div class="col-12 mb-3">
+                            <div class="ms_border" id="box-photos-img">
                                 <label for="photos" class="mb-1">Inserisci foto aggiuntive:</label>
                                 <input type="file" multiple class="form-control mb-3 ms_file @error('photos') is-invalid @enderror"
                                     id="photos" placeholder="inserici immagine" name="photos[]" accept=".jpg,.webp,.png,.svg,.bmp,.heic"
-                                    value="{{ old('photos') }}">
+                                    value="{{ old('photos') }}" accept=".jpg,.webp,.png,.svg,.bmp,.heic">
     
                                 @error('photos')
                                     <div class="alert alert-danger">

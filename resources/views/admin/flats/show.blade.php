@@ -3,17 +3,39 @@
 @section('content')
     <div class="container mt10vh">
 
-        {{-- Pulsante Indietro --}}
-        <a class="btn ms_brown_btn mt-3 mb-3" href="{{ route('admin.flats.index') }}">
-            <i class="fa-solid fa-arrow-left"></i> Torna indietro
-        </a>
+        <div class="d-flex mt-5 pt-3 justify-content-between">
+            {{-- Pulsante Indietro --}}
+            <a class="btn btn-primary mb-3" href="{{ route('admin.flats.index') }}">
+                <i class="fa-solid fa-arrow-left"></i> Indietro
+            </a>
+
+            {{-- Pulsanti Azione --}}
+            <div class="">
+                {{-- Modifica --}}
+                <a class="btn btn-warning me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
+                    <i class="fa-solid fa-pencil"></i> Modifica
+                </a>
+
+                {{-- Cancella --}}
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal{{ $flat->slug }}">
+                    <i class="fa-solid fa-trash"></i> Cancella
+                </button>
+
+                {{-- Modale conferma cancellazione --}}
+                @include('admin.partials.modal_delete', ['flat' => $flat])
+            </div>
+
+        </div>
+
 
         <h1 class="mb-4">Dettagli Appartamento</h1>
 
         <div class="card mb-4">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img class="img-fluid rounded-start" src="{{ asset('storage/' . $flat->main_img) }}" alt="Immagine di {{ $flat->title }}" style="height: 100%; object-fit: cover;">
+                    <img class="img-fluid rounded-start" src="{{ asset('storage/' . $flat->main_img) }}"
+                        alt="Immagine di {{ $flat->title }}" style="height: 100%; object-fit: cover;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -64,7 +86,8 @@
                 @foreach ($flat->services as $service)
                     <div class="col-6 col-md-3 mb-3">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/services/' . $service->icon) }}" alt="Icona {{ $service->name }}" class="me-2" style="width: 24px; height: 24px;">
+                            <img src="{{ asset('storage/services/' . $service->icon) }}" alt="Icona {{ $service->name }}"
+                                class="me-2" style="width: 24px; height: 24px;">
                             <span>{{ $service->name }}</span>
                         </div>
                     </div>
@@ -72,21 +95,6 @@
             </div>
         </div>
 
-        {{-- Pulsanti Azione --}}
-        <div class="d-flex mb-5">
-            {{-- Modifica --}}
-            <a class="btn ms_brown_btn2 me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
-                <i class="fa-solid fa-pencil"></i> Modifica
-            </a>
-
-            {{-- Cancella --}}
-            <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $flat->slug }}">
-                <i class="fa-solid fa-trash"></i> Cancella
-            </button>
-
-            {{-- Modale conferma cancellazione --}}
-            @include('admin.partials.modal_delete', ['flat' => $flat])
-        </div>
     </div>
 
     @include('admin.partials.toast')
