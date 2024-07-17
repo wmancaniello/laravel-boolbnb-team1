@@ -73,14 +73,14 @@
         </div>
 
         {{-- Pulsanti Azione --}}
-        <div class="d-flex">
+        <div class="d-flex mb-5">
             {{-- Modifica --}}
-            <a class="btn btn-warning me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
+            <a class="btn ms_brown_btn2 me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
                 <i class="fa-solid fa-pencil"></i> Modifica
             </a>
 
             {{-- Cancella --}}
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $flat->slug }}">
+            <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $flat->slug }}">
                 <i class="fa-solid fa-trash"></i> Cancella
             </button>
 

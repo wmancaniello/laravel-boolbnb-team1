@@ -148,6 +148,18 @@ a {
     }
 }
 
+.ms_brown_btn2 {
+    background-color: white;
+    border: 1px solid #705D3F;
+    &:hover {
+        background-color: #705D3F;
+        color: white;
+        .fa-pencil {
+            color: white;
+        }
+    }
+}
+
 .ms_boolbnb {
     color: #565452;
 }
