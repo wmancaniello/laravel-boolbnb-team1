@@ -148,4 +148,14 @@ a {
     color: #565452;
 }
 
+.fa-pencil, .fa-trash {
+    color: #705D3F;
+}
 
+.btn-outline-primary, .btn-outline-danger {
+    border: 1px solid #705D3F;
+    &:hover {
+       background-color: #F8F2EB;
+       border: 1px solid #F8F2EB; 
+    }
+}
