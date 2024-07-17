@@ -6,12 +6,14 @@
 .h90vh {
     height: 90vh;
 }
+
 .h10vh {
     height: 10vh;
 }
+
 .h70vh {
     height: 70vh;
-    
+
 }
 
 .ms_toast {
@@ -32,7 +34,7 @@
     width: 0px;
     transition: width 4.7s linear;
     margin-top: 5px;
-} 
+}
 
 .ms_hidden {
     padding: 0;
@@ -48,3 +50,96 @@
     border-radius: 5px;
     padding: 25px;
 }
+
+
+.mt5vh {
+    width: 100%;
+    margin: 0 auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    box-shadow: 1px -5px 10px 10px #76594fba;
+}
+
+.ms_cell5 {
+    width: calc(100% / 5);
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.ms_bg_primary {
+    background-color: #F8F2EB;
+}
+
+.ms_bg_secondary {
+    background-color: #B4B897;
+}
+
+.txtColor {
+    color: #705D3F;
+}
+
+.btnColor {
+    background-color: #705D3F;
+}
+
+.bg_color3 {
+    background-color: #D9C1AE;
+}
+
+.mt10vh {
+    margin-top: 10vh;
+}
+
+.img_bg {
+    background-image: url('https://i.pinimg.com/originals/87/93/b7/8793b7f3009c87baf350de82a5f72423.jpg');
+}
+
+.img_bg2 {
+    background-image: url('https://www.oreilly.com/content/wp-content/uploads/sites/2/2019/06/web-prog-intro-to-svg-animations-crop2-1cf4e11286f16d29951dcdbad663f320.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-dark_ms {
+    background-color: rgba(109, 98, 79, 0.697);
+}
+
+.letter-spacing {
+    letter-spacing: 2px;
+    font-weight: 100;
+    
+}
+
+.ms_icon_user {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    background-color: rgba(95, 85, 85, 0.264);
+}
+.ms_nav {
+    background-color: #F8F2EB;
+}
+
+.ms_login_header {
+    background-color: #F8F2EB;
+}
+
+.ms_login_btn {
+    background-color: #705D3F;
+    border: 1px solid #705D3F;
+    &:hover {
+        background-color: #F8F2EB;
+        transition: all 0.7s;
+        color: black;
+        border: 1px solid #F8F2EB;
+    }
+}
+

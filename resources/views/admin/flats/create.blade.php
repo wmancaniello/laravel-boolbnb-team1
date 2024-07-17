@@ -1,16 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        {{-- indietro --}}
-        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index') }}"
-            type="button"class="btn btn-outlime-primary p-0 ms-5">
-            <i class="fa-solid fa-arrow-left"></i>
+    <div class="container mt10vh">
+        <!-- Pulsante Indietro -->
+        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index') }}">
+            <i class="fa-solid fa-arrow-left"></i> Torna Indietro
         </a>
 
         <div class="row text-center">
             <div class="col-12 my-4">
-                <h4>Aggiungi nuovo appartamento</h4>
+                <h4>Aggiungi Nuovo Appartamento</h4>
             </div>
 
             <form action="{{ route('admin.flats.store') }}" method="post" class="mb-3" enctype="multipart/form-data">
@@ -21,6 +20,7 @@
                         {{-- title --}}
                         <div class="col-12">
                             <div class="form-floating mb-3">
+
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
                                     id="title" name="title" placeholder="Inserisci Titolo" required
                                     value="{{ old('title') }}">
@@ -35,6 +35,7 @@
                         {{-- max_guests --}}
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
+
                                 <input type="number" class="form-control @error('max_guests') is-invalid @enderror"
                                     id="max_guests" name="max_guests" placeholder="Numero Ospiti" required
                                     value="{{ old('max_guests') }}">
@@ -43,6 +44,7 @@
                                         - {{ $errors->get('max_guests')[0] }}
                                     @enderror
                                 </label>
+
                             </div>
                         </div>
 
@@ -71,12 +73,14 @@
                                         - {{ $errors->get('beds')[0] }}
                                     @enderror
                                 </label>
+
                             </div>
                         </div>
 
                         {{-- bathrooms --}}
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
+
                                 <input type="number" class="form-control @error('bathrooms') is-invalid @enderror"
                                     id="bathrooms" name="bathrooms" placeholder="Numero Bagni" min="1" required
                                     value="{{ old('bathrooms') }}">
@@ -85,6 +89,7 @@
                                         - {{ $errors->get('bathrooms')[0] }}
                                     @enderror
                                 </label>
+
                             </div>
                         </div>
 
@@ -99,28 +104,31 @@
                                         - {{ $errors->get('meters_square')[0] }}
                                     @enderror
                                 </label>
+
                             </div>
                         </div>
 
                         {{-- visible --}}
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
-                                <select class="form-select @error('visible') is-invalid @enderror" id="visible"
-                                    name="visible" aria-label="Visibile">
-                                    <option value="si" @selected(old('visible') == 'si')>Si</option>
+                                <select class="form-select @error('visible') is-invalid @enderror" id="visible" name="visible" aria-label="Visibile">
+                                    <option value="si" @selected(old('visible') == 'si')>Sì</option>
                                     <option value="no" @selected(old('visible') == 'no')>No</option>
                                 </select>
+
                                 <label for="visible">Visibile *
                                     @error('visible')
                                         - {{ $errors->get('visible')[0] }}
                                     @enderror
                                 </label>
+
                             </div>
                         </div>
 
-                        {{-- address --}}
+                        <!-- Indirizzo -->
                         <div class="col-12">
                             <div class="form-floating mb-3">
+
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
                                     id="address" name="address" placeholder="Indirizzo" min="5" required
                                     value="{{ old('address') }}">
@@ -129,9 +137,11 @@
                                         - {{ $errors->get('address')[0] }}
                                     @enderror
                                 </label>
+
                                 <div id="dropdown" class="dropdown-content"></div>
                             </div>
                         </div>
+
 
                         {{-- description --}}
                         <div class="col-12">
@@ -166,9 +176,11 @@
                                             </div>
                                         @endforeach
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
 
                         {{-- main_img --}}
                         <div class="col-12 mb-3">
@@ -207,18 +219,38 @@
     
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-
-
-
-                    <input type="text" name="latitude" id="latitude" class="d-none" value="{{old('latitude')}}">
-                    <input type="text" name="longitude" id="longitude" class="d-none" value="{{old('longitude')}}">
-                    <button type="submit" class="btn btn-success">Aggiungi</button>
+                </div>
             </form>
-
-
         </div>
     </div>
+
+    <!-- Script per anteprima immagini -->
+    <script>
+        document.getElementById('main_img').addEventListener('change', function(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById('anteprima-immagine').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        document.getElementById('photos').addEventListener('change', function(event) {
+            const galleryPreview = document.getElementById('gallery-preview');
+            galleryPreview.innerHTML = '';
+            Array.from(event.target.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const img = document.createElement('img');
+                    img.src = reader.result;
+                    img.classList.add('img-fluid', 'm-2');
+                    img.style.maxWidth = '150px';
+                    galleryPreview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
 @endsection
