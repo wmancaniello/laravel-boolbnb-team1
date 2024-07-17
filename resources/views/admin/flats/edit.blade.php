@@ -14,7 +14,7 @@
                 <h4>Modifica appartamento</h4>
             </div>
 
-            <form action="{{ route('admin.flats.update', $flat->slug) }}" method="post" class="mb-3"
+            <form action="{{ route('admin.flats.update', $flat->slug) }}" method="post" class="mb-3" id="form-flats"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')   

@@ -12,7 +12,7 @@
                 <h4>Aggiungi Nuovo Appartamento</h4>
             </div>
 
-            <form action="{{ route('admin.flats.store') }}" method="post" class="mb-3" enctype="multipart/form-data">
+            <form action="{{ route('admin.flats.store') }}" method="post" class="mb-3" enctype="multipart/form-data" id="form-flats">
                 @csrf
 
                 <div class="container">
@@ -202,7 +202,7 @@
                         </div>
 
                         {{-- gallery photo --}}
-                        <div class="col-12mb-3">
+                        <div class="col-12 mb-3">
                             <div class="ms_border">
                                 <label for="photos" class="mb-1">Inserisci foto aggiuntive:</label>
                                 <input type="file" multiple class="form-control mb-3 ms_file @error('photos') is-invalid @enderror"
@@ -222,35 +222,15 @@
 
                         </div>
                     </div>
+                    <input type="text" name="latitude" id="latitude" class="d-none"
+                    value="{{ old('latitude')}}">
+                <input type="text" name="longitude" id="longitude" class="d-none"
+                    value="{{ old('longitude')}}">
+                <button type="submit" class="btn btn-success">Aggiungi</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Script per anteprima immagini -->
-    <script>
-        document.getElementById('main_img').addEventListener('change', function(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                document.getElementById('anteprima-immagine').src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        });
 
-        document.getElementById('photos').addEventListener('change', function(event) {
-            const galleryPreview = document.getElementById('gallery-preview');
-            galleryPreview.innerHTML = '';
-            Array.from(event.target.files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-                    img.classList.add('img-fluid', 'm-2');
-                    img.style.maxWidth = '150px';
-                    galleryPreview.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-    </script>
 @endsection
