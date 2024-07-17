@@ -28,6 +28,7 @@
 
         </div>
 
+
         <h1 class="mb-4">Dettagli Appartamento</h1>
 
         <div class="card mb-4">
@@ -93,7 +94,6 @@
                 @endforeach
             </div>
         </div>
-
 
     </div>
 

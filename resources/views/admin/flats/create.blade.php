@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt10vh">
         <!-- Pulsante Indietro -->
-        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.index') }}">
+        <a class="btn ms_brown_btn mt-3 mb-3" href="{{ route('admin.flats.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Torna Indietro
         </a>
 
@@ -166,17 +166,18 @@
                                         @foreach ($services as $service)
                                             <div class="col-6 col-lg-3">
                                                 <input type="checkbox" name="services[]" class="check-service"
+
                                                     id="service-{{ $service->id }}" value="{{ $service->id }}"
                                                     @checked(in_array($service->id, old('services', [])))>
                                                 <label class="w-100" for="service-{{ $service->id }}">
                                                     <img src="{{ asset('storage/services/' . $service->icon) }}"
+
                                                         alt="Icona {{ $service->name }}">
                                                     {{ $service->name }}
                                                 </label>
                                             </div>
                                         @endforeach
                                     </div>
-
                                 </div>
                             </div>
                         </div>

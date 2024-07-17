@@ -1,4 +1,4 @@
-<div class="modal fade" id="deleteModal{{ $flat->slug }}" tabindex="-1"
+<div class="modal fade mt-5" id="deleteModal{{ $flat->slug }}" tabindex="-1"
     aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

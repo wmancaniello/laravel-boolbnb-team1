@@ -4,7 +4,7 @@
     <div class="container mt10vh">
         <h1 class=" pt-5">I TUOI APPARTAMENTI:</h1>
 
-        <a class="btn btn-primary mt-3 mb-3" href="{{ route('admin.flats.create') }}">Inserisci</a>
+        <a class="btn ms_brown_btn mt-3 mb-3" href="{{ route('admin.flats.create') }}">Inserisci</a>
 
         <style>
             .card-img-top {
@@ -26,14 +26,14 @@
                             <p class="card-text">{{ $flat->address }}</p>
                             <div class="mt-auto">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a class="btn text-white btnColor" href="{{ route('admin.flats.show', ['flat' => $flat->slug]) }}">Dettagli</a>
+                                    <a class="btn ms_brown_btn" href="{{ route('admin.flats.show', ['flat' => $flat->slug]) }}">Dettagli</a>
                                     <div class="btn-group">
                                         <a href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}" class="btn btn-outline-primary" title="Modifica">
-                                            <i class="fa-solid fa-pencil text-primary"></i>
+                                            <i class="fa-solid fa-pencil"></i>
                                         </a>
                                         <button type="button" class="btn btn-outline-danger" title="Elimina" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal{{ $flat->slug }}">
-                                            <i class="fa-solid fa-trash text-danger"></i>
+                                            <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </div>
                                 </div>
