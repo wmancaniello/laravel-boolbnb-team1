@@ -2,7 +2,7 @@ import "./bootstrap";
 import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
-import { galleryAnteprima, mostraAnteprima, mostraToast, nascondiToast, TomTomApi} from "./function/function";
+import { galleryAnteprima, mostraAnteprima, mostraToast, nascondiToast, TomTomApi, validationFormFlats} from "./function/function";
 
 const fileElem = document.querySelector('.ms_file');
 const addressElem = document.getElementById('address');
@@ -13,6 +13,8 @@ const logFormElem = document.querySelector('.form-elem');
 
 
 const multipleFileElem = document.getElementById('photos');
+
+const formFlatsElem = document.getElementById('form-flats');
 
 
 if(fileElem) {
@@ -176,4 +178,14 @@ if(logFormElem){
 if(multipleFileElem) {
     multipleFileElem.addEventListener('change', galleryAnteprima);
 }
+
+if(formFlatsElem){
+    
+    formFlatsElem.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        validationFormFlats();
+    })
+}
+
+
 
