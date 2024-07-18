@@ -73,39 +73,22 @@ if(formElem){
         checkpswElem.classList.remove('is-invalid'); 
 
         // Validazione Name
-        if(!nameElem.value.trim()){
-            nameErrorElem.innerText = 'Il campo nome non può essere vuoto';
-            nameElem.classList.add('is-invalid');
-        } else if (/\d/.test(nameElem.value.trim())) {
+        if (/\d/.test(nameElem.value.trim())) {
             nameErrorElem.innerText = 'Il campo nome non deve contenere numeri.';
             nameElem.classList.add('is-invalid');
-        } else if(nameElem.value.length < 3){
-            nameErrorElem.innerText = 'Il campo nome deve contenere almeno 3 caratteri';
-            nameElem.classList.add('is-invalid'); 
         }
         // Validazione Cognome
-        if (!surnameElem.value.trim()) {
-            surnameErrorElem.innerText = 'Il campo Cognome è obbligatorio.';
-            surnameElem.classList.add('is-invalid');
-        } else if (/\d/.test(surnameElem.value.trim())) {
+        if (/\d/.test(surnameElem.value.trim())) {
             surnameErrorElem.innerText = 'Il campo cognome non deve contenere numeri.';
             surnameElem.classList.add('is-invalid');
-        } else if(surnameElem.value.length < 3){
-            surnameErrorElem.innerText = 'Il campo cognome deve contenere almeno 3 caratteri';
-            surnameElem.classList.add('is-invalid'); 
         }
 
-        if (!dateBirthElem.value.trim()) {
-            dateErrorElem.innerText = 'Il campo data di nascita è obbligatorio.';
+        const dateOfBirth = new Date(dateBirthElem.value);
+        const mature = new Date();
+        mature.setFullYear(mature.getFullYear() - 18);
+        if (dateOfBirth >= mature) {
+            dateErrorElem.innerText = 'Devi essere maggiorenne per registrarti.';
             dateBirthElem.classList.add('is-invalid');
-        } else {
-            const dateOfBirth = new Date(dateBirthElem.value);
-            const mature = new Date();
-            mature.setFullYear(mature.getFullYear() - 18);
-            if (dateOfBirth >= mature){
-                dateErrorElem.innerText = 'Devi essere maggiorenne per registrarti.';
-                dateBirthElem.classList.add('is-invalid');
-            }
         }
 
         // Validazione campo Password
