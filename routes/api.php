@@ -16,6 +16,5 @@ use App\Http\Controllers\Api\FlatController;
 */
 
 Route::get('/flats', [FlatController::class, 'index']);
-
-
+Route::get('/flats/{slug}', [FlatController::class, 'show']);
 

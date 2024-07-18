@@ -11,7 +11,13 @@ class FlatController extends Controller
 {
     public function index()
     {
-        $flats = Flat::with('services')->get();
+        $flats = Flat::with('services')->where("visible", "si")->get();
         return response()->json($flats);
+    }
+
+    public function show($slug) {
+
+        $flat = Flat::with(['services', 'photos'])->where("slug", $slug )->first();
+        return response()->json($flat);
     }
 }

@@ -5,19 +5,19 @@
 
         <div class="d-flex mt-5 pt-3 justify-content-between">
             {{-- Pulsante Indietro --}}
-            <a class="btn btn-primary mb-3" href="{{ route('admin.flats.index') }}">
-                <i class="fa-solid fa-arrow-left"></i> Indietro
+            <a class="btn ms_brown_btn mb-3" href="{{ route('admin.flats.index') }}">
+                <i class="fa-solid fa-arrow-left"></i> Torna indietro
             </a>
 
             {{-- Pulsanti Azione --}}
             <div class="">
                 {{-- Modifica --}}
-                <a class="btn btn-warning me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
+                <a class="btn ms_brown_btn2 me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
                     <i class="fa-solid fa-pencil"></i> Modifica
                 </a>
 
                 {{-- Cancella --}}
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
                     data-bs-target="#deleteModal{{ $flat->slug }}">
                     <i class="fa-solid fa-trash"></i> Cancella
                 </button>
