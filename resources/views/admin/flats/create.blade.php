@@ -228,7 +228,7 @@
                     <input type="text" name="latitude" id="latitude" class="d-none" value="{{ old('latitude') }}">
                     <input type="text" name="longitude" id="longitude" class="d-none"
                         value="{{ old('longitude') }}">
-                    <button type="submit" class="btn btn-success">Aggiungi</button>
+                    <button type="submit" class="btn ms_brown_btn">Aggiungi</button>
                 </div>
             </form>
         </div>
