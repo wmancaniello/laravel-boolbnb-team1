@@ -141,7 +141,7 @@ export function TomTomApi() {
 
 }
 
-export function validationFormFlats() {
+export function validationFormFlats(formFlatsElem) {
 
     // elementi input form
     const titleElem = document.getElementById('title');
@@ -179,9 +179,8 @@ export function validationFormFlats() {
     const modalServiceElem = document.querySelector('.modal-services');
     
 
-    let error = false
+    let error = false;
 
-    //
     if (titleElem) {
         const resp = validateInputString(titleElem, 5)
         if (!resp) {
@@ -213,7 +212,7 @@ export function validationFormFlats() {
         if (!resp) {
             roomsElem.classList.add('is-invalid');
             labelRooms.innerHTML = "Numero minimo di stanze 1";
-            error = true
+            error = true;
         } else {
             roomsElem.classList.remove('is-invalid');
             labelRooms.innerHTML = "Numero Stanze *";
@@ -225,7 +224,7 @@ export function validationFormFlats() {
         if (!resp) {
             bedsElem.classList.add('is-invalid');
             labelBeds.innerHTML = "Numero minimo di letti 1";
-            error = true
+            error = true;
         } else {
             bedsElem.classList.remove('is-invalid');
             labelBeds.innerHTML = "Numero Letti *";
@@ -237,7 +236,7 @@ export function validationFormFlats() {
         if (!resp) {
             bathroomsElem.classList.add('is-invalid');
             labelBathrooms.innerHTML = "Numero minimo di bagni 1";
-            error = true
+            error = true;
         } else {
             bathroomsElem.classList.remove('is-invalid');
             labelBathrooms.innerHTML = "Numero Bagni *";
@@ -250,7 +249,7 @@ export function validationFormFlats() {
         if (!resp) {
             metersSquareElem.classList.add('is-invalid');
             labelMetersSquare.innerHTML = "Numero minimo di mq 5";
-            error = true
+            error = true;
         } else {
             metersSquareElem.classList.remove('is-invalid');
             labelMetersSquare.innerHTML = "Metri quadrati *";
@@ -282,7 +281,8 @@ export function validationFormFlats() {
     }
 
         if(descriptionElem) {
-            const resp = descriptionElem.innerHTML.trim() >= 20;
+            const resp = descriptionElem.value.trim().length >= 20;
+            console.log(descriptionElem.value);
 
             if(!resp) {
                 descriptionElem.classList.add('is-invalid');
@@ -328,18 +328,20 @@ export function validationFormFlats() {
             if(!mainImgElem[0].type.includes('image')) {
                 boxmainImg.classList.add('ms_is-invalid');
                 boxmainImg.classList.remove('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
+                error = true;
             } else {
                 boxmainImg.classList.remove('ms_is-invalid');
                 boxmainImg.classList.add('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
             
             }
 
         } else {
             boxmainImg.classList.add('ms_is-invalid');
                 boxmainImg.classList.remove('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> L'immagine di copertina è obbligatoria"
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> L'immagine di copertina è obbligatoria";
+                error = true;
         }
     }
 
@@ -349,7 +351,8 @@ export function validationFormFlats() {
             if(!mainImgEditElem[0].type.includes('image')) {
                 boxmainImg.classList.add('ms_is-invalid');
                 boxmainImg.classList.remove('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
+                error = true;
             } else {
                 boxmainImg.classList.remove('ms_is-invalid');
                 boxmainImg.classList.add('ms_border');
@@ -370,11 +373,12 @@ export function validationFormFlats() {
                         boxphotosImg.classList.add('ms_is-invalid');
                         boxphotosImg.classList.remove('ms_border');
                         labelPhotos.innerHTML = "Inserisci foto aggiuntive: * <br> I file selezionati non sono immagini";
+                        error = true;
                         break;
                     } else {
                         boxphotosImg.classList.remove('ms_is-invalid');
                         boxphotosImg.classList.add('ms_border');
-                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: *"
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: *";
                     
                     }
                     
@@ -390,6 +394,9 @@ export function validationFormFlats() {
 
 
     window.scroll(0, 0);
+    if(!error) {
+        formFlatsElem.submit();
+    }
 }
 
 function validateInputNumber(input, minNum) {
@@ -397,5 +404,5 @@ function validateInputNumber(input, minNum) {
 }
 
 function validateInputString(input, minChar) {
-    return input.value.trim().length >= minChar
+    return input.value.trim().length >= minChar;
 }

@@ -80,7 +80,7 @@
         </div>
 
         {{-- Servizi Appartamento --}}
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <h5>Servizi Appartamento</h5>
             <div class="row">
                 @foreach ($flat->services as $service)
@@ -92,6 +92,32 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div> --}}
+
+        <div class="col-12">
+            <div class="modal-services ms_border mb-3">
+                <h6 id="title-service">
+                    Servizi appartamento
+                </h6>
+                
+                    <div class="row wrapper-check justify-content-center g-1">
+                        @foreach ($flat->services as $service)
+                            <div class="col-6 col-lg-3">
+                                <input type="checkbox" name="services[]" class="check-service"
+
+                                    id="service-{{ $service->id }}" value="{{ $service->id }}"
+                                    checked disabled>
+                                <label class="w-100" for="service-{{ $service->id }}">
+                                    <img src="{{ asset('storage/services/' . $service->icon) }}"
+
+                                        alt="Icona {{ $service->name }}">
+                                    {{ $service->name }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                
             </div>
         </div>
 
