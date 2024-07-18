@@ -183,7 +183,7 @@ if(formFlatsElem){
     
     formFlatsElem.addEventListener('submit', (e)=>{
         e.preventDefault();
-        validationFormFlats();
+        validationFormFlats(formFlatsElem);
     })
 }
 
