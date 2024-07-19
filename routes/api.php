@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FlatController;
+// Messaggi
+use App\Http\Controllers\Admin\MessagesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +20,7 @@ use App\Http\Controllers\Api\FlatController;
 
 Route::get('/flats', [FlatController::class, 'index']);
 Route::get('/flats/{slug}', [FlatController::class, 'show']);
+
+// Messaggi
+Route::post('/messages', [MessagesController::class, 'store']);
 
