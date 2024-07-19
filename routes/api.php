@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FlatController;
 // Messaggi
 use App\Http\Controllers\Admin\MessagesController;
-
+use App\Http\Controllers\Api\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +23,6 @@ Route::get('/flats/{slug}', [FlatController::class, 'show']);
 
 // Messaggi
 Route::post('/messages', [MessagesController::class, 'store']);
+
+Route::get('/services', [ServicesController::class, 'index']);
 
