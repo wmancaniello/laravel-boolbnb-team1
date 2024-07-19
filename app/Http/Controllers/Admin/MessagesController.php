@@ -43,7 +43,24 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // Validazione
+        $validatedData = $request->validate([
+            'flatId' => 'required|exists:flats,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'text' => 'required|string',
+        ]);
+
+        // Nuovo Messaggio
+        $message = Message::create([
+            'flat_id' => $validatedData['flatId'],
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'text' => $validatedData['text'],
+        ]);
+
+        return response()->json(['message' => 'Messaggio inviato correttamente', 'data' => $message]);
     }
 
     /**
