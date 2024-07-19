@@ -115,8 +115,8 @@
                             <div class="form-floating mb-3">
                                 <select class="form-select @error('visible') is-invalid @enderror" id="visible"
                                     name="visible" aria-label="Visibile">
-                                    <option value="si" @selected(old('visible', $flat->visible) == 'si')>Si</option>
-                                    <option value="no" @selected(old('visible', $flat->visible) == 'no')>No</option>
+                                    <option value="1" @selected(old('visible', $flat->visible) == "1")>Si</option>
+                                    <option value="0" @selected(old('visible', $flat->visible) == "0")>No</option>
                                 </select>
                                 <label for="visible">Visibile *
                                     @error('visible')

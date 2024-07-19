@@ -257,7 +257,7 @@ export function validationFormFlats(formFlatsElem) {
     }
 
     if (visibleElem) {
-        if (!(visibleElem.value === 'si' || visibleElem.value === 'no')) {
+        if (!(visibleElem.value === "1" || visibleElem.value === "0")) {
             visibleElem.classList.add('is-invalid');
             labelVisible.innerHTML = "Seleziona Si o No";
             error = true;

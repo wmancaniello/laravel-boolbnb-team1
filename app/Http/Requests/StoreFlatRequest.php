@@ -32,7 +32,7 @@ class StoreFlatRequest extends FormRequest
             'latitude' => 'required|numeric|min:1',
             'longitude' => 'required|numeric|min:1',
             'main_img' => 'required|image',
-            'visible' => 'required|in:si,no',
+            'visible' => 'required|in:1,0',
             'description' => 'required|min:20',
             'services' => 'nullable|exists:services,id',
             'photos' => 'nullable|array',

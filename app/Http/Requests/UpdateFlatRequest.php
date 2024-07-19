@@ -32,7 +32,7 @@ class UpdateFlatRequest extends FormRequest
             'latitude' => 'required|numeric|min:1',
             'longitude' => 'required|numeric|min:1',
             'main_img' => 'image',
-            'visible' => 'required|in:si,no',
+            'visible' => 'required|in:1,0',
             'description' => 'required|min:20',
             'photos' => 'nullable|array',
             'photos.*' => 'image'
