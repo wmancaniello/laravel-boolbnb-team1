@@ -9,9 +9,20 @@ use App\Models\Service;
 
 class FlatController extends Controller
 {
-    public function index()
-    {
-        $flats = Flat::with('services')->where("visible", "1")->get();
+    public function index(Request $request)
+    {      
+        
+        
+            $serviceIds = $request->services;
+            $flats = Flat::query()
+            ->when(!empty($serviceIds), function ($query) use ($serviceIds) {
+                return $query->withAllServices($serviceIds);
+            })
+            ->visibleFlats()
+            ->get();
+
+
+        // $flats = Flat::with('services')->where("visible", "1")->get();
         return response()->json($flats);
     }
 

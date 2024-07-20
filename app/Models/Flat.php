@@ -62,4 +62,16 @@ class Flat extends Model
         $this->attributes['slug'] = Str::slug($title);
         $this->attributes['title'] = $title;
     }
+
+    // scope query
+    public function scopeWithAllServices($query, $serviceIds)
+    {
+        return $query->whereHas('services', function ($query) use ($serviceIds) {
+            $query->whereIn('services.id', $serviceIds);
+        }, '=', count($serviceIds));
+    }
+
+    public function scopeVisibleFlats($query) {
+        return $query->where("visible", "1");
+    }
 }

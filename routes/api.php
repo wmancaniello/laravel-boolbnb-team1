@@ -18,7 +18,7 @@ use App\Http\Controllers\Api\ServicesController;
 |
 */
 
-Route::get('/flats', [FlatController::class, 'index']);
+Route::post('/flats', [FlatController::class, 'index']);
 Route::get('/flats/{slug}', [FlatController::class, 'show']);
 
 // Messaggi
