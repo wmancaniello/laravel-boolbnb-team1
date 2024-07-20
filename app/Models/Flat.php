@@ -74,4 +74,8 @@ class Flat extends Model
     public function scopeVisibleFlats($query) {
         return $query->where("visible", "1");
     }
+
+    public function scopeMinGuest($query, $minGuest) {
+        return $query->where('max_guests', '>=', $minGuest);
+    }
 }
