@@ -181,7 +181,7 @@ a {
     &:hover {
         background-color: #705D3F;
         color: white;
-        .fa-pencil, .fa-trash {
+        .fa-pencil, .fa-trash, .fa-plane, .fa-images {
             color: white;
         }
     }
@@ -191,7 +191,7 @@ a {
     color: #565452;
 }
 
-.fa-pencil, .fa-trash {
+.fa-pencil, .fa-trash, .fa-plane, .fa-images {
     color: #705D3F;
 }
 
@@ -217,4 +217,15 @@ a {
 
 .selected {
     background-color: #d9cfc1;
+}
+
+.ms_btn-sponsor{
+    background-color: #3EBD0A;
+    color: white;
+    transition: all 0.7s;
+        &:hover{
+            background-color: #5EEB27;
+            transition: all 0.7s;
+            color: white;
+        }
 }
