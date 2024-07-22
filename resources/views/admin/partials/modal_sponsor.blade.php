@@ -16,7 +16,7 @@
                         @endphp
                         <div>
                             <input type="radio" name="sponsor" value="{{ $sponsor->id }}" id="{{ $sponsor->id }}">
-                            <label for="{{ $sponsor->id }}">{{ $sponsor->price }} {{ $amountH }}</label>
+                            <label for="{{ $sponsor->id }}"> <b>{{ $sponsor->price }}€</b> per {{ $amountH }}h di Sponsorizzazione!</label>
                         </div>
                     @endforeach
                     <input type="hidden" name="amount" id="amount" value="">
