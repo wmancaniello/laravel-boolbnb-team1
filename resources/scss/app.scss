@@ -206,3 +206,14 @@ a {
 .selected {
     background-color: #d9cfc1;
 }
+
+.ms_btn-sponsor{
+    background-color: #3EBD0A;
+    color: white;
+    transition: all 0.7s;
+        &:hover{
+            background-color: #5EEB27;
+            transition: all 0.7s;
+            color: white;
+        }
+}

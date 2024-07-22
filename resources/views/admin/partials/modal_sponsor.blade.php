@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="sponsorModalLabel">Conferma Sponsor</h5>
+                <h5 class="modal-title" id="sponsorModalLabel">Scegli il tuo piano di sponsorizzazione</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -16,15 +16,15 @@
                         @endphp
                         <div>
                             <input type="radio" name="sponsor" value="{{ $sponsor->id }}" id="{{ $sponsor->id }}">
-                            <label for="{{ $sponsor->id }}"> <b>{{ $sponsor->price }}€</b> per {{ $amountH }}h di Sponsorizzazione!</label>
+                            <label for="{{ $sponsor->id }}"> <b>{{ $sponsor->price }}€</b> per {{ $amountH }}h di Sponsorizzazione</label>
                         </div>
                     @endforeach
                     <input type="hidden" name="amount" id="amount" value="">
                     <div id="dropin-container"></div>
                     <input type="hidden" name="payment_method_nonce" id="payment_method_nonce">
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-light">Sponsorizza</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulla</button>
+                        <button type="submit" class="btn ms_btn-sponsor">Sponsorizza</button>
                     </div>
                 </form>
             </div>
