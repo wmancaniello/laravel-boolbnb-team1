@@ -7,8 +7,8 @@
             <ul class="list-group">
                 @foreach ($datas as $dataMessage)
                     {{-- Container info/alert --}}
-                    <li class="list-group-item d-flex justify-content-between align-items-start message-item"
-                        data-id="{{ $dataMessage->id }}" style="cursor: pointer">
+                    <li class="list-group-item d-flex justify-content-between align-items-start message-item {{ $dataMessage->is_read ? '' : 'unread' }}"
+                        onclick="document.getElementById('mark-as-read-form-{{ $dataMessage->id }}').submit()">
                         <div class="ms-2 me-auto">
                             {{-- Container info --}}
                             <div class="d-flex align-items-center gap-3">
@@ -34,6 +34,10 @@
                             {{-- /Container Info --}}
                             {{-- {{ $dataMessage->email }} --}}
                         </div>
+                        <form id="mark-as-read-form-{{ $dataMessage->id }}" action="{{ route('admin.messages.read', $dataMessage->id) }}" method="POST" style="display:none;">
+                            @csrf
+                            @method('PATCH')
+                        </form>
                     </li>
                     {{-- /Container info/alert --}}
                 @endforeach
@@ -57,6 +61,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        // Notifica
+        function readMessage(element) {
+            element.classList.remove('unread');
+
+        }
+
         $(document).ready(function() {
             $('.message-item').on('click', function() {
 

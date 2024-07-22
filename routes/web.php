@@ -35,6 +35,8 @@ Route::middleware('auth')
         // Pagamenti
         Route::get('client_token', [BraintreeController::class, 'generateToken'])->name('client_token');
         Route::post('checkout', [BraintreeController::class, 'checkout'])->name('checkout');
+        // Notifica
+        Route::patch('/admin/messages/{id}/read', [MessagesController::class, 'markAsRead'])->name('messages.read');
     });
     
     require __DIR__ . '/auth.php';

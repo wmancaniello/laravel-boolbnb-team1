@@ -18,7 +18,7 @@ class MessagesController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
-        $datas = Message::whereHas('flat', function($query) use($userId) {
+        $datas = Message::whereHas('flat', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         })->get();
         $selectedMessage = null;
@@ -99,5 +99,17 @@ class MessagesController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    // Notifica
+    public function markAsRead($id)
+    {
+        $message = Message::find($id);
+        if ($message) {
+            $message->is_read = 1;
+            $message->save();
+            return redirect()->route('admin.messages.index');
+        }
+        return response()->json(['success' => false], 404);
     }
 }
