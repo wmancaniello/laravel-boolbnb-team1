@@ -12,15 +12,17 @@ class FlatController extends Controller
     public function index(Request $request)
     {      
             $serviceIds = $request->services;
-            $minGuest = $request->minGuest;
+            $minBeds = $request->beds;
+            $minRooms = $request->rooms;
             
             $flats = Flat::query()
             ->visibleFlats()
-            ->minGuest($minGuest)
+            ->minBeds($minBeds)
+            ->minRooms($minRooms)
             ->when(!empty($serviceIds), function ($query) use ($serviceIds) {
                 return $query->withAllServices($serviceIds);
             })
-            ->orderBy('max_guests', 'asc')
+            ->orderBy('beds', 'asc')
             ->get();
 
         return response()->json($flats);
