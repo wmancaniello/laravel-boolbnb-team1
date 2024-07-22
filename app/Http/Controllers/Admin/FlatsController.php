@@ -56,8 +56,9 @@ class FlatsController extends Controller
     public function show(Flat $flat)
     {
         $sponsors = Sponsor::all();
+        $photos = Photo::where('id', $flat->id)->get();
         if ($flat->user_id === Auth::id()) {
-            return view('admin.flats.show', compact('flat', 'sponsors'));
+            return view('admin.flats.show', compact('flat', 'sponsors', 'photos'));
         } else {
             abort(403);
         }
