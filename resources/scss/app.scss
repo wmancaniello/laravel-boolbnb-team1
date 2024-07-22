@@ -2,6 +2,13 @@
 @import "~@fortawesome/fontawesome-free/css/all";
 @import "partials/checkbox";
 @import "partials/dropdown";
+@import "partials/header";
+
+:root {
+    --bg-color: #F8F2EB;
+    --primary-color: #705D3F;
+
+}
 
 .h90vh {
     height: 90vh;
@@ -159,7 +166,7 @@ a {
         background-color: #F8F2EB;
         transition: all 0.7s;
         color: black;
-        border: 1px solid #F8F2EB;
+        border: 1px solid #705D3F;
     }
 }
 
@@ -187,7 +194,7 @@ a {
     border: 1px solid #705D3F;
     &:hover {
        background-color: #F8F2EB;
-       border: 1px solid #F8F2EB; 
+       border: 1px solid #705D3F; 
     }
 }
 
