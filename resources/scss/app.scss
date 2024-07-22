@@ -114,6 +114,7 @@ a {
 }
 
 .img_bg {
+    height: 100%;
     background-image: url('https://i.pinimg.com/originals/87/93/b7/8793b7f3009c87baf350de82a5f72423.jpg');
 }
 
@@ -134,8 +135,8 @@ a {
 }
 
 .ms_icon_user {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     border-radius: 50%;
@@ -190,3 +191,18 @@ a {
     }
 }
 
+// Chat
+.message-bubble {
+    display: flex;
+    position: relative;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    color: #333;
+    max-width: 80%;
+}
+
+.selected {
+    background-color: #d9cfc1;
+}
