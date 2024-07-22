@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateFlatRequest;
 use App\Models\Flat;
 use App\Models\Photo;
 use App\Models\Service;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -54,8 +55,9 @@ class FlatsController extends Controller
     // SHOW
     public function show(Flat $flat)
     {
+        $sponsors = Sponsor::all();
         if ($flat->user_id === Auth::id()) {
-            return view('admin.flats.show', compact('flat'));
+            return view('admin.flats.show', compact('flat', 'sponsors'));
         } else {
             abort(403);
         }
