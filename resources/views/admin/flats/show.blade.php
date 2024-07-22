@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt10vh">
+    <div class="container">
 
         <div class="d-flex mt-5 pt-3 justify-content-between">
             {{-- Pulsante Indietro --}}
