@@ -27,6 +27,11 @@
     margin-top: 100px !important;
 }
 
+.ms_card {
+    box-shadow: 2px 2px 0px var(--primary-color);
+    border: 0;
+}
+
 .ms_toast {
     position: fixed;
     z-index: 999;

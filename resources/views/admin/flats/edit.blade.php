@@ -4,7 +4,7 @@
     <div class="container">
 
         {{-- Pulsante Indietro --}}
-        <a class="btn ms_brown_btn ms_mt" href="{{ route('admin.flats.index') }}">
+        <a class="btn ms_brown_btn mt-5" href="{{ route('admin.flats.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Torna indietro
         </a>
 

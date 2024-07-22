@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt10vh">
+    <div class="container">
         <h1 class=" pt-5">I TUOI APPARTAMENTI:</h1>
 
         <a class="btn ms_brown_btn mt-3 mb-3" href="{{ route('admin.flats.create') }}">Inserisci</a>
@@ -17,7 +17,7 @@
         <div class="row justify-content-start">
             @foreach ($flats as $flat)
                 <div class="col-md-5 mb-4 col-lg-4">
-                    <div class="card h-100 shadow-sm">
+                    <div class="card h-100 ms_card">
                         <!-- Immagine dell'appartamento -->
                         <img src="{{ asset('storage/' . $flat->main_img) }}" class="card-img-top" alt="Immagine di {{ $flat->title }}">
 
