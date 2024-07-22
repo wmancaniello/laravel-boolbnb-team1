@@ -20,6 +20,7 @@
                     <div class="row">
                         {{-- title --}}
                         <div class="col-12">
+                            <small class="text-muted">* Campi obbligatori</small>
                             <div class="form-floating mb-3">
 
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"

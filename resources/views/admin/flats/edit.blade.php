@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container mt10vh">
 
         {{-- Pulsante Indietro --}}
         <a class="btn ms_brown_btn ms_mt" href="{{ route('admin.flats.index') }}">
@@ -28,6 +28,7 @@
                     <div class="row">
                         {{-- title --}}
                         <div class="col-12">
+                            <small class="text-muted">* Campi obbligatori</small>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control @error('title') is-invalid @enderror"
                                     id="title" name="title" placeholder="Inserisci Titolo" 

@@ -11,6 +11,7 @@
                     <form method="POST" action="{{ route('register') }}" id="register-form">
                         @csrf
 
+                        <small class="text-muted">* Campi obbligatori</small>
                         <div class="mb-4 row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
