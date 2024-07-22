@@ -21,82 +21,20 @@
 <body class="ms_bg_primary">
     <div id="app">
 
-        <header class=" position-fixed top-0 btnColor h10vh mt5vh">
-            <div class="ms_cell5">
-                <div class="d-flex justify-content-center align-items-center h-100 letter-spacing">
-                    <a class="text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'text-primary' : '' }}"
-                        href="{{ route('admin.dashboard') }}">
-                        Dashboard
-                    </a>
-                </div>
-                @php
-                    use App\Models\Flat;
-                @endphp
-            </div>
-            <div class="ms_cell5">
-                @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
-                    <div class="d-flex justify-content-center align-items-center h-100 letter-spacing">
-                        <a class="text-white {{ Route::currentRouteName() == 'admin.flats.index' ? 'text-primary' : '' }}"
-                            href="{{ route('admin.flats.index') }}">
-                            I tuoi appartamenti
-                        </a>
-                    </div>
-                @endif
-            </div>
-            <div class="ms_cell5">
-                <div class="d-flex justify-content-center align-items-center h-100 letter-spacing">
-                    <a class="text-white {{ Route::currentRouteName() == 'admin.flats.create' ? 'text-primary' : '' }}"
-                        href="{{ route('admin.flats.create') }}">
-                        Nuovo Appartamento
-                    </a>
-                </div>
-            </div>
-            <div class="ms_cell5">
-                <div class="letter-spacing d-flex justify-content-center align-items-center h-100">
-                    <a class="text-white {{ Route::currentRouteName() == 'admin.messages.index' ? 'text-secondary' : '' }}"
-                        href="{{ route('admin.messages.index') }}">
-                        Notifiche
-                    </a>
-                </div>
-            </div>
-            <div class="ms_cell5">
-                <div class="letter-spacing d-flex text-white justify-content-center align-items-center h-100">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-            </div>
+        <header>
 
-            {{-- <div class="navbar-nav">
-                <div class="nav-item text-nowrap me-5 ">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-            </div> --}}
-        </header>
-        <div class="container-fluid h90vh">
-            <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
-                {{-- <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block bg-dark navbar-dark sidebar collapse">
-                    <div class="position-sticky py-3">
-                        <ul class="nav flex-column">
-
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-primary' : '' }}"
+            <nav class="navbar navbar-expand-lg ms_headernav sticky-top">
+                <div class="container-fluid">
+                    <router-link class="navbar-brand font" to="/">BoolBnB</router-link>
+                    <button class="navbar-toggler font border" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav gap-2 ms-auto mb-lg-0">
+                            <li class="">
+                                <a class="nav-link ms_hover font {{ Route::currentRouteName() == 'admin.dashboard' ? 'ms_current_link' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     Dashboard
                                 </a>
@@ -105,57 +43,52 @@
                                 use App\Models\Flat;
                             @endphp
 
-
-
-
-
-
-
-
                             @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
                                 <li class="nav-item">
-                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.index' ? 'bg-primary' : '' }}"
+                                    <a class="nav-link ms_hover font {{ Route::currentRouteName() == 'admin.flats.index' ? 'ms_current_link' : '' }}"
                                         href="{{ route('admin.flats.index') }}">
-                                        <i class="fa-solid fa-building"></i> I tuoi appartamenti
+                                        I tuoi appartamenti
                                     </a>
                                 </li>
                             @endif
 
-
-
-
-
-
-
-
-
-
-
                             <li class="nav-item">
-                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.flats.create' ? 'bg-primary' : '' }}"
-                                    href="{{ route('admin.flats.create') }}">
-                                    <i class="fa-solid fa-plus"></i> Aggiungi Appartamento
-                                </a>
+                                <a class="nav-link ms_hover font {{ Route::currentRouteName() == 'admin.flats.create' ? 'ms_current_link' : '' }}"
+                                href="{{ route('admin.flats.create') }}">
+                                Nuovo Appartamento
+                            </a>
                             </li>
 
-
-
-
-
-
-
+                            <li class="nav-item">
+                                <a class="nav-link ms_hover font {{ Route::currentRouteName() == 'admin.messages.index' ? 'ms_current_link' : '' }}"
+                                href="{{ route('admin.messages.index') }}">
+                                Notifiche
+                            </a>
+                            </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.messages.index' ? 'bg-primary' : '' }}"
-                                    href="{{ route('admin.messages.index') }}">
-                                    <i class="fa-solid fa-bell"></i> Notifiche
-                                </a>
+                                <a class="nav-link ms_hover font" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                             </li>
 
 
                         </ul>
+
                     </div>
-                </nav> --}}
+                </div>
+            </nav>
+
+
+        </header>
+        <div class="container-fluid h90vh">
+            <div class="row h-100">
+
                 <main class="p-0">
                     @yield('content')
                 </main>
