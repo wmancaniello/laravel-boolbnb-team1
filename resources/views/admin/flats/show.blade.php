@@ -11,6 +11,12 @@
 
             {{-- Pulsanti Azione --}}
             <div class="">
+                {{--Sponsor--}}
+                <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
+                    data-bs-target="#sponsorModal{{ $flat->slug }}">
+                    <i class="fa-solid fa-plane"></i> Sponsor
+                </button>
+
                 {{-- Modifica --}}
                 <a class="btn ms_brown_btn2 me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
                     <i class="fa-solid fa-pencil"></i> Modifica
@@ -24,6 +30,7 @@
 
                 {{-- Modale conferma cancellazione --}}
                 @include('admin.partials.modal_delete', ['flat' => $flat])
+                @include('admin.partials.modal_sponsor', ['flat' => $flat])
             </div>
 
         </div>
