@@ -34,13 +34,6 @@
                             {{-- /Container Info --}}
                             {{-- {{ $dataMessage->email }} --}}
                         </div>
-
-                        {{-- Notifica --}}
-                        @if (!$dataMessage->is_read)
-                            <span class="badge rounded-pill bg-primary notification-dot"></span>
-                        @endif
-                        {{-- /Notifica --}}
-                        
                     </li>
                     {{-- /Container info/alert --}}
                 @endforeach
@@ -86,7 +79,7 @@
                         const hours = String(date.getHours()).padStart(2, '0');
                         const minutes = String(date.getMinutes()).padStart(2, '0');
                         const formattedDate =
-                        `${day}/${month}/${year} alle ${hours}:${minutes}`;
+                            `${day}/${month}/${year} alle ${hours}:${minutes}`;
                         // Formattazione Data
 
                         $('#message-details').html(`
@@ -125,16 +118,6 @@
                                 </div>
                             </div>     
                         `);
-
-                        // Mark message as read
-                        $.ajax({
-                            url: '/admin/messages/' + messageId + '/mark-read',
-                            method: 'PATCH',
-                            success: function() {
-                                // Remove the notification dot after marking as read
-                                $(`.message-item[data-id="${messageId}"]`).removeClass('notification-dot');
-                            }
-                        });
                     },
                     error: function(xhr) {
                         $('#message-details').html('<p>Error fetching message details.</p>');
