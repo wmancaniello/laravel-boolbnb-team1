@@ -7,8 +7,8 @@
             <ul class="list-group">
                 @foreach ($datas as $dataMessage)
                     {{-- Container info/alert --}}
-                    <li class="list-group-item d-flex justify-content-between align-items-start message-item {{ $dataMessage->is_read ? '' : 'unread' }}"
-                        onclick="document.getElementById('mark-as-read-form-{{ $dataMessage->id }}').submit()">
+                    <li class="list-group-item d-flex justify-content-between align-items-start message-item {{ $dataMessage->is_read ? '' : 'unread' }}" 
+                        data-id="{{ $dataMessage->id }}">
                         <div class="ms-2 me-auto">
                             {{-- Container info --}}
                             <div class="d-flex align-items-center gap-3">
@@ -61,26 +61,35 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Notifica
-        function readMessage(element) {
-            element.classList.remove('unread');
-
-        }
-
         $(document).ready(function() {
             $('.message-item').on('click', function() {
-
                 // Select Message
                 $('.message-item').removeClass('selected');
                 $(this).addClass('selected');
 
                 var messageId = $(this).data('id');
 
+                // Mark message as read via AJAX
+                $.ajax({
+                    url: '/admin/messages/' + messageId + '/read',
+                    method: 'PATCH',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function() {
+                        // Remove unread class
+                        $('.message-item[data-id="' + messageId + '"]').removeClass('unread');
+                    },
+                    error: function(xhr) {
+                        console.log('Error marking message as read.');
+                    }
+                });
+
+                // Fetch message details via AJAX
                 $.ajax({
                     url: '/admin/messages/' + messageId,
                     method: 'GET',
                     success: function(data) {
-
                         // Formattazione Data
                         const date = new Date(data.created_at);
                         const day = String(date.getDate()).padStart(2, '0');
