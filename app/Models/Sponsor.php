@@ -11,7 +11,7 @@ class Sponsor extends Model
 
     public function flats()
     {
-        return $this->belongsToMany(Flat::class);
+        return $this->belongsToMany(Flat::class)->withPivot('start_date', 'end_date');
     }
 
     protected $fillable = [
