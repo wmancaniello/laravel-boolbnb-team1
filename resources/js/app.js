@@ -1,8 +1,47 @@
 import "./bootstrap";
 import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
+import $ from 'jquery';
 import * as bootstrap from "bootstrap";
 import { galleryAnteprima, mostraAnteprima, mostraToast, nascondiToast, TomTomApi, validationFormFlats} from "./function/function";
+
+// resources/js/app.js
+
+
+$(document).ready(function() {
+    // Set the CSRF token header for all jQuery AJAX requests
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Il tuo codice esistente per le richieste AJAX
+    $('.message-item').on('click', function(event) {
+        event.preventDefault();
+        // Select Message
+        $('.message-item').removeClass('selected');
+        $(this).addClass('selected');
+
+        var messageId = $(this).data('id');
+
+        $.ajax({
+            url: '/admin/messages/' + messageId + '/markAsRead',
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                console.log('Message marked as read');
+            },
+            error: function(xhr) {
+                console.error('Error marking message as read');
+            }
+        });
+        
+    });
+});
+
 
 const fileElem = document.querySelector('.ms_file');
 const addressElem = document.getElementById('address');

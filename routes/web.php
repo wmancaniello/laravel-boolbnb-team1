@@ -36,7 +36,11 @@ Route::middleware('auth')
         Route::get('client_token', [BraintreeController::class, 'generateToken'])->name('client_token');
         Route::post('checkout', [BraintreeController::class, 'checkout'])->name('checkout');
         // Notifica
-        Route::patch('/admin/messages/{id}/read', [MessagesController::class, 'markAsRead'])->name('messages.read');
+        // Route::post('/admin/messages/{id}/markAsRead', [MessagesController::class, 'markAsRead'])->name('messages.read');
+        
+        // Route::post('/admin/messages/{id}/markAsRead', [MessagesController::class, 'markAsRead'])->name('messages.markAsRead');
+        Route::post('messages/{id}/markAsRead', [MessagesController::class, 'markAsRead'])->name('messages.markAsRead');
+        // web.php
     });
     
     require __DIR__ . '/auth.php';

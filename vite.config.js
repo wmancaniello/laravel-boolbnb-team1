@@ -15,6 +15,7 @@ export default defineConfig({
             "~bootstrap": path.resolve(__dirname, "node_modules/bootstrap"),
             "~@fortawesome": path.resolve(__dirname, "node_modules/@fortawesome"),
             "~resources": "/resources/",
+            'jquery': path.resolve(__dirname, 'node_modules/jquery'),
         },
     },
 });

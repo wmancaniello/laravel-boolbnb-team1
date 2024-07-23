@@ -108,7 +108,7 @@ class MessagesController extends Controller
         if ($message) {
             $message->is_read = 1;
             $message->save();
-            return redirect()->route('admin.messages.index');
+            return response()->json(['success' => true]);
         }
         return response()->json(['success' => false], 404);
     }
