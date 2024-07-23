@@ -2,13 +2,24 @@
 
 @section('content')
     <section class="h90vh d-flex mt10vh">
-        <div class="col-4 h90vh overflow-scroll">
+        <div class="col-4 h90vh overflow-scroll ms_overflow">
             {{-- Lista messaggi ricevuti --}}
             <ul class="list-group">
-                @foreach ($datas as $dataMessage)
+
+                {{-- Ordinare messaggi dal più recente --}}
+                @php
+                    $dataArray = $datas->toArray();
+                    $datareverse = array_reverse($dataArray);
+                    $dataCollectionReverse = collect($datareverse)->map(function ($item) {
+                        return (new \App\Models\Message())->newFromBuilder($item);
+                    });
+                @endphp
+                {{-- /Ordinare messaggi dal più recente --}}
+
+                @foreach ($dataCollectionReverse as $dataMessage)
                     {{-- Container info/alert --}}
-                    <li class="list-group-item d-flex justify-content-between align-items-start message-item {{ $dataMessage->is_read ? '' : 'unread' }}"
-                        data-id="{{ $dataMessage->id }}">
+                    <li class="list-group-item d-flex justify-content-between align-items-center message-item {{ $dataMessage->is_read ? 'read' : 'unread' }} alertColor"
+                        data-id="{{ $dataMessage->id }}" style="cursor: pointer">
                         <div class="ms-2 me-auto">
                             {{-- Container info --}}
                             <div class="d-flex align-items-center gap-3">
@@ -23,10 +34,17 @@
                                 {{-- /Icon User --}}
                                 {{-- Info --}}
                                 <div>
-                                    <h5>{{ $dataMessage->name }}</h5>
+                                    <p class="name-message">{{ $dataMessage->name }}</p>
+                                    @php
+                                        $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
+                                            'Europe/Rome',
+                                        );
+                                        $dateReceived = $dateTime->format('d/m');
+                                        $hourReceived = $dateTime->format('H:i');
+                                    @endphp
                                     <small class="text-muted"> Ricevuto il:
-                                        {{ date('d/m', strtotime($dataMessage->created_at)) }} alle
-                                        {{ date('H:i', strtotime($dataMessage->created_at)) }}
+                                        {{ $dateReceived }} alle
+                                        {{ $hourReceived }}
                                     </small>
                                 </div>
                                 {{-- /Info --}}
@@ -34,6 +52,12 @@
                             {{-- /Container Info --}}
                             {{-- {{ $dataMessage->email }} --}}
                         </div>
+
+                        {{-- Notification Dot --}}
+                        <span id="notification_dot" class="{{ $dataMessage->is_read ? '' : 'notification-dot' }} dot-color">
+                        </span>
+                        {{-- Notification Dot --}}
+
                         <form id="mark-as-read-form-{{ $dataMessage->id }}" style="display: none"
                             action="{{ route('admin.messages.markAsRead', $dataMessage->id) }}" method="POST">
                             @csrf
@@ -46,11 +70,11 @@
             </ul>
             {{-- /Lista messaggi ricevuti --}}
         </div>
-        <div class="col-8 h90vh bg-light overflow-scroll" id="message-details">
+        <div class="col-8 h90vh bg-light overflow-scroll ms_overflow" id="message-details">
             <div class="h90vh img_bg2 d-flex justify-content-center align-items-center">
                 <div class="bg-dark_ms w-100 h-100 d-flex align-items-center justify-content-center">
                     <div class="text-center text-white w-75">
-                        <h2>logo</h2>
+                        <img src="{{ asset('storage/logo.png') }}" alt="">
                         <p class="letter-spacing fs-4">
                             Bentornato!<br>
                             Qui potrai vedere le richieste dei tuoi clienti ed eventuali domande riguardanti gli alloggi.
@@ -76,7 +100,7 @@
                         _token: $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        console.log('Message marked as read');
+                        // console.log('Message marked as read');
                     },
                     error: function(xhr) {
                         console.log('Error marking message as read');
@@ -98,7 +122,7 @@
                             `${day}/${month}/${year} alle ${hours}:${minutes}`;
 
                         $('#message-details').html(`
-                    <header class="px-5 h10vh ms_bg_primary">
+                    <header class="px-5 h10vh ms_bg_primary w-100 ms_header-message">
                         <div class="d-flex justify-content-between align-items-center h-100">
                             <div class="d-flex align-items-center gap-3">
                                 <span class="ms_icon_user">
@@ -119,7 +143,22 @@
                         </div>
                     </header>
 
-                    <div class="h70vh img_bg text-white p-4 d-flex flex-column">
+                    {{-- Menù Tendina --}}
+                    <div class="ms_message-menu">
+                        <ul>
+                            <li>Segna come non letto</li>
+                            <li>
+                                <form action="{{ route('admin.messages.destroy', $dataMessage->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Elimina messaggio</button>
+                                </form>
+                            </li>
+                        </ul>    
+                    </div>
+                    {{-- /Menù Tendina --}}
+
+                    <div class="h80vh img_bg text-white p-4 d-flex flex-column">
                         <div class="mb-3">
                             <h4 class="mb-3">Dettagli:</h4>
                             <p class="mb-2"><strong>Email:</strong> ${data.email}</p>

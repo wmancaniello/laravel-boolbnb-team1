@@ -32,14 +32,25 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
-                console.log('Message marked as read');
             },
             error: function(xhr) {
-                console.error('Error marking message as read');
             }
         });
         
     });
+});
+
+const liElem = document.querySelectorAll('.alertColor');
+const dotNotificationElem = document.querySelectorAll('.dot-color');
+liElem.forEach(function(liElem, index) {
+    liElem.addEventListener('click', function() {
+        liElem.classList.add('read')
+        if(dotNotificationElem[index]) {
+            dotNotificationElem[index].classList.remove('notification-dot');
+        }
+    });
+
+
 });
 
 

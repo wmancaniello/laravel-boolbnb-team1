@@ -98,7 +98,15 @@ class MessagesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $message = Message::find($id);
+
+        if (!$message) {
+            return redirect()->route('admin.messages.index')->with('error', 'Messaggio non trovato.');
+        }
+
+        $message->delete();
+
+        return redirect()->route('admin.messages.index')->with('success', 'Messaggio eliminato con successo.');
     }
 
     // Notifica
