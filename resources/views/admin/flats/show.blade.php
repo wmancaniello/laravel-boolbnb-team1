@@ -12,8 +12,7 @@
             {{-- Pulsanti Azione --}}
             <div class="">
                 {{-- Sponsor --}}
-                <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
-                    data-bs-target="#sponsorModal{{ $flat->slug }}">
+                <button type="button" class="btn ms_brown_btn2 me-2" onclick="showSidebar()" id="sponsor-btn">
                     <i class="fa-solid fa-plane"></i> Sponsor
                 </button>
 
@@ -30,15 +29,14 @@
 
                 {{-- Modale conferma cancellazione --}}
                 @include('admin.partials.modal_delete', ['flat' => $flat])
-                {{-- Modale conferma sponsorizzazione --}}
-                @include('admin.partials.modal_sponsor', ['flat' => $flat])
+                {{-- Sidebar conferma sponsorizzazione --}}
+                @include('admin.partials.sidebar_sponsor', ['flat' => $flat])
             </div>
 
         </div>
 
 
         <h1 class="mb-4">Dettagli Appartamento</h1>
-
         <div class="card mb-4">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -55,7 +53,7 @@
                                 data-bs-target="#galleryModal{{ $flat->slug }}">
                                 <i class="fa-solid fa-images"></i> Galleria
                             </button>
-                            {{-- Modale galleria--}}
+                            {{-- Modale galleria --}}
                             @include('admin.partials.modal_gallery', ['flat' => $flat])
                         </div>
                     </div>
@@ -95,22 +93,6 @@
             </table>
         </div>
 
-        {{-- Servizi Appartamento --}}
-        {{-- <div class="mb-4">
-            <h5>Servizi Appartamento</h5>
-            <div class="row">
-                @foreach ($flat->services as $service)
-                    <div class="col-6 col-md-3 mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/services/' . $service->icon) }}" alt="Icona {{ $service->name }}"
-                                class="me-2" style="width: 24px; height: 24px;">
-                            <span>{{ $service->name }}</span>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div> --}}
-
         <div class="col-12">
             <div class="modal-services ms_border mb-3">
                 <h6 id="title-service">
@@ -137,4 +119,5 @@
     </div>
 
     @include('admin.partials.toast')
+    
 @endsection
