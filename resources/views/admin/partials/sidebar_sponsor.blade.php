@@ -1,6 +1,7 @@
 <div class="ms_sidebar ms_hidden-sidebar d-flex align-items-center justify-content-center" id="pay-sidebar">
     <div class="container-fluid">
-        <form id="payment-form" action="{{ route('admin.checkout') }}" method="POST">
+        <i class="fa-solid fa-xmark ms_close" onclick="showSidebar()"></i>
+        <form id="payment-form" action="{{ route('admin.checkout') }}" class="d-flex justify-content-center align-content-center flex-column" method="POST">
             @csrf
             <div class="container-fluid">
                 <div class="container-fluid">
@@ -42,7 +43,8 @@
             </div>
             <input type="hidden" name="amount" id="amount" value="">
             <input type="hidden" name="flat_id" value="{{ $flat->id }}">
-            <div id="dropin-container"></div>
+            
+            <div id="dropin-container" class="mx-auto"></div>
             <input type="hidden" name="payment_method_nonce" id="payment_method_nonce">
             <div class="d-flex align-items-center justify-content-center gap-3 d-none" id="pay-btns">
                 <button type="button" class="btn btn-danger" onclick="showSidebar()">Annulla</button>
@@ -71,7 +73,15 @@
         /* box-shadow: 4px 4px 0px white; */
         color: white;
         transform: translateY(-40px);
+
+        
+    }
+
+    input[type="radio"]:checked+div label #head-tab-pr {
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
         transition: all 0.7s;
+
     }
 
     /* Old Card */
