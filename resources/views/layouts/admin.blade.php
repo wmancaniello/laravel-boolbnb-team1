@@ -21,7 +21,7 @@
 <body class="ms_bg_primary">
     <div id="app">
 
-        <header>
+        <header class="sticky-top">
 
             <nav class="navbar navbar-expand-lg ms_headernav sticky-top">
                 <div class="container-fluid">

@@ -1,7 +1,8 @@
-<div class="ms_sidebar ms_hidden d-flex align-items-center justify-content-center" id="pay-sidebar">
+<div class="ms_sidebar ms_hidden-sidebar d-flex align-items-center justify-content-center" id="pay-sidebar">
     <div class="container p-5">
+        <i class="fa-solid fa-xmark ms_close" onclick="showSidebar()"></i>
         <form id="payment-form" action="{{ route('admin.checkout') }}" method="POST"
-            class="d-flex flex-column gap-2 w-100">
+            class="d-flex flex-column align-items-center gap-2 w-100">
             @csrf
             <div class="w-100 d-flex align-items-center justify-content-center gap-3">
                 @foreach ($sponsors as $sponsor)
@@ -9,7 +10,7 @@
                         $durationEx = explode(':', $sponsor->duration);
                         $amountH = $durationEx[0];
                     @endphp
-                    
+
                     <input type="radio" class="d-none" name="sponsor_id" value="{{ $sponsor->id }}"
                         id="{{ $sponsor->id }}">
                     <label class="ms_sponsor-card rounded-2" for="{{ $sponsor->id }}">
@@ -18,7 +19,7 @@
                             <p>Durata sponsor : </p>
                             <h5>{{ $amountH }} H</h5>
                         </div>
-                    </label> 
+                    </label>
                 @endforeach
             </div>
             <input type="hidden" name="amount" id="amount" value="">
@@ -35,28 +36,6 @@
 
 
 <style lang="scss">
-   
-    .ms_hidden {
-        opacity: 0;
-        overflow: hidden;
-        width: 0px;
-        z-index: -1;
-    }
-
-    .ms_sidebar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-color: var(--bg-color);
-        height: 100vh;
-        transition: opacity 0.7s;
-    }
-
-    .ms_active {
-        width: 100%;
-        z-index: 9999;
-    }
-
     .ms_sponsor-card {
         aspect-ratio: 4/6;
         padding: 20px;
@@ -78,10 +57,6 @@
         color: white;
         transition: 0.7s;
     }
-
-    
-
-    
 </style>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.js"></script>
@@ -93,17 +68,21 @@
     const payBtns = document.getElementById('pay-btns');
 
     function showSidebar() {
-        sideBarElem.classList.toggle('ms_hidden');
-        sideBarElem.classList.toggle('ms_active');
+        sideBarElem.classList.toggle('ms_hidden-sidebar');
+        // sideBarElem.classList.toggle('ms_active');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         var form = document.getElementById('payment-form');
 
         const radios = document.querySelectorAll('input[name="sponsor_id"]');
+
         radios.forEach(radio => {
+
             radio.addEventListener('change', (event) => {
-                if (event.target.checked) {
+                const dropinElem = document.querySelector('.braintree-card')
+
+                if (event.target.checked && !dropinElem) {
 
                     /* console.log(`Selezionato: ${event.target.value}`); */
 

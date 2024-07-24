@@ -1,0 +1,93 @@
+.ms_sidebar {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    transition: all 0.7s;
+
+    .ms_close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 30px;
+        color: var(--primary-color);
+        padding: 20px;
+        cursor: pointer;
+    }
+    
+    #dropin-container {
+        max-width: 550px;
+        position: relative;
+        z-index: 10;
+
+        .braintree-upper-container:before {
+            background-color: transparent;
+            border: 0;
+        }
+
+        .braintree-loader__indicator  {
+            border: 0;
+        }
+
+
+
+        .braintree-sheet__container {
+        
+
+            
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                bottom: -50px;
+                left: -50px;
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, rgba(51,49,45,1) 2%, rgba(112,93,63,1) 60%, rgba(248,242,235,1) 100%);
+            }
+    
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                top: -30px;
+                right: 20px;
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, rgba(51,49,45,1) 2%, rgba(112,93,63,1) 60%, rgba(248,242,235,1) 100%);
+            }
+
+            .braintree-icon--bordered {
+                border: 0;
+            }
+        }
+        
+        .braintree-card {
+            border: 0;
+            border-radius: 20px;
+            background-color: #705d3f26;
+            backdrop-filter: blur(35px);
+            
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
+            padding: 20px 30px 30px 30px;
+            
+
+            .braintree-form-number, .braintree-form__hosted-field {
+                border: 0;
+                border-bottom: 1px solid var(--primary-color);
+            }
+        }
+
+    }
+}
+
+.ms_hidden-sidebar {
+    overflow: hidden;
+    right: -100%;
+    z-index: -1;
+}
