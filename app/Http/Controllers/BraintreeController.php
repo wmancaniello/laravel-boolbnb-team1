@@ -118,7 +118,7 @@ class BraintreeController extends Controller
                         }
                     }
                 }
-            return redirect()->route('admin.flats.index')->with('success', 'Appartamento sponsorizzato con successo');
+            return redirect()->route('admin.flats.show', compact('flat'))->with('success', 'Appartamento '. $flat->title .' sponsorizzato con successo');
         } else {
             return response()->json(['message' => 'Transazione fallita.', 'error' => $result->message], 500);
         }

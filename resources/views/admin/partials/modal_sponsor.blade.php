@@ -33,45 +33,4 @@
         </div>
     </div>
 </div>
-<script src="https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.getElementById('payment-form');
-    
-        // Recupera il token del client dal server
-        fetch('{{ route('admin.client_token') }}')
-            .then(response => response.json())
-            .then(data => {
-                var clientToken = data.clientToken;
-                console.log(clientToken);   
-    
-                braintree.dropin.create({
-                    authorization: clientToken,
-                    container: '#dropin-container'
-                }, function (createErr, instance) {
-                    if (createErr) {
-                        console.error(createErr);
-                        return;
-                    }
-    
-                    form.addEventListener('submit', function (event) {
-                        event.preventDefault();
-    
-                        instance.requestPaymentMethod(function (err, payload) {
-                            if (err) {
-                                console.error(err);
-                                return;
-                            }
-    
-                            // Inserisci il nonce nel modulo e invia
-                            document.getElementById('payment_method_nonce').value = payload.nonce;
-                            form.submit();
-                        });
-                    });
-                });
-            })
-            .catch(() => {
-                console.error('Errore nella transazione');
-            });
-    });
-</script>
+
