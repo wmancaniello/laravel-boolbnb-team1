@@ -1,4 +1,4 @@
-<div class="ms_sidebar d-flex align-items-center justify-content-center" id="pay-sidebar">
+<div class="ms_sidebar ms_hidden-sidebar d-flex align-items-center justify-content-center" id="pay-sidebar">
     <div class="container-fluid">
         <form id="payment-form" action="{{ route('admin.checkout') }}" method="POST">
             @csrf
