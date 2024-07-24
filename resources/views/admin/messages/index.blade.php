@@ -145,7 +145,7 @@
                                 </div>
                             </div>
                             <div class="alessio"> 
-                                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $dataMessage->id }}">
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal${messageId}">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </div>
