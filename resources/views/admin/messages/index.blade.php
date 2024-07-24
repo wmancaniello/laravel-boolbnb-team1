@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <section class="h90vh d-flex mt10vh">
+    <section class="h90vh d-flex">
         <div class="col-4 h90vh overflow-scroll ms_overflow">
 
             {{-- Lista messaggi ricevuti --}}
@@ -17,57 +17,71 @@
                 @endphp
                 {{-- /Ordinare messaggi dal più recente --}}
 
-                @foreach ($dataCollectionReverse as $dataMessage)
-                    {{-- Container info/alert --}}
-                    <li class="list-group-item d-flex justify-content-between align-items-center message-item {{ $dataMessage->is_read ? 'read' : 'unread' }} alertColor"
-                        data-id="{{ $dataMessage->id }}" style="cursor: pointer">
-                        <div class="ms-2 me-auto">
-                            {{-- Container info --}}
-                            <div class="d-flex align-items-center gap-3">
-                                {{-- Icon User --}}
-                                <span class="ms_icon_user">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-person" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                                    </svg>
-                                </span>
-                                {{-- /Icon User --}}
-                                {{-- Info --}}
-                                <div>
-                                    <p class="name-message">{{ $dataMessage->name }}</p>
-                                    @php
-                                        $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
-                                            'Europe/Rome',
-                                        );
-                                        $dateReceived = $dateTime->format('d/m');
-                                        $hourReceived = $dateTime->format('H:i');
-                                    @endphp
-                                    <small class="text-muted"> Ricevuto il:
-                                        {{ $dateReceived }} alle
-                                        {{ $hourReceived }}
-                                    </small>
-                                </div>
-                                {{-- /Info --}}
-                            </div>
-                            {{-- /Container Info --}}
-                            {{-- {{ $dataMessage->email }} --}}
-                        </div>
-
-                        {{-- Notification Dot --}}
-                        <span id="notification_dot" class="{{ $dataMessage->is_read ? '' : 'notification-dot' }} dot-color">
-                        </span>
-                        {{-- Notification Dot --}}
-
-                        <form id="mark-as-read-form-{{ $dataMessage->id }}" style="display: none"
-                            action="{{ route('admin.messages.markAsRead', $dataMessage->id) }}" method="POST">
-                            @csrf
-                            @method('PATCH')
-                        </form>
-
+                @if ($dataCollectionReverse->isEmpty())
+                    <li class="list-group-item">
+                        Nessun messaggio trovato.
                     </li>
-                    {{-- /Container info/alert --}}
-                @endforeach
+                @else
+                    @foreach ($dataCollectionReverse as $dataMessage)
+                        {{-- Container info/alert --}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center message-item {{ $dataMessage->is_read ? 'read' : 'unread' }} alertColor"
+                            data-id="{{ $dataMessage->id }}" style="cursor: pointer">
+                            <div class="ms-2 me-auto">
+                                {{-- Container info --}}
+                                <div class="d-flex align-items-center gap-3">
+                                    {{-- Icon User --}}
+                                    <span class="ms_icon_user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                        </svg>
+                                    </span>
+                                    {{-- /Icon User --}}
+                                    {{-- Info --}}
+                                    <div>
+                                        <p class="name-message">{{ $dataMessage->name }}</p>
+                                        @php
+                                            $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
+                                                'Europe/Rome',
+                                            );
+                                            $dateReceived = $dateTime->format('d/m');
+                                            $hourReceived = $dateTime->format('H:i');
+                                        @endphp
+                                        <small class="text-muted"> Ricevuto il:
+                                            {{ $dateReceived }} alle
+                                            {{ $hourReceived }}
+                                        </small>
+                                    </div>
+                                    {{-- /Info --}}
+                                </div>
+                                {{-- /Container Info --}}
+                                {{-- {{ $dataMessage->email }} --}}
+                            </div>
+
+                            {{-- Notification Dot --}}
+                            <span id="notification_dot"
+                                class="{{ $dataMessage->is_read ? '' : 'notification-dot' }} dot-color">
+                            </span>
+                            {{-- Notification Dot --}}
+
+                            <form id="mark-as-read-form-{{ $dataMessage->id }}" style="display: none"
+                                action="{{ route('admin.messages.markAsRead', $dataMessage->id) }}" method="POST">
+                                @csrf
+                                @method('PATCH')
+                            </form>
+
+                            {{-- Elimina messaggio --}}
+                            <form action="{{ route('admin.messages.destroy', $dataMessage->id) }}" method="POST" class="d-none">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Elimina messaggio</button>
+                            </form>
+                            {{-- /Elimina Messaggio --}}
+                        </li>
+                        {{-- /Container info/alert --}}
+                    @endforeach
+                @endif
             </ul>
             {{-- /Lista messaggi ricevuti --}}
         </div>
@@ -146,16 +160,23 @@
 
                     {{-- Menù Tendina --}}
                     <div class="ms_message-menu">
-                        <ul>
-                            <li>Segna come non letto</li>
+
+                        <ul class="list-unstyled">
+
                             <li>
-                                <form action="{{ route('admin.messages.destroy', $dataMessage->id) }}" method="POST">
+                                <button>Segna come non letto</button>
+                            </li>
+
+                            <li>
+                                <form action="/admin/messages/${data.id}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit">Elimina messaggio</button>
                                 </form>
                             </li>
-                        </ul>    
+
+                        </ul>   
+                         
                     </div>
                     {{-- /Menù Tendina --}}
 
