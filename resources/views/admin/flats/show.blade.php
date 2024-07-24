@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt10vh">
+    <div class="container">
 
         <div class="d-flex mt-5 pt-3 justify-content-between">
             {{-- Pulsante Indietro --}}
@@ -11,7 +11,7 @@
 
             {{-- Pulsanti Azione --}}
             <div class="">
-                {{--Sponsor--}}
+                {{-- Sponsor --}}
                 <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
                     data-bs-target="#sponsorModal{{ $flat->slug }}">
                     <i class="fa-solid fa-plane"></i> Sponsor
@@ -30,6 +30,7 @@
 
                 {{-- Modale conferma cancellazione --}}
                 @include('admin.partials.modal_delete', ['flat' => $flat])
+                {{-- Modale conferma sponsorizzazione --}}
                 @include('admin.partials.modal_sponsor', ['flat' => $flat])
             </div>
 
@@ -49,6 +50,14 @@
                         <h2 class="card-title">{{ $flat->title }}</h2>
                         <p class="card-text"><strong>Indirizzo:</strong> {{ $flat->address }}</p>
                         <p class="card-text"><strong>Descrizione:</strong> {{ $flat->description }}</p>
+                        <div>
+                            <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
+                                data-bs-target="#galleryModal{{ $flat->slug }}">
+                                <i class="fa-solid fa-images"></i> Galleria
+                            </button>
+                            {{-- Modale galleria--}}
+                            @include('admin.partials.modal_gallery', ['flat' => $flat])
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,24 +116,21 @@
                 <h6 id="title-service">
                     Servizi appartamento
                 </h6>
-                
-                    <div class="row wrapper-check justify-content-center g-1">
-                        @foreach ($flat->services as $service)
-                            <div class="col-6 col-lg-3">
-                                <input type="checkbox" name="services[]" class="check-service"
 
-                                    id="service-{{ $service->id }}" value="{{ $service->id }}"
-                                    checked disabled>
-                                <label class="w-100" for="service-{{ $service->id }}">
-                                    <img src="{{ asset('storage/services/' . $service->icon) }}"
+                <div class="row wrapper-check justify-content-center g-1">
+                    @foreach ($flat->services as $service)
+                        <div class="col-6 col-lg-3">
+                            <input type="checkbox" name="services[]" class="check-service" id="service-{{ $service->id }}"
+                                value="{{ $service->id }}" checked disabled>
+                            <label class="w-100" for="service-{{ $service->id }}">
+                                <img src="{{ asset('storage/services/' . $service->icon) }}"
+                                    alt="Icona {{ $service->name }}">
+                                {{ $service->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
 
-                                        alt="Icona {{ $service->name }}">
-                                    {{ $service->name }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                
             </div>
         </div>
 

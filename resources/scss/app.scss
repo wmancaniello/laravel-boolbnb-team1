@@ -2,6 +2,13 @@
 @import "~@fortawesome/fontawesome-free/css/all";
 @import "partials/checkbox";
 @import "partials/dropdown";
+@import "partials/header";
+
+:root {
+    --bg-color: #F8F2EB;
+    --primary-color: #705D3F;
+
+}
 
 
 .h90vh {
@@ -15,6 +22,11 @@
 
 .ms_mt {
     margin-top: 100px !important;
+}
+
+.ms_card {
+    box-shadow: 2px 2px 0px var(--primary-color);
+    border: 0;
 }
 
 .ms_toast {
@@ -156,7 +168,7 @@ a {
         background-color: #F8F2EB;
         transition: all 0.7s;
         color: black;
-        border: 1px solid #F8F2EB;
+        border: 1px solid #705D3F;
     }
 }
 
@@ -166,7 +178,7 @@ a {
     &:hover {
         background-color: #705D3F;
         color: white;
-        .fa-pencil, .fa-trash {
+        .fa-pencil, .fa-trash, .fa-plane, .fa-images {
             color: white;
         }
     }
@@ -176,7 +188,7 @@ a {
     color: #565452;
 }
 
-.fa-pencil, .fa-trash {
+.fa-pencil, .fa-trash, .fa-plane, .fa-images {
     color: #705D3F;
 }
 
@@ -184,7 +196,7 @@ a {
     border: 1px solid #705D3F;
     &:hover {
        background-color: #F8F2EB;
-       border: 1px solid #F8F2EB; 
+       border: 1px solid #705D3F; 
     }
 }
 
@@ -250,4 +262,17 @@ a {
     position: absolute;
     top: 21%;
     right: 1%;
+
+    background-color: #d9cfc1;
+}
+
+.ms_btn-sponsor{
+    background-color: #3EBD0A;
+    color: white;
+    transition: all 0.7s;
+        &:hover{
+            background-color: #5EEB27;
+            transition: all 0.7s;
+            color: white;
+        }
 }

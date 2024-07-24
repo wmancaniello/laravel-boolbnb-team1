@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt10vh">
+    <div class="container">
         <!-- Pulsante Indietro -->
-        <a class="btn ms_brown_btn mt-3 mb-3" href="{{ route('admin.flats.index') }}">
+        <a class="btn ms_brown_btn mt-5" href="{{ route('admin.flats.index') }}">
             <i class="fa-solid fa-arrow-left"></i> Torna Indietro
         </a>
 
