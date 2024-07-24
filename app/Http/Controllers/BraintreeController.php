@@ -37,10 +37,17 @@ class BraintreeController extends Controller
         // Variabili per gli Id della tabella ponte
         $flatId = $request->flat_id;
         $sponsorId = $request->sponsor_id;
+
+        // Variabili per il pagamento
         $nonceFromTheClient = $request->payment_method_nonce;
+        // Sponsor selezionato dal radio di pagamento
         $sponsorRadio = $request->sponsor_id;
+
+        // Istanzio lo sponsor, in base a quello selezionato dall'utente
         $newSponsor = Sponsor::where('id', $sponsorRadio)->get();
         $amount = $newSponsor[0]->price;
+
+        // Pagamento
         $result = $this->gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonceFromTheClient,
@@ -49,37 +56,28 @@ class BraintreeController extends Controller
             ]
         ]);
 
+        // Se il pagamento va a buon fine
         if ($result->success) {
-            $flat = Flat::find($request->flat_id);
-            // Controllo esistenza Appartamento
+            // Prendo l'appartamento collegato all'id
+            $flat = Flat::find($flatId);
+            // Controllo l'esistenza Appartamento
             if ($flat) {
                 if (!empty($newSponsor) && isset($newSponsor[0])) {
                     // Durata sponsor
                     $duration = $newSponsor[0]->duration;
+                    // Ottengo la durata in formato H dello sponsor 
                     $durationParts = explode(':', $duration);
+                    // Converto in int la prima posizione ossia -> [H] : i : s
                     $hoursToAdd = intval($durationParts[0]);
-                    // Controllo aggiunta / modifica
-                    if ($flat->sponsors) {
-                        $sponsorPivot = $flat->sponsors()->wherePivot('sponsor_id', $sponsorId)->first();
-                        // Controllo se è scaduto
-                        /* if ($flat->sponsors->end_date < Carbon::now()) {
-                            $flat->sponsors()->detach($sponsorId);
-                            $startDate = Carbon::now('Europe/Rome');
-                            $endDate = Carbon::now()->addHours($hoursToAdd);
+                        // Prendo lo sponsorPivot, dalla tabella ponte
+                        $flatPivot = $flat->sponsors()->wherePivot('flat_id', $flatId)->first();
+                        // Se esiste collegamento ponte tra sponsor_id e flat_id
+                        if ($flatPivot) {
+                            // Salvo in questa variabile la fine sponsor
+                            $endDate = $flatPivot->pivot->end_date;
+                            $sponsorIdPivot = $flatPivot->pivot->sponsor_id;
 
-                            $flat->sponsors()->attach($sponsorId, [
-                                'start_date' => $startDate,
-                                'end_date' => $endDate
-                            ]);
-                        } else {
-                            $start_date_ex = $flat->sponsors->start_date;
-                            $flat->sponsors()->end_date = Carbon::parse($start_date_ex)->addHours($hoursToAdd);
-                        } */
-                        if ($sponsorPivot) {
-                            $endDate = $sponsorPivot->pivot->end_date;
-                            // Debugging: visualizza la data di fine
-                            /* dd($endDate); */
-                            // Creazione di $parsedEnd in UTC
+                            
                             // Creare un oggetto Carbon con il fuso orario corretto
                             $parsedEnd = Carbon::parse($endDate, 'Europe/Rome');
 
@@ -89,20 +87,22 @@ class BraintreeController extends Controller
                             // CASO : SCADUTO SPONSOR
                             if ($parsedEnd->lt($now)) {
                                 // Rimuovi la relazione dalla tabella pivot
-                                $flat->sponsors()->detach($sponsorId);
+                                $flat->sponsors()->detach($sponsorIdPivot);
                                 $startDate = Carbon::now('Europe/Rome');
                                 $endDate = Carbon::now()->addHours($hoursToAdd);
 
-                                $flat->sponsors()->attach($sponsorId, [
+                                $flat->sponsors()->attach($sponsorIdPivot, [
                                     'start_date' => $startDate,
                                     'end_date' => $endDate
                                 ]);
                             } else {
                                 // CASO : ANCORA VALIDO
-                                $flat->sponsors()->detach($sponsorId);
+                                // Salvo la end_date del pivot -> Già salvata in $endDate -> Convertita in $parsedEnd
+                                /* $flat->sponsors()->detach($sponsorId); */
                                 $startDate = Carbon::now('Europe/Rome');
                                 $fixedEnd = $parsedEnd->addHours($hoursToAdd);
-                                $flat->sponsors()->attach($sponsorId, [
+                                $flat->sponsors()->detach($sponsorIdPivot);
+                                $flat->sponsors()->attach($sponsorIdPivot, [
                                     'start_date' => $startDate,
                                     'end_date' => $fixedEnd
                                 ]);
@@ -118,7 +118,6 @@ class BraintreeController extends Controller
                         }
                     }
                 }
-            }
             return redirect()->route('admin.flats.index')->with('success', 'Appartamento sponsorizzato con successo');
         } else {
             return response()->json(['message' => 'Transazione fallita.', 'error' => $result->message], 500);
