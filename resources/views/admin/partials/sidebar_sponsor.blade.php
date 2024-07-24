@@ -14,7 +14,7 @@
                             {{-- Colonna --}}
                             <input type="radio" class="d-none" name="sponsor_id" value="{{ $sponsor->id }}"
                                 id="{{ $sponsor->id }}">
-                            <div class="col-sm-12 col-md-4 d-flex g-2 gap-2 ms_transition-7">
+                            <div class="col-sm-12 col-md-4 justify-content-center d-flex g-2 gap-2 ms_transition-7">
                                 <label for="{{ $sponsor->id }}" class="ms_transition-7">
                                     {{-- Card --}}
                                     <div class="price-table h-100">
@@ -67,7 +67,7 @@
         top: 0;
         right: 0;
         background-color: var(--bg-color);
-        height: 100vh;
+        min-height: 100vh;
         transition: opacity 0.7s;
     }
 
@@ -155,6 +155,20 @@
         cursor: pointer;
         transition: .7s;
     }
+/* Media query per schermi piccoli (telefoni) */
+@media (max-width: 767px) {
+    .price-table:hover{
+        transform: none;
+        transition: all 0.7s;
+    }
+    input[type="radio"]:checked+div label {
+        /* box-shadow: 4px 4px 0px white; */
+        color: white;
+        transform: translateX(40px);
+        transition: all 0.7s;
+    }
+}
+
 </style>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.js"></script>
