@@ -1,4 +1,4 @@
-<div class="ms_sidebar ms_hidden d-flex align-items-center justify-content-center" id="pay-sidebar">
+<div class="ms_sidebar d-flex align-items-center justify-content-center" id="pay-sidebar">
     <div class="container-fluid">
         <form id="payment-form" action="{{ route('admin.checkout') }}" method="POST">
             @csrf
@@ -38,6 +38,7 @@
                         @endforeach
                     </div>
                 </div>
+
             </div>
             <input type="hidden" name="amount" id="amount" value="">
             <input type="hidden" name="flat_id" value="{{ $flat->id }}">
@@ -53,23 +54,9 @@
 
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');    
-/* Old Card */
-    .ms_hidden {
-        opacity: 0;
-        overflow: hidden;
-        width: 0px;
-        z-index: -1;
-    }
 
-    .ms_sidebar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-color: var(--bg-color);
-        min-height: 100vh;
-        transition: opacity 0.7s;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');    
+
 
     .ms_active {
         width: 100%;
@@ -180,17 +167,21 @@
     const payBtns = document.getElementById('pay-btns');
 
     function showSidebar() {
-        sideBarElem.classList.toggle('ms_hidden');
-        sideBarElem.classList.toggle('ms_active');
+        sideBarElem.classList.toggle('ms_hidden-sidebar');
+        // sideBarElem.classList.toggle('ms_active');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         var form = document.getElementById('payment-form');
 
         const radios = document.querySelectorAll('input[name="sponsor_id"]');
+
         radios.forEach(radio => {
+
             radio.addEventListener('change', (event) => {
-                if (event.target.checked) {
+                const dropinElem = document.querySelector('.braintree-card')
+
+                if (event.target.checked && !dropinElem) {
 
                     /* console.log(`Selezionato: ${event.target.value}`); */
 
