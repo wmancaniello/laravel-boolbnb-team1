@@ -22,65 +22,59 @@
                         Nessun messaggio trovato.
                     </li>
                 @else
-                    @foreach ($dataCollectionReverse as $dataMessage)
-                        {{-- Container info/alert --}}
-                        <li class="list-group-item d-flex justify-content-between align-items-center message-item {{ $dataMessage->is_read ? 'read' : 'unread' }} alertColor"
-                            data-id="{{ $dataMessage->id }}" style="cursor: pointer">
-                            <div class="ms-2 me-auto">
-                                {{-- Container info --}}
-                                <div class="d-flex align-items-center gap-3">
-                                    {{-- Icon User --}}
-                                    <span class="ms_icon_user">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                                        </svg>
-                                    </span>
-                                    {{-- /Icon User --}}
-                                    {{-- Info --}}
-                                    <div>
-                                        <p class="name-message">{{ $dataMessage->name }}</p>
-                                        @php
-                                            $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
-                                                'Europe/Rome',
-                                            );
-                                            $dateReceived = $dateTime->format('d/m');
-                                            $hourReceived = $dateTime->format('H:i');
-                                        @endphp
-                                        <small class="text-muted"> Ricevuto il:
-                                            {{ $dateReceived }} alle
-                                            {{ $hourReceived }}
-                                        </small>
-                                    </div>
-                                    {{-- /Info --}}
-                                </div>
-                                {{-- /Container Info --}}
-                                {{-- {{ $dataMessage->email }} --}}
-                            </div>
-
-                            {{-- Notification Dot --}}
-                            <span id="notification_dot"
-                                class="{{ $dataMessage->is_read ? '' : 'notification-dot' }} dot-color">
+                @foreach ($dataCollectionReverse as $dataMessage)
+                {{-- Container info/alert --}}
+                <li class="list-group-item d-flex justify-content-between align-items-center message-item {{ $dataMessage->is_read ? 'read' : 'unread' }} alertColor h10vh"
+                    data-id="{{ $dataMessage->id }}" style="cursor: pointer">
+                    <div class="ms-2 me-auto">
+                        {{-- Container info --}}
+                        <div class="d-flex align-items-center gap-3">
+                            {{-- Icon User --}}
+                            <span class="ms_icon_user">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                </svg>
                             </span>
-                            {{-- Notification Dot --}}
-
-                            <form id="mark-as-read-form-{{ $dataMessage->id }}" style="display: none"
-                                action="{{ route('admin.messages.markAsRead', $dataMessage->id) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                            </form>
-
-                            {{-- Elimina messaggio --}}
-                            <form action="{{ route('admin.messages.destroy', $dataMessage->id) }}" method="POST" class="d-none">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Elimina messaggio</button>
-                            </form>
-                            {{-- /Elimina Messaggio --}}
-                        </li>
-                        {{-- /Container info/alert --}}
-                    @endforeach
+                            {{-- /Icon User --}}
+                            {{-- Info --}}
+                            <div>
+                                <p class="name-message">{{ $dataMessage->name }}</p>
+                                @php
+                                    $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
+                                        'Europe/Rome',
+                                    );
+                                    $dateReceived = $dateTime->format('d/m');
+                                    $hourReceived = $dateTime->format('H:i');
+                                @endphp
+                                <small class="text-muted"> Ricevuto il:
+                                    {{ $dateReceived }} alle
+                                    {{ $hourReceived }}
+                                </small>
+                            </div>
+                            {{-- /Info --}}
+                        </div>
+                        {{-- /Container Info --}}
+                    </div>
+            
+                    {{-- Notification Dot --}}
+                    <span id="notification_dot"
+                        class="{{ $dataMessage->is_read ? '' : 'notification-dot' }} dot-color">
+                    </span>
+                    {{-- Notification Dot --}}
+            
+                    {{-- Bottone cestino --}}
+                    
+                    {{-- /Bottone cestino --}}
+                </li>
+                {{-- /Container info/alert --}}
+            
+                {{-- Modale conferma cancellazione --}}
+                @include('admin.partials.modal_delete_message')
+                {{-- /Modale conferma cancellazione --}}
+            @endforeach
+            
                 @endif
             </ul>
             {{-- /Lista messaggi ricevuti --}}
@@ -150,37 +144,15 @@
                                     <small class="text-muted">Ricevuto il: ${formattedDate}</small>
                                 </div>
                             </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
+                            <div class="alessio"> 
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $dataMessage->id }}">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
                             </div>
                         </div>
                     </header>
 
-                    {{-- Menù Tendina --}}
-                    <div class="ms_message-menu">
-
-                        <ul class="list-unstyled">
-
-                            <li>
-                                <button>Segna come non letto</button>
-                            </li>
-
-                            <li>
-                                <form action="/admin/messages/${data.id}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit">Elimina messaggio</button>
-                                </form>
-                            </li>
-
-                        </ul>   
-                         
-                    </div>
-                    {{-- /Menù Tendina --}}
-
-                    <div class="h80vh img_bg text-white p-4 d-flex flex-column">
+                    <div class="h80vh img_bg text-dark p-4 d-flex flex-column">
                         <div class="mb-3">
                             <h4 class="mb-3">Dettagli:</h4>
                             <p class="mb-2"><strong>Email:</strong> ${data.email}</p>
