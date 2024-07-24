@@ -10,6 +10,7 @@
 
 }
 
+
 .h90vh {
     height: 90vh;
 }
@@ -18,10 +19,6 @@
     height: 10vh;
 }
 
-.h70vh {
-    height: 70vh;
-
-}
 
 .ms_mt {
     margin-top: 100px !important;
@@ -127,13 +124,13 @@ a {
 
 .img_bg {
     height: 100%;
-    background-image: url('https://i.pinimg.com/originals/87/93/b7/8793b7f3009c87baf350de82a5f72423.jpg');
+    background-image: url('https://diocesiluceratroia.it/wp-content/uploads/sites/2/2019/06/Sacro-Cuore-di-Ges%C3%B9-1-800x437.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .img_bg2 {
-    background-image: url('https://www.oreilly.com/content/wp-content/uploads/sites/2/2019/06/web-prog-intro-to-svg-animations-crop2-1cf4e11286f16d29951dcdbad663f320.png');
-    background-size: cover;
-    background-position: center;
+    background-color: #F8F2EB;
 }
 
 .bg-dark_ms {
@@ -216,6 +213,56 @@ a {
 }
 
 .selected {
+    background-color: #d3cec9;
+}
+
+.unread {
+    color: black;
+    
+}
+
+.read {
+        font-weight: 100;
+        letter-spacing: 1px;
+}
+
+.name-message {
+    font-size: 0.8vw;
+}
+
+.notification-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #705D3F;
+}
+
+.mt-10vh {
+    margin-top: 10vh;
+}
+
+.h80vh {
+    height: 80vh;
+}
+
+
+.ms_overflow::-webkit-scrollbar{
+    display: none;
+}
+
+// Menù Tendina
+.ms_header-message{
+    position: relative;
+}
+.ms_message-menu {
+    width: 10vw;
+    height: 10vh;
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: 21%;
+    right: 1%;
+
     background-color: #d9cfc1;
 }
 
