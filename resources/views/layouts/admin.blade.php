@@ -23,7 +23,7 @@
 
         <header class="sticky-top">
 
-            <nav class="navbar navbar-expand-lg ms_headernav sticky-top">
+            <nav class="navbar navbar-expand-lg ms_headernav sticky-top h7vh">
                 <div class="container-fluid">
                     <router-link class="navbar-brand font" to="/">BoolBnB</router-link>
                     <button class="navbar-toggler font border" type="button" data-bs-toggle="collapse"
