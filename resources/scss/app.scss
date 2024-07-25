@@ -106,7 +106,7 @@ a {
 
 .ms_bg_primary {
     background-color: var(--bg-color);
-    
+
 }
 
 .ms_bg_secondary {
@@ -285,4 +285,16 @@ a {
 
 .ms_rounded {
     border-radius: 5px 5px 0px 0px;
+}
+
+.sponsored-badge {
+    width: 40%;
+    margin-top: 10px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 30px;
+    background: linear-gradient(45deg, rgba(51, 49, 45, 1) 2%, rgba(112, 93, 63, 1) 60%, rgba(248, 242, 235, 1) 100%);
 }
