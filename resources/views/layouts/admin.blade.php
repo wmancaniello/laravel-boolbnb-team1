@@ -25,9 +25,9 @@
 
             <nav class="navbar navbar-expand-lg ms_headernav sticky-top">
                 <div class="container-fluid">
-                    <router-link class="navbar-brand font" to="/">
+                    <a class="navbar-brand font" href="{{ route('admin.dashboard') }}">
                         <img src="/logo-white.png" alt="">
-                    </router-link>
+                    </a>
                     <button class="navbar-toggler font border" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false"
                         aria-label="Toggle navigation">
