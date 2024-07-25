@@ -31,7 +31,7 @@
                 use App\Models\Flat;
             @endphp
             @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
-                <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 200px; width: 200px">
+                <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 180px; width: 200px">
                     <a href="http://127.0.0.1:8000/admin/flats"
                         class="card text-center h-100 text-decoration-none text-dark">
                         <div
@@ -43,7 +43,7 @@
                 </div>
             @endif
             <!-- Card Aggiungi Appartamento -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 200px; width: 200px">
+            <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 180px; width: 200px">
                 <a href="http://127.0.0.1:8000/admin/flats/create"
                     class="card text-center h-100 text-decoration-none text-dark">
                     <div
@@ -55,7 +55,7 @@
             </div>
             <!-- Card Messaggi -->
             @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
-                <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 200px; width: 200px">
+                <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 180px; width: 200px">
                     <a href="http://127.0.0.1:8000/admin/messages"
                         class="card text-center h-100 text-decoration-none text-dark">
                         <div
@@ -67,7 +67,7 @@
                 </div>
             @endif
             <!-- Card Logout -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 200px; width: 200px">
+            <div class="col-12 col-md-6 col-lg-4 mb-4" style="height: 180px; width: 200px">
                 <a href="{{ route('logout') }}" class="card text-center h-100 text-decoration-none text-dark"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <div
