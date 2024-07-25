@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt10vh">
+    <div class="container">
 
         {{-- Pulsante Indietro --}}
         <a class="btn ms_brown_btn mt-5" href="{{ route('admin.flats.index') }}">
