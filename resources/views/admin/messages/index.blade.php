@@ -2,8 +2,9 @@
 
 @section('content')
     <section class="d-flex">
-        <div class="col-4 overflow-scroll ms_overflow">
 
+        <div class="col-4 overflow-scroll ms_overflow">
+        
             {{-- Lista messaggi ricevuti --}}
             <ul class="list-group">
 

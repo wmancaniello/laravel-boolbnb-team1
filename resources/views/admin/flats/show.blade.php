@@ -40,7 +40,7 @@
         <div class="card mb-4">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img class="img-fluid rounded-start" src="{{ asset('storage/' . $flat->main_img) }}"
+                    <img class="img-fluid ms_rounded" src="{{ asset('storage/' . $flat->main_img) }}"
                         alt="Immagine di {{ $flat->title }}" style="height: 100%; object-fit: cover;">
                 </div>
                 <div class="col-md-8">
