@@ -29,6 +29,10 @@
 .nav-link {
     position: relative;
 
+    &:focus {
+        color: var(--bg-color);
+    }
+
     &:hover {
         color: var(--bg-color);
 
