@@ -4,6 +4,8 @@
 @import "partials/dropdown";
 @import "partials/header";
 @import "partials/sidebar";
+@import "partials/dashboard";
+
 
 :root {
     --bg-color: #F8F2EB;
@@ -149,16 +151,6 @@ a {
 
 }
 
-.ms_icon_user {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-radius: 50%;
-    justify-content: center;
-    background-color: rgba(95, 85, 85, 0.264);
-}
-
 .ms_nav {
     background-color: #F8F2EB;
 }
@@ -218,7 +210,7 @@ a {
     }
 }
 
-// Chat
+// CHAT
 .message-bubble {
     display: flex;
     position: relative;
@@ -236,7 +228,6 @@ a {
 
 .unread {
     color: black;
-
 }
 
 .read {
@@ -246,13 +237,6 @@ a {
 
 .name-message {
     font-size: 1.3vw;
-}
-
-.notification-dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #705D3F;
 }
 
 .mt-10vh {
@@ -273,23 +257,19 @@ a {
     align-items: center;
     justify-content: center;
 
-
     i {
         color: white;
         font-size: 1.3rem;
     }
-
 }
+
+@import "partials/messages";
+// /CHAT
+
 
 .ms_overflow::-webkit-scrollbar {
     display: none;
 }
-
-// Menù Tendina
-.ms_header-message {
-    position: relative;
-}
-
 
 .ms_btn-sponsor {
     background-color: #3EBD0A;

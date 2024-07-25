@@ -1,0 +1,84 @@
+.list-group-item {
+    border-bottom: 0.2px solid #705D3F;
+}
+
+.message-item {
+    cursor: pointer;
+}
+
+.notification-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #705D3F;
+}
+
+.h10vh {
+    height: 10vh;
+}
+
+.ms_icon_user {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+    background-color: rgba(95, 85, 85, 0.264);
+}
+
+@media (max-width: 768px) {
+    .h10vh {
+        height: auto;
+    }
+
+    .notification-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #705D3F;
+    }
+
+    .ms_icon_user {
+        display: none;
+    }
+
+    .name-message {
+        font-size: 0.9rem;
+    }
+
+    .text-muted {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .h10vh {
+        height: auto;
+    }
+
+    .notification-dot {
+        width: 30px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #705D3F;
+    }
+
+    .ms_icon_user {
+        display: none;
+    }
+
+    .name-message {
+        font-size: 0.9rem;
+    }
+
+    .text-muted {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .ms_date {
+        display: none;
+    }
+}
