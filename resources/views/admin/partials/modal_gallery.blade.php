@@ -11,7 +11,7 @@
                     <div class="carousel-inner">
                         @foreach($flat->photos as $index => $photo)
                         <div class="carousel-item @if($index === 0) active @endif">
-                            <img src="{{ asset('storage/' . $photo->image) }}" src="{{ $photo }}" class="d-block w-100" alt="Foto dell'appartamento">
+                            <img src="{{ asset('storage/' . $photo->image) }}" src="{{ $photo }}" class="d-block w-100 fixed-size" alt="Foto dell'appartamento">
                         </div>
                         @endforeach
                     </div>

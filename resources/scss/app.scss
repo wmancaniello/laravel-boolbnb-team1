@@ -305,3 +305,9 @@ a {
     padding: 30px;
     background: linear-gradient(45deg, rgba(51, 49, 45, 1) 2%, rgba(112, 93, 63, 1) 60%, rgba(248, 242, 235, 1) 100%);
 }
+
+.fixed-size {
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+}
