@@ -25,13 +25,13 @@
                                             <p class="fs-3">{{ $plans[$loop->index] }}</p>
                                             <p class="d-md-none"><small class="description">Sponsorizzati in Homepage ed entra nella categoria
                                                     <b><i>In Evidenza</i></b></small></p>
-                                            <h2>€{{ $sponsor->price }}/{{ $amountH }}h</h2>
-                                        </div>
-                                        {{-- Corpo --}}
-                                        <div class="price-content">
-                                            <ul>
-                                                <li>Presenza premium in HomePage!</li>
-                                                <li>Spunta per primo in tutte le ricerche!</li>
+                                                </div>
+                                                {{-- Corpo --}}
+                                                <div class="price-content">
+                                                    <ul class="p-2">
+                                                        <li ><small class="mb-1"> Presenza premium in HomePage!</small><br>
+                                                            <h2>€{{ $sponsor->price }}/{{ $amountH }}h</h2></li>
+                                                        
                                             </ul>
                                         </div>
                                     </div>
@@ -74,9 +74,7 @@
     input[type="radio"]:checked+div label {
         /* box-shadow: 4px 4px 0px white; */
         color: white;
-        transform: translateY(-40px);
-
-
+        transform: translateY(-20px);
     }
 
     input[type="radio"]:checked+div label #head-tab-pr {
@@ -86,6 +84,15 @@
 
     }
 
+    input[type="radio"]:checked+div label #head-tab-pr p{
+        text-decoration: underline;
+    } 
+
+    input[type="radio"]:checked+div label ul li h2{
+        font-size: 2.5rem;
+        font-weight: 700;
+        transition: all 0.7s;
+    }
     /* Old Card */
 
     /* New Card */
@@ -111,7 +118,7 @@
     }
 
     #head-tab-pr {
-        padding: 16px;
+        padding: 12px;
         background: linear-gradient(45deg, rgba(51, 49, 45, 1) 2%, rgba(112, 93, 63, 1) 60%, rgba(248, 242, 235, 1) 100%);
         transition: all 0.7s;
     }
