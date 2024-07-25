@@ -14,7 +14,7 @@
             }
         </style>
 
-        <div class="row justify-content-start">
+        <div class="row justify-content-lg-start justify-content-between">
             @foreach ($flats as $flat)
                 <div class="col-md-5 mb-4 col-lg-4">
                     <div class="card h-100 ms_card">
