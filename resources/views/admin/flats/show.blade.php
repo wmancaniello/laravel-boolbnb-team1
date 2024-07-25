@@ -49,12 +49,14 @@
                         <p class="card-text"><strong>Indirizzo:</strong> {{ $flat->address }}</p>
                         <p class="card-text"><strong>Descrizione:</strong> {{ $flat->description }}</p>
                         <div>
-                            <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
+                            @if ($flat->photos->isNotEmpty())
+                                 <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
                                 data-bs-target="#galleryModal{{ $flat->slug }}">
                                 <i class="fa-solid fa-images"></i> Galleria
                             </button>
-                            {{-- Modale galleria --}}
-                            @include('admin.partials.modal_gallery', ['flat' => $flat])
+                               {{-- Modale galleria --}}
+                               @include('admin.partials.modal_gallery', ['flat' => $flat])
+                            @endif     
                         </div>
                     </div>
                 </div>
