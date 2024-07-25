@@ -64,7 +64,7 @@
                             @foreach ($flat->sponsors as $sponsor)
                                 <div class="sponsored-badge">
                                     <h5 class="fw-bold">ABBONAMENTO ATTIVO</h5>
-                                    <div class="fs-6">Scade il: <span>{{ date('d/m/y', strtotime($sponsor->pivot->end_date)) }}</span></div> 
+                                    <div class="fs-6 fw-bold">Scade il: <span>{{ date('d/m/y', strtotime($sponsor->pivot->end_date)) }}</span></div> 
                                 </div>
                             @endforeach
                         @endif
