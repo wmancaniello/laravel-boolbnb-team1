@@ -16,23 +16,29 @@
                             {{-- Colonna --}}
                             <input type="radio" class="d-none" name="sponsor_id" value="{{ $sponsor->id }}"
                                 id="{{ $sponsor->id }}" onclick="selectedSponsor(this)">
-                            <div class="col-sm-12 col-md-4 justify-content-center d-flex g-2 gap-2 ms_transition-7">
+                            <div class="col-sm-12 col-md-4 justify-content-center d-flex g-2 gap-2 ms_transition-7 px-3">
                                 <label for="{{ $sponsor->id }}" class="ms_transition-7 label-sponsor">
                                     {{-- Card --}}
                                     <div class="price-table ms_transition-7">
                                         {{-- Header --}}
-                                        <div class="price-head" id="head-tab-pr" data-sponsor-id="{{ $sponsor->id }}">
-                                            <p class="fs-3">{{ $plans[$loop->index] }}</p>
-                                            <p class="d-md-none"><small class="description">Sponsorizzati in Homepage ed entra nella categoria
+                                        <div class="price-head p-2" id="head-tab-pr" data-sponsor-id="{{ $sponsor->id }}">
+                                            <p class="fs-2" id="p-title-sponsor">{{ $plans[$loop->index] }}
+                                                @if ($plans[$loop->index] === 'Basic')
+                                                <i class="fa-solid fa-gears"></i>
+                                                @elseif ($plans[$loop->index] === 'Premium')
+                                                <i class="fa-regular fa-star"></i>
+                                                @else
+                                                <i class="fa-regular fa-gem"></i>
+                                                @endif
+                                            </p>
+                                            <p class="d-md-none"><small class="description">Sponsorizzati in Homepage ed
+                                                    entra nella categoria
                                                     <b><i>In Evidenza</i></b></small></p>
-                                            <h2>€{{ $sponsor->price }}/{{ $amountH }}h</h2>
                                         </div>
                                         {{-- Corpo --}}
-                                        <div class="price-content">
-                                            <ul>
-                                                <li>Presenza premium in HomePage!</li>
-                                                <li>Spunta per primo in tutte le ricerche!</li>
-                                            </ul>
+                                        <div class="price-content p-2">
+                                            <small class="mb-2"> Presenza premium in HomePage!</small><br>
+                                                    <h2>€{{ $sponsor->price }}/{{ $amountH }}h</h2>
                                         </div>
                                     </div>
                                     {{-- Fine Card --}}
@@ -74,9 +80,7 @@
     input[type="radio"]:checked+div label {
         /* box-shadow: 4px 4px 0px white; */
         color: white;
-        transform: translateY(-40px);
-
-
+        transform: translateY(-20px);
     }
 
     input[type="radio"]:checked+div label #head-tab-pr {
@@ -84,6 +88,22 @@
         border-bottom-right-radius: 50%;
         transition: all 0.7s;
 
+    }
+    input[type="radio"]:checked+div label #head-tab-pr #p-title-sponsor{
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.7s;
+    }
+/* 
+    input[type="radio"]:checked+div label #head-tab-pr p {
+        text-decoration: underline;
+    } */
+
+    input[type="radio"]:checked+div label h2 {
+        color: #777;
+        font-size: 2.5rem;
+        font-weight: 700;
+        transition: all 0.7s;
     }
 
     /* Old Card */
@@ -111,7 +131,7 @@
     }
 
     #head-tab-pr {
-        padding: 16px;
+        padding: 10px;
         background: linear-gradient(45deg, rgba(51, 49, 45, 1) 2%, rgba(112, 93, 63, 1) 60%, rgba(248, 242, 235, 1) 100%);
         transition: all 0.7s;
     }
@@ -139,73 +159,36 @@
 
     .price-content {
         position: relative;
-    }
-
-    .price-content ul {
-        position: relative;
-        margin: 0;
-        padding: 20px 0;
-    }
-
-    .price-content ul li {
-        list-style: none;
-        font-size: 1rem;
-        padding: 12px 16px;
         color: #777;
-        cursor: pointer;
-        transition: .7s;
     }
+
+    
 
     /* Media query per schermi piccoli (telefoni) */
     @media (max-width: 767px) {
-        .price-table:hover {
-            transform: none;
-            transition: all 0.7s;
+        #head-tab-pr small{
+            display: none;
+        }
+        .price-content small{
+            display: none;
         }
 
-        .price-table:hover {
-            border-top-left-radius: 50%;
-            border-top-right-radius: 50%;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-            transition: 0.7s;
+        .price-content ul{
+            padding: 0;
         }
 
-        .price-table {
-            margin: 0;
+        input[type="radio"]:checked+div label h2 {
+        font-size: 2rem;
+        color: #777;
+        font-weight: 600;
+        transition: all 0.7s;
         }
 
-        /* Al Check */
         input[type="radio"]:checked+div label {
             /* box-shadow: 4px 4px 0px white; */
             color: white;
-            transform: none;
+            transform: translateZ(20px);
             transition: all 0.7s;
-        }
-
-        input[type="radio"]:checked+div #head-tab-pr {
-            border-top-left-radius: 50%;
-            border-top-right-radius: 50%;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-            transition: 0.7s;
-        }
-
-        input[type="radio"]:checked+div .price-table {
-            border-top-left-radius: 50%;
-            border-top-right-radius: 50%;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-            transition: 0.7s;
-        }
-
-        /* Non checkate */
-        input[type="radio"]:no- .price-table #head-tab-pr {
-            padding: 20px;
-        }
-
-        .price-table .price-content {
-            display: none;
         }
     }
 </style>
@@ -219,52 +202,52 @@
     const payBtns = document.getElementById('pay-btns');
 
     function showSidebar() {
-    const sidebar = document.getElementById('pay-sidebar');
-    const overlay = document.getElementById('overlay');
-    const parentContainer = document.querySelector('.container');
+        const sidebar = document.getElementById('pay-sidebar');
+        const overlay = document.getElementById('overlay');
+        const parentContainer = document.querySelector('.container');
 
-    if (sidebar.classList.contains('ms_hidden-sidebar')) {
-        // Mostra la sidebar e l'overlay
-        sidebar.classList.remove('ms_hidden-sidebar');
-        sidebar.classList.add('ms_visible-sidebar');
-        overlay.classList.add('visible');
-        overlay.classList.remove('hidden');
-        parentContainer.classList.add('dimmed'); // Riduci l'opacità
-    } else {
-        // Nascondi la sidebar e l'overlay
-        sidebar.classList.add('ms_hidden-sidebar');
-        sidebar.classList.remove('ms_visible-sidebar');
-        overlay.classList.remove('visible');
-        overlay.classList.add('hidden');
-        parentContainer.classList.remove('dimmed'); // Ripristina l'opacità
-    }
-}
-
-  function selectedSponsor(selectedRadio) {
-    // Ottieni l'ID dell'input radio selezionato
-    const selectedId = selectedRadio.id;
-
-    // Seleziona tutti i contenitori di card con la classe 'price-head'
-    const allPriceHeads = document.querySelectorAll('.price-head');
-
-    // Cicla attraverso tutti i contenitori di card
-    allPriceHeads.forEach(priceHead => {
-        // Ottieni l'ID del sponsor da data-sponsor-id
-        const sponsorId = priceHead.getAttribute('data-sponsor-id');
-
-        // Verifica se l'ID della card è uguale a quello selezionato
-        if (sponsorId === selectedId) {
-            // Mostra il paragrafo per la card selezionata
-            priceHead.querySelector('.description').style.display = 'block';
+        if (sidebar.classList.contains('ms_hidden-sidebar')) {
+            // Mostra la sidebar e l'overlay
+            sidebar.classList.remove('ms_hidden-sidebar');
+            sidebar.classList.add('ms_visible-sidebar');
+            overlay.classList.add('visible');
+            overlay.classList.remove('hidden');
+            parentContainer.classList.add('dimmed'); // Riduci l'opacità
         } else {
-            // Nascondi il paragrafo per le card non selezionate
-            priceHead.querySelector('.description').style.display = 'none';
+            // Nascondi la sidebar e l'overlay
+            sidebar.classList.add('ms_hidden-sidebar');
+            sidebar.classList.remove('ms_visible-sidebar');
+            overlay.classList.remove('visible');
+            overlay.classList.add('hidden');
+            parentContainer.classList.remove('dimmed'); // Ripristina l'opacità
         }
-    });
-}
+    }
 
-    function clickedOnActive(){
-        
+    function selectedSponsor(selectedRadio) {
+        // Ottieni l'ID dell'input radio selezionato
+        const selectedId = selectedRadio.id;
+
+        // Seleziona tutti i contenitori di card con la classe 'price-head'
+        const allPriceHeads = document.querySelectorAll('.price-head');
+
+        // Cicla attraverso tutti i contenitori di card
+        allPriceHeads.forEach(priceHead => {
+            // Ottieni l'ID del sponsor da data-sponsor-id
+            const sponsorId = priceHead.getAttribute('data-sponsor-id');
+
+            // Verifica se l'ID della card è uguale a quello selezionato
+            if (sponsorId === selectedId) {
+                // Mostra il paragrafo per la card selezionata
+                priceHead.querySelector('.description').style.display = 'block';
+            } else {
+                // Nascondi il paragrafo per le card non selezionate
+                priceHead.querySelector('.description').style.display = 'none';
+            }
+        });
+    }
+
+    function clickedOnActive() {
+
     }
 
     document.addEventListener('DOMContentLoaded', function() {
