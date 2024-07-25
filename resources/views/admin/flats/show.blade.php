@@ -62,10 +62,10 @@
                         {{-- sponsor --}}
                         @if ($flat->sponsors->isNotEmpty())
                             @foreach ($flat->sponsors as $sponsor)
-                                <p class="sponsored-badge">
-                                    Abbonamento: {{ $sponsor->price }}<br>
-                                    Scade il: {{ $sponsor->pivot->end_date }}
-                                </p>
+                                <div class="sponsored-badge">
+                                    <h5 class="fw-bold">ABBONAMENTO ATTIVO</h5>
+                                    <div class="fs-6">Scade il: <span>{{ date('d/m/y', strtotime($sponsor->pivot->end_date)) }}</span></div> 
+                                </div>
                             @endforeach
                         @endif
                         {{-- /sponsor --}}
