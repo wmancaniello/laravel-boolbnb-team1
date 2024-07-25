@@ -3,36 +3,35 @@
 @section('content')
     <div class="container">
 
-        <div class="d-flex mt-5 pt-3 justify-content-between">
-            {{-- Pulsante Indietro --}}
-            <a class="btn ms_brown_btn mb-3" href="{{ route('admin.flats.index') }}">
-                <i class="fa-solid fa-arrow-left"></i> Torna indietro
-            </a>
-
+        <div class="d-flex mt-5 pt-3 justify-content-between flex-md-row">
             {{-- Pulsanti Azione --}}
-            <div class="">
-                {{-- Sponsor --}}
-                <button type="button" class="btn ms_brown_btn2 me-2" onclick="showSidebar()" id="sponsor-btn">
-                    <i class="fa-solid fa-plane"></i> Sponsor
-                </button>
+                <div class="d-flex flex-column flex-md-row w-md-auto">
+                    {{-- Pulsante Indietro --}}
+                    <button type="button" class="btn ms_brown_btn mb-2 mb-md-0 me-5" href="{{ route('admin.flats.index') }}">
+                        <i class="fa-solid fa-arrow-left"></i> Torna indietro
+                    </button>
+                
+                    {{-- Sponsor --}}
+                    <button type="button" class="btn ms_brown_btn2 me-2 ms-md-5 mb-2 mb-md-0" onclick="showSidebar()" id="sponsor-btn">
+                        <i class="fa-solid fa-plane"></i> Sponsor
+                    </button>
 
-                {{-- Modifica --}}
-                <a class="btn ms_brown_btn2 me-2" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
-                    <i class="fa-solid fa-pencil"></i> Modifica
-                </a>
+                    {{-- Modifica --}}
+                    <button type="button" class="btn ms_brown_btn2 me-2 mb-2 mb-md-0" href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
+                        <i class="fa-solid fa-pencil"></i> Modifica
+                    </button>
 
-                {{-- Cancella --}}
-                <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
-                    data-bs-target="#deleteModal{{ $flat->slug }}">
-                    <i class="fa-solid fa-trash"></i> Cancella
-                </button>
+                    {{-- Cancella --}}
+                    <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal{{ $flat->slug }}">
+                        <i class="fa-solid fa-trash"></i> Cancella
+                    </button>
 
-                {{-- Modale conferma cancellazione --}}
-                @include('admin.partials.modal_delete', ['flat' => $flat])
-                {{-- Sidebar conferma sponsorizzazione --}}
-                @include('admin.partials.sidebar_sponsor', ['flat' => $flat])
-            </div>
-
+                    {{-- Modale conferma cancellazione --}}
+                    @include('admin.partials.modal_delete', ['flat' => $flat])
+                    {{-- Sidebar conferma sponsorizzazione --}}
+                    @include('admin.partials.sidebar_sponsor', ['flat' => $flat])
+                </div>
         </div>
 
 
@@ -50,13 +49,13 @@
                         <p class="card-text"><strong>Descrizione:</strong> {{ $flat->description }}</p>
                         <div>
                             @if ($flat->photos->isNotEmpty())
-                                 <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
-                                data-bs-target="#galleryModal{{ $flat->slug }}">
-                                <i class="fa-solid fa-images"></i> Galleria
-                            </button>
-                               {{-- Modale galleria --}}
-                               @include('admin.partials.modal_gallery', ['flat' => $flat])
-                            @endif     
+                                <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
+                                    data-bs-target="#galleryModal{{ $flat->slug }}">
+                                    <i class="fa-solid fa-images"></i> Galleria
+                                </button>
+                                {{-- Modale galleria --}}
+                                @include('admin.partials.modal_gallery', ['flat' => $flat])
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -121,5 +120,4 @@
     </div>
 
     @include('admin.partials.toast')
-    
 @endsection
