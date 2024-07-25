@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+<div id="overlay" class="overlay hidden"></div>
+@include('admin.partials.sidebar_sponsor', ['flat' => $flat])
     <div class="container">
 
         <div class="d-flex mt-5 pt-3 justify-content-between">
@@ -30,7 +32,7 @@
                 {{-- Modale conferma cancellazione --}}
                 @include('admin.partials.modal_delete', ['flat' => $flat])
                 {{-- Sidebar conferma sponsorizzazione --}}
-                @include('admin.partials.sidebar_sponsor', ['flat' => $flat])
+                
             </div>
 
         </div>

@@ -1,5 +1,5 @@
 .ms_sidebar {
-    position: fixed;
+    position: absolute;
     z-index: 9999;
     width: 100%;
     padding: 10px 0;
@@ -11,7 +11,7 @@
 
     .ms_close {
         position: absolute;
-        top: 30px;
+        top: 60px;
         right: 30px;
         font-size: 30px;
         color: var(--primary-color);
@@ -44,9 +44,9 @@
                 position: absolute;
                 z-index: -1;
                 bottom: -50px;
-                left: -50px;
-                height: 200px;
-                width: 200px;
+                left: -65px;
+                height: 125px;
+                width: 125px;
                 border-radius: 50%;
                 background: linear-gradient(45deg, rgba(51,49,45,1) 2%, rgba(112,93,63,1) 60%, rgba(248,242,235,1) 100%);
             }
@@ -92,4 +92,53 @@
     overflow: hidden;
     right: -100%;
     z-index: -1;
+}
+
+/* Try*/
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Colore e opacità dell'overlay */
+    z-index: 799; /* Deve essere sotto la sidebar ma sopra il contenuto principale */
+    transition: opacity 0.3s ease;
+}
+
+/* Sidebar */
+.ms_sidebar {
+    position: absolute; /* Usa fixed per mantenere la sidebar in vista durante lo scroll */
+    z-index: 899; /* Deve essere sopra l'overlay e il contenuto principale */
+    width: 100%;
+    padding: 120px 0;
+    top: 0;
+    right: 0;
+    background-color: var(--bg-color);
+    min-height: 100%;
+    transition: all 0.7s;
+}
+
+.ms_hidden-sidebar {
+    transform: translateX(100%);
+    transition: transform 0.7s ease-in-out;
+}
+
+.ms_visible-sidebar {
+    transform: translateX(0);
+}
+
+/* Overlay quando visibile */
+.overlay.visible {
+    display: block;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.dimmed {
+    opacity: 0;
 }
