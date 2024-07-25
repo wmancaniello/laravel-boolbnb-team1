@@ -18,10 +18,11 @@
         padding: 20px;
         cursor: pointer;
     }
-    
+
     #dropin-container {
         max-width: 550px;
         position: relative;
+        margin-bottom: 10px;
         z-index: 10;
 
         .braintree-upper-container:before {
@@ -29,58 +30,52 @@
             border: 0;
         }
 
-        .braintree-loader__indicator  {
+        .braintree-loader__indicator {
             border: 0;
         }
 
 
 
         .braintree-sheet__container {
-        
 
-            
-            &::after {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                bottom: -50px;
-                left: -65px;
-                height: 125px;
-                width: 125px;
-                border-radius: 50%;
-                background: linear-gradient(45deg, rgba(51,49,45,1) 2%, rgba(112,93,63,1) 60%, rgba(248,242,235,1) 100%);
-            }
-    
-            &::before {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                top: -30px;
-                right: 20px;
-                height: 200px;
-                width: 200px;
-                border-radius: 50%;
-                background: linear-gradient(45deg, rgba(51,49,45,1) 2%, rgba(112,93,63,1) 60%, rgba(248,242,235,1) 100%);
-            }
+
+
+            // &::after {
+            //     content: '';
+            //     position: absolute;
+            //     z-index: -1;
+            //     bottom: 0px;
+            //     left: 0px;
+            //     height: 100%;
+            //     width: 100%;
+            //     border-radius: 20px;
+            //     background: linear-gradient(45deg, rgba(51, 49, 45, 1) 2%, rgba(112, 93, 63, 1) 60%, rgba(248, 242, 235, 1) 100%);
+            // }
+
 
             .braintree-icon--bordered {
                 border: 0;
             }
         }
-        
+
         .braintree-card {
             border: 0;
             border-radius: 20px;
-            background-color: #705d3f26;
-            backdrop-filter: blur(35px);
-            
-            box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
+            // background-color: transparent;
+            // backdrop-filter: blur(100px);
+            // font-size: 20px;
+            // box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
             padding: 20px 30px 30px 30px;
-            
+            box-shadow: 2px 2px 0px var(--primary-color);
 
-            .braintree-form-number, .braintree-form__hosted-field {
+            .braintree-sheet__header {
                 border: 0;
-                border-bottom: 1px solid var(--primary-color);
+            }
+
+            .braintree-form-number,
+            .braintree-form__hosted-field {
+                border: 0;
+                border-bottom: 2px solid var(--primary-color)
             }
         }
 
@@ -88,7 +83,7 @@
 }
 
 .ms_hidden-sidebar {
-    
+
     overflow: hidden;
     right: -100%;
     z-index: -1;
@@ -103,17 +98,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Colore e opacità dell'overlay */
-    z-index: 799; /* Deve essere sotto la sidebar ma sopra il contenuto principale */
+    background: rgba(0, 0, 0, 0.3);
+    /* Colore e opacità dell'overlay */
+    z-index: 799;
+    /* Deve essere sotto la sidebar ma sopra il contenuto principale */
     transition: opacity 0.3s ease;
 }
 
 /* Sidebar */
 .ms_sidebar {
-    position: fixed; /* Usa fixed per mantenere la sidebar in vista durante lo scroll */
-    z-index: 899; /* Deve essere sopra l'overlay e il contenuto principale */
+    position: fixed;
+    /* Usa fixed per mantenere la sidebar in vista durante lo scroll */
+    z-index: 9999;
+    /* Deve essere sopra l'overlay e il contenuto principale */
     width: 100%;
-    padding: 120px 0;
+    // padding: 120px 0;
     top: 0;
     right: 0;
     background-color: var(--bg-color);
@@ -123,7 +122,7 @@
 }
 
 .ms_hidden-sidebar {
-    
+
     right: -100%;
     transition: all 0.7s;
 }
@@ -146,9 +145,9 @@
 }
 
 @media (max-width: 767px) {
-    
-    
-.ms_sidebar {
-    position: absolute;
-}
+
+
+    .ms_sidebar {
+        position: absolute;
+    }
 }
