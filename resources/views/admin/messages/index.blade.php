@@ -2,8 +2,9 @@
 
 @section('content')
     <section class="d-flex">
-        <div class="col-4  overflow-scroll ms_overflow">
 
+        <div class="col-4 overflow-scroll ms_overflow">
+        
             {{-- Lista messaggi ricevuti --}}
             <ul class="list-group">
 
@@ -25,7 +26,7 @@
                 @foreach ($dataCollectionReverse as $dataMessage)
                 {{-- Container info/alert --}}
                 <li class="list-group-item d-flex justify-content-between align-items-center message-item {{ $dataMessage->is_read ? 'read' : 'unread' }} alertColor h10vh"
-                    data-id="{{ $dataMessage->id }}" style="cursor: pointer">
+                    data-id="{{ $dataMessage->id }}">
                     <div class="ms-2 me-auto">
                         {{-- Container info --}}
                         <div class="d-flex align-items-center gap-3">
@@ -38,9 +39,10 @@
                                 </svg>
                             </span>
                             {{-- /Icon User --}}
+
                             {{-- Info --}}
-                            <div>
-                                <p class="name-message">{{ $dataMessage->name }}</p>
+                            <div class="d-flex flex-column">
+                                <p class="">{{ $dataMessage->name }}</p>
                                 @php
                                     $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
                                         'Europe/Rome',
@@ -48,12 +50,13 @@
                                     $dateReceived = $dateTime->format('d/m');
                                     $hourReceived = $dateTime->format('H:i');
                                 @endphp
-                                <small class="text-muted"> Ricevuto il:
+                                <small class="ms_date text-muted"> Ricevuto il:
                                     {{ $dateReceived }} alle
                                     {{ $hourReceived }}
                                 </small>
                             </div>
                             {{-- /Info --}}
+
                         </div>
                         {{-- /Container Info --}}
                     </div>
@@ -63,10 +66,6 @@
                         class="{{ $dataMessage->is_read ? '' : 'notification-dot' }} dot-color">
                     </span>
                     {{-- Notification Dot --}}
-            
-                    {{-- Bottone cestino --}}
-                    
-                    {{-- /Bottone cestino --}}
                 </li>
                 {{-- /Container info/alert --}}
             
