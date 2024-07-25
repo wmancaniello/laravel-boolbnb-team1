@@ -5,12 +5,19 @@
 @import "partials/header";
 @import "partials/sidebar";
 @import "partials/dashboard";
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Libre+Barcode+128&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Tangerine:wght@400;700&display=swap');
 
 
 :root {
     --bg-color: #F8F2EB;
     --primary-color: #705D3F;
 
+}
+
+.navbar-brand{
+    img {
+        max-height: 30px;
+    }
 }
 
 .h7vh {
