@@ -3,30 +3,35 @@
 @section('content')
     <div class="container">
 
-        <div class="d-flex mt-5 pt-3 justify-content-between flex-md-row">
-            {{-- Pulsanti Azione --}}
-            <div class="d-flex flex-column flex-md-row w-md-auto">
+        <div class="d-flex mt-5 pt-3 justify-content-between mb-3">
+            <div>
                 {{-- Pulsante Indietro --}}
-                <a type="button" class="btn ms_brown_btn mb-2 mb-md-0 me-5" href="{{ route('admin.flats.index') }}">
-                    <i class="fa-solid fa-arrow-left"></i> Torna indietro
+                <a type="button" class="btn ms_brown_btn mb-2" href="{{ route('admin.flats.index') }}">
+                    <i class="fa-solid fa-arrow-left"></i> 
+                    <span class="d-none d-md-inline">Torna indietro</span>
                 </a>
+            </div>
+            {{-- Pulsanti Azione --}}
+            <div>
 
                 {{-- Sponsor --}}
-                <button type="button" class="btn ms_brown_btn2 me-2 ms-md-5 mb-2 mb-md-0" onclick="showSidebar()"
-                    id="sponsor-btn">
-                    <i class="fa-solid fa-plane"></i> Sponsor
+                <button type="button" class="btn ms_brown_btn2 me-2" onclick="showSidebar()" id="sponsor-btn">
+                    <i class="fa-solid fa-dollar-sign"></i> 
+                    <span class="d-none d-md-inline">Sponsor</span>
                 </button>
 
                 {{-- Modifica --}}
-                <a type="button" class="btn ms_brown_btn2 me-2 mb-2 mb-md-0"
+                <a type="button" class="btn ms_brown_btn2 me-2"
                     href="{{ route('admin.flats.edit', ['flat' => $flat->slug]) }}">
-                    <i class="fa-solid fa-pencil"></i> Modifica
+                    <i class="fa-solid fa-pencil"></i> 
+                    <span class="d-none d-md-inline">Modifica</span> 
                 </a>
 
                 {{-- Cancella --}}
                 <button type="button" class="btn ms_brown_btn2" data-bs-toggle="modal"
                     data-bs-target="#deleteModal{{ $flat->slug }}">
-                    <i class="fa-solid fa-trash"></i> Cancella
+                    <i class="fa-solid fa-trash"></i>
+                    <span class="d-none d-md-inline">Cancella</span> 
                 </button>
 
                 {{-- Modale conferma cancellazione --}}
@@ -64,7 +69,8 @@
                             @foreach ($flat->sponsors as $sponsor)
                                 <div class="sponsored-badge">
                                     <h5 class="fw-bold">ABBONAMENTO ATTIVO</h5>
-                                    <div class="fs-6 fw-bold">Scade il: <span>{{ date('d/m/y', strtotime($sponsor->pivot->end_date)) }}</span></div> 
+                                    <div class="fs-6 fw-bold">Scade il:
+                                        <span>{{ date('d/m/y', strtotime($sponsor->pivot->end_date)) }}</span></div>
                                 </div>
                             @endforeach
                         @endif
