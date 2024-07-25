@@ -23,7 +23,7 @@
 
         <header class="sticky-top">
 
-            <nav class="navbar navbar-expand-lg ms_headernav sticky-top h7vh">
+            <nav class="navbar navbar-expand-lg ms_headernav sticky-top">
                 <div class="container-fluid">
                     <router-link class="navbar-brand font" to="/">BoolBnB</router-link>
                     <button class="navbar-toggler font border" type="button" data-bs-toggle="collapse"
@@ -86,8 +86,8 @@
 
 
         </header>
-        <div class="container-fluid h90vh">
-            <div class="row h-100">
+        <div class="container-fluid">
+            <div class="row">
 
                 <main class="p-0">
                     @yield('content')
@@ -96,7 +96,7 @@
         </div>
     </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
 </body>
 

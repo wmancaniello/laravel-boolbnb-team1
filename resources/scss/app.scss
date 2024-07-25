@@ -103,8 +103,8 @@ a {
 }
 
 .ms_bg_primary {
-    background-color: #F8F2EB;
-    border-bottom: 1px solid #d0cbc4;
+    background-color: var(--bg-color);
+    
 }
 
 .ms_bg_secondary {

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <section class="h90vh d-flex">
-        <div class="col-4 h90vh overflow-scroll ms_overflow">
+    <section class="d-flex">
+        <div class="col-4  overflow-scroll ms_overflow">
 
             {{-- Lista messaggi ricevuti --}}
             <ul class="list-group">
