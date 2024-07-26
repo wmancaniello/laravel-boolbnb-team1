@@ -20,14 +20,14 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body class="ms_bckg">
     <div id="app">
 
 
         <nav class="navbar navbar-expand-md shadow-sm ms_nav">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center ms_boolbnb" href="{{ url('/') }}">
-                    BOOLBNB
+                    <img src="/logo-white.png" alt="">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -42,11 +42,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                                <a class="nav-link text-white ms_hover" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                    <a class="nav-link text-white ms_hover" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
@@ -75,7 +75,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main>
             @yield('content')
         </main>
     </div>
