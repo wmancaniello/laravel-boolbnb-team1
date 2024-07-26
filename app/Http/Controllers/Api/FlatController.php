@@ -11,11 +11,16 @@ use Carbon\Carbon;
 class FlatController extends Controller
 {
     public function index(Request $request)
-    {
-        $serviceIds = $request->services;
+    {   
+        // dd($request);
+        $serviceIds = $request->services ? json_decode($request->services, true) : [];
         $minBeds = $request->beds;
         $minRooms = $request->rooms;
+        $minRad = $request->radius ? $request->radius : 20;
+        
+        // dd($serviceIds);
 
+        $per_page = 99;
         $flats = Flat::query()
             ->with('sponsors')
             ->visibleFlats()
@@ -26,21 +31,27 @@ class FlatController extends Controller
             })
             ->orderBy('beds', 'asc')
             ->orderBy('rooms', 'asc')
-            ->get();
+            ->paginate($per_page)
+            ->appends([
+                'beds' => $minBeds,
+                'rooms' => $minRooms,
+                'services' => json_encode($serviceIds),
+                'per_page' => $per_page
+            ]);;
+
 
         $currentDate = Carbon::now('Europe/Rome');
+
         
 
-        $updatedFlats = $flats->map(function ($flat) use ($currentDate) {
+
+        $flats->getCollection()->transform(function ($flat) use ($currentDate) {
             $flatEndDate = isset($flat->sponsors[0]->pivot->end_date) ? Carbon::parse($flat->sponsors[0]->pivot->end_date, 'Europe/Rome') : Carbon::parse('1900-01-01', 'Europe/Rome');
-            
             $flat->sponsored = $currentDate->lt($flatEndDate);
             return $flat;
         });
-
         
-
-        return response()->json($updatedFlats);
+        return response()->json($flats);
     }
 
     public function show($slug)
