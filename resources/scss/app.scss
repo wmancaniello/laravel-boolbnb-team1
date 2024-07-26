@@ -162,11 +162,12 @@ a {
 }
 
 .ms_nav {
-    background-color: #F8F2EB;
+    background-color: var(--primary-color);
 }
 
 .ms_form_header {
-    background-color: #F8F2EB;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .ms_brown_btn {
@@ -313,4 +314,8 @@ a {
     max-width: 100%;
     max-height: 350px;
     object-fit: cover;
+}
+
+.ms_bckg {
+    background-color: var(--bg-color);
 }
