@@ -190,7 +190,7 @@
 
                                 <label class="w-100" for="main_img" class="mb-1">Inserisci foto principale: *</label>
                                 <input type="file"
-                                    class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
+                                    class="form-control mb-3 ms_file  main_img @error('main_img') is-invalid @enderror"
                                     id="main_img" placeholder="inserici immagine" name="main_img"
                                     accept=".jpg,.webp,.png,.svg,.bmp,.heic" value="{{ old('main_img') }}">
 
@@ -199,8 +199,11 @@
                                         {{ $errors->get('main_img')[0] }}
                                     </div>
                                 @enderror
+                                <div class="preview-image position-relative d-inline-block">
 
-                                <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3" src="">
+                                </div>
+                                    
+                                
                             </div>
                         </div>
 
