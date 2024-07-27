@@ -31,12 +31,12 @@ class StoreFlatRequest extends FormRequest
             'address' => 'required|min:5',
             'latitude' => 'required|numeric|min:1',
             'longitude' => 'required|numeric|min:1',
-            'main_img' => 'required|image',
+            'main_img' => 'required|image|max:5120',
             'visible' => 'required|in:1,0',
             'description' => 'required|min:20',
             'services' => 'nullable|exists:services,id',
             'photos' => 'nullable|array',
-            'photos.*' => 'image'
+            'photos.*' => 'image|max:5120'
 
 
         ];
@@ -88,6 +88,7 @@ class StoreFlatRequest extends FormRequest
     
             'main_img.required' => "L'immagine principale è obbligatoria.",
             'main_img.image' => "L'immagine principale deve essere un'immagine.",
+            'main_img.max' => "L'immagine non può superare i 5MB",
     
             'visible.required' => 'La visibilità è obbligatoria.',
             'visible.in' => 'La visibilità deve essere "si" o "no".',
@@ -99,6 +100,7 @@ class StoreFlatRequest extends FormRequest
             'services.exists' => 'Il servizio selezionato non è valido.',
 
             'photos.image' => "Le foto della galleria devono essere un'immagine.",
+            'photos.max' => "I file selezionati superano la dimensione massima di 5MB a file"
         ];
     }
     

@@ -328,7 +328,7 @@ export function validationFormFlats(formFlatsElem) {
 
         if(descriptionElem) {
             const resp = descriptionElem.value.trim().length >= 20;
-            console.log(descriptionElem.value);
+            
 
             if(!resp) {
                 descriptionElem.classList.add('is-invalid');
@@ -376,11 +376,16 @@ export function validationFormFlats(formFlatsElem) {
                 boxmainImg.classList.remove('ms_border');
                 labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
                 error = true;
+            } else if(mainImgElem[0].size > 5 * 1024 * 1024) {
+                boxmainImg.classList.add('ms_is-invalid');
+                boxmainImg.classList.remove('ms_border');
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato deve esse più piccolo di 5MB";
+                error = true;
             } else {
                 boxmainImg.classList.remove('ms_is-invalid');
                 boxmainImg.classList.add('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
-            
+                labelMainImg.innerHTML = "Inserisci foto principale: *";
+                console.log(mainImgElem[0].size);
             }
 
         } else {
@@ -399,10 +404,15 @@ export function validationFormFlats(formFlatsElem) {
                 boxmainImg.classList.remove('ms_border');
                 labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
                 error = true;
-            } else {
+            } else if(mainImgEditElem[0].size > 5 * 1024 * 1024) {
+                boxmainImg.classList.add('ms_is-invalid');
+                boxmainImg.classList.remove('ms_border');
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato deve esse più piccolo di 5MB";
+                error = true;
+            }else {
                 boxmainImg.classList.remove('ms_is-invalid');
                 boxmainImg.classList.add('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+                labelMainImg.innerHTML = "Inserisci foto principale: *"
             
             }
 
@@ -418,13 +428,20 @@ export function validationFormFlats(formFlatsElem) {
                     if(!photosElem[index].type.includes('image')) {
                         boxphotosImg.classList.add('ms_is-invalid');
                         boxphotosImg.classList.remove('ms_border');
-                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: * <br> I file selezionati non sono immagini";
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: <br> I file selezionati non sono immagini";
+                        error = true;
+                        break;
+                    } else if(photosElem[index].size >  5 * 1024 * 1024) {
+
+                        boxphotosImg.classList.add('ms_is-invalid');
+                        boxphotosImg.classList.remove('ms_border');
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: <br> I file selezionati superano la dimensione massima di 5MB a file";
                         error = true;
                         break;
                     } else {
                         boxphotosImg.classList.remove('ms_is-invalid');
                         boxphotosImg.classList.add('ms_border');
-                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: *";
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive:";
                     
                     }
                     
