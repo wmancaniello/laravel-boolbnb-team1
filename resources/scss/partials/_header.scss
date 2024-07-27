@@ -55,6 +55,10 @@
     letter-spacing: 1px;
 }
 
+#navbarDropdown {
+    color: var(--bg-color);
+}
+
 @media screen and (max-width: 992px) {
     .nav-link {
 

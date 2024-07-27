@@ -3,13 +3,17 @@
     label {
         cursor: pointer;
         width: 100%;
-        border: 2px solid #dee2e6;
+        border: 2px solid var(--primary-color);
         border-radius: 5px;
         user-select: none;
         padding: 5px;
+        transition: all 0.5s;
+        color: var(--primary-color);
 
         img {
             max-width: 20px;
+            filter: invert(31%) sepia(6%) saturate(3658%) hue-rotate(358deg) brightness(100%) contrast(71%);
+            
         }
     }
 }
@@ -21,11 +25,12 @@
 }
 
 .check-service[type="checkbox"]:checked+label {
-    color: #705D3F;
-    border: 2px solid #705D3F;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: 2px solid var(--primary-color);
 
     img {
-        filter: invert(24%) sepia(25%) saturate(356%) hue-rotate(7deg) brightness(89%) contrast(85%);
+        filter: invert(99%) sepia(33%) saturate(1011%) hue-rotate(295deg) brightness(105%) contrast(94%);
     }
 
 }

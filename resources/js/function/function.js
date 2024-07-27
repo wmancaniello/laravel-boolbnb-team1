@@ -9,17 +9,39 @@ export function mostraAnteprima(event) {
         reader.onload = function (e) {
             // estrapola il codice codificato del file
             const immagine = e.target.result;
-            const imageElem = document.getElementById('anteprima-immagine');
+            const previewElem = document.querySelector('.preview-image');
+            previewElem.innerHTML = "";
+            const imageElem = document.createElement('img');
+            const spanElem = document.createElement('span');
+            spanElem.classList.add('x-image');
+            imageElem.id = 'anteprima-immagine';
+            // const imageElem = document.getElementById('anteprima-immagine');
             imageElem.src = immagine;
-            imageElem.classList.add('mb-3');
+            imageElem.classList.add('image-preview');
+            previewElem.appendChild(spanElem);
+            previewElem.appendChild(imageElem);
+            // previewElem.classList.add('x-image');
+            
+            document.querySelector('.x-image').addEventListener('click', resetAnteprima);
         };
         // converte il file in una stringa url
         reader.readAsDataURL(file);
     } else {
-        const imageElem = document.getElementById('anteprima-immagine');
-        imageElem.src = "";
-        imageElem.classList.remove('mb-3');
+        const previewElem = document.querySelector('.preview-image');
+        previewElem.innerHTML = "";
     }
+}
+
+function resetAnteprima() {
+    const inputElem = document.querySelector('.main_img');
+    const imageElem = document.getElementById('anteprima-immagine');
+    const spanElem = document.querySelector('.x-image');
+    inputElem.value = "";
+    imageElem.src = "";
+    imageElem.style.display = 'none';
+    imageElem.classList.remove('image-preview');
+    imageElem.classList.remove('mb-3');
+    spanElem.classList.remove('x-image');
 }
 
 export function mostraToast() {
@@ -46,8 +68,19 @@ export function galleryAnteprima(event) {
         if (photo.type.includes('image')) {
 
             const imgElem = document.createElement('img');
-            imgElem.classList.add('gallery-image', 'w-25', 'm-2');
-            galleryPreviewElem.appendChild(imgElem);
+            const previewElem = document.createElement('div');
+            const spanElem = document.createElement('span');
+            spanElem.classList.add('x-image');
+            previewElem.classList.add('preview-image', 'position-relative', 'd-inline-block');
+            imgElem.classList.add('gallery-image', 'm-2', 'image-preview', 'rounded');
+            galleryPreviewElem.appendChild(previewElem);
+            previewElem.appendChild(imgElem);
+            previewElem.appendChild(spanElem);
+
+            spanElem.addEventListener('click', function () {
+                galleryPreviewElem.removeChild(previewElem);
+                resetInputFile(event.target, photo.name);
+            });
         }
     });
 
@@ -80,6 +113,19 @@ export function galleryAnteprima(event) {
 
         i++;
     });
+}
+
+function resetInputFile(inputElem, fileName) {
+    const dataTransfer = new DataTransfer();
+    const files = inputElem.files;
+    console.log(files);
+    for (let i = 0; i < files.length; i++) {
+        if (files[i].name !== fileName) {
+            dataTransfer.items.add(files[i]);
+        }
+    }
+
+    inputElem.files = dataTransfer.files;
 }
 
 
@@ -282,7 +328,7 @@ export function validationFormFlats(formFlatsElem) {
 
         if(descriptionElem) {
             const resp = descriptionElem.value.trim().length >= 20;
-            console.log(descriptionElem.value);
+            
 
             if(!resp) {
                 descriptionElem.classList.add('is-invalid');
@@ -330,11 +376,16 @@ export function validationFormFlats(formFlatsElem) {
                 boxmainImg.classList.remove('ms_border');
                 labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
                 error = true;
+            } else if(mainImgElem[0].size > 5 * 1024 * 1024) {
+                boxmainImg.classList.add('ms_is-invalid');
+                boxmainImg.classList.remove('ms_border');
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato deve esse più piccolo di 5MB";
+                error = true;
             } else {
                 boxmainImg.classList.remove('ms_is-invalid');
                 boxmainImg.classList.add('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
-            
+                labelMainImg.innerHTML = "Inserisci foto principale: *";
+                console.log(mainImgElem[0].size);
             }
 
         } else {
@@ -353,10 +404,15 @@ export function validationFormFlats(formFlatsElem) {
                 boxmainImg.classList.remove('ms_border');
                 labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine";
                 error = true;
-            } else {
+            } else if(mainImgEditElem[0].size > 5 * 1024 * 1024) {
+                boxmainImg.classList.add('ms_is-invalid');
+                boxmainImg.classList.remove('ms_border');
+                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato deve esse più piccolo di 5MB";
+                error = true;
+            }else {
                 boxmainImg.classList.remove('ms_is-invalid');
                 boxmainImg.classList.add('ms_border');
-                labelMainImg.innerHTML = "Inserisci foto principale: * <br> Il file selezionato non è un'immagine"
+                labelMainImg.innerHTML = "Inserisci foto principale: *"
             
             }
 
@@ -372,13 +428,20 @@ export function validationFormFlats(formFlatsElem) {
                     if(!photosElem[index].type.includes('image')) {
                         boxphotosImg.classList.add('ms_is-invalid');
                         boxphotosImg.classList.remove('ms_border');
-                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: * <br> I file selezionati non sono immagini";
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: <br> I file selezionati non sono immagini";
+                        error = true;
+                        break;
+                    } else if(photosElem[index].size >  5 * 1024 * 1024) {
+
+                        boxphotosImg.classList.add('ms_is-invalid');
+                        boxphotosImg.classList.remove('ms_border');
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: <br> I file selezionati superano la dimensione massima di 5MB a file";
                         error = true;
                         break;
                     } else {
                         boxphotosImg.classList.remove('ms_is-invalid');
                         boxphotosImg.classList.add('ms_border');
-                        labelPhotos.innerHTML = "Inserisci foto aggiuntive: *";
+                        labelPhotos.innerHTML = "Inserisci foto aggiuntive:";
                     
                     }
                     

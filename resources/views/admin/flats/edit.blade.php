@@ -182,7 +182,7 @@
                         <div class="col-12 mb-3">
                             <div class="ms_border" id="box-main-img">
                                 <label for="main_img" class="mb-1">Inserisci foto principale: *</label>
-                                <input type="file" class="form-control mb-3 ms_file @error('main_img') is-invalid @enderror"
+                                <input type="file" class="form-control mb-3 ms_file main_img @error('main_img') is-invalid @enderror"
                                     id="main_img-edit" placeholder="inserici immagine" name="main_img"
                                     value="{{ old('main_img', $flat->main_img) }}" accept=".jpg,.webp,.png,.svg,.bmp,.heic">
     
@@ -191,13 +191,14 @@
                                         {{ $errors->get('main_img')[0] }}
                                     </div>
                                 @enderror
-    
-                                @if ($flat->main_img)
-                                    <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3"
-                                        src="{{ asset('storage/' . $flat->main_img) }}">
-                                @else
-                                    <img id="anteprima-immagine" class="img-fluid d-block w-25 m-auto mb-3" src="">
-                                @endif
+                                <div class="preview-image position-relative d-inline-block">
+
+                                    @if ($flat->main_img)
+                                        <img id="" class="image-preview"
+                                            src="{{ asset('storage/' . $flat->main_img) }}">
+                                    @endif
+                                </div>
+
                             </div>
                         </div>
 
@@ -217,7 +218,7 @@
     
                                 <div id="gallery-preview" class="mb-3">
                                     @foreach ($photos as $photo)
-                                        <img src="{{asset('storage/'.$photo->image)}}" alt="" class="gallery-image w-25 m-2">
+                                        <img src="{{asset('storage/'.$photo->image)}}" alt="" class="image-preview m-1">
                                     @endforeach
                                 </div>
                             </div>
