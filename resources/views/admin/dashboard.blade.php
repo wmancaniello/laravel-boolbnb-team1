@@ -85,7 +85,7 @@
         
         @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
             <div class="row mt-3 justify-content-center align-items-center">
-                Grafico i tuoi appartamenti : <br>
+                <h5 class="text-center">Vediamo l'andamento dei tuoi appartamenti : <br></h5>
                 
                 @include('admin.partials.graph_flats')
             </div>

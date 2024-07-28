@@ -1,4 +1,4 @@
-<div class="col-12 d-flex justify-content-center align-items-center">
+<div class="col-8 d-flex justify-content-center align-items-center">
 <canvas id="flats_chart"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js" style="max-width: 40%"></script>
@@ -19,14 +19,16 @@
                 {
                     label: "# di Messaggi per Appartamenti",
                     data: values,
-                    borderWidth: 2,
-                    borderColor: 'rgba(255,0,0,0.3)',
-                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    borderWidth: 3,
+                    borderRadius: 5,
+                    borderColor: 'rgba(120,90,63,0.6)',
+                    backgroundColor: 'rgba(112, 90, 60, 0.2)',
                     fill: true
                 },
             ],
         },
         options: {
+            responsive: true,
             scales: {
                 y: {
                     beginAtZero: true,
