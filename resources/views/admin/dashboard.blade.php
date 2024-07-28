@@ -81,6 +81,14 @@
                 </form>
             </div>
         </div>
+        {{-- /CARD --}}
+        
+        @if (count(Flat::where('user_id', Auth::id())->get()) >= 1)
+            <div class="row mt-3 justify-content-center align-items-center">
+                Grafico i tuoi appartamenti : <br>
+                
+                @include('admin.partials.graph_flats')
+            </div>
+        @endif
     </div>
-    {{-- /CARD --}}
 @endsection
