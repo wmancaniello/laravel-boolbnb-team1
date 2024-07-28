@@ -16,13 +16,15 @@ class MonthlyMessagesRandomSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $now = Carbon::now();
+        $lastYear = Carbon::now()->subYear();
 
-        // n messaggi
+        // Numero di messaggi da creare
         $numberOfMessages = 100;
 
         for ($i = 0; $i < $numberOfMessages; $i++) {
-            // Genera una data casuale all'interno dell'anno attuale
-            $randomDate = $faker->dateTimeBetween('-1 year', 'now');
+            // Genera una data casuale tra l'anno scorso e oggi
+            $randomDate = $faker->dateTimeBetween($lastYear, $now);
 
             // Trova un ID di appartamento casuale
             $flatId = DB::table('flats')->inRandomOrder()->value('id');
@@ -33,7 +35,7 @@ class MonthlyMessagesRandomSeeder extends Seeder
                 'name' => $faker->name,
                 'text' => $faker->text,
                 'created_at' => $randomDate,
-                'updated_at' => Carbon::now(),
+                'updated_at' => $now,
             ]);
         }
     }

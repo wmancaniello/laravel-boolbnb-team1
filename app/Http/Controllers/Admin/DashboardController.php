@@ -15,24 +15,43 @@ class DashboardController extends Controller
     {
         // Id proprietario di casa
         $ownerId = auth()->user()->id;
-        // Messaggi contati e filtrati per mese, dove vengono selezionati quelli ricevuti dal proprietario corrispondente
-        $messages = Message::select(DB::raw('COUNT(*) as count'), DB::raw('MONTH(created_at) as month'))
-            ->whereIn('flat_id', function ($query) use ($ownerId) {
+
+        // Mese attuale
+        $currentMonth = Carbon::now()->endOfMonth();
+        $monthNum = $currentMonth->month;
+
+        // Mese attuale dell'anno passato
+        $lastYearcurMonth = Carbon::now()->subYear()->month($monthNum)->startOfMonth();
+
+        // Messaggi contati e filtrati per mese e anno
+        $messages = Message::whereIn('flat_id', function ($query) use ($ownerId) {
                 $query->select('id')
                     ->from('flats')
                     ->where('user_id', $ownerId);
             })
-            ->groupBy('month')
+            ->whereBetween('created_at', [$lastYearcurMonth, $currentMonth])
             ->get()
-            ->keyBy('month');
+            ->groupBy(function($date) {
+                return Carbon::parse($date->created_at)->format('Y-m');
+            });
 
         $labels = [];
         $values = [];
-        // Per ogni mese, labels e values
-        for ($month = 1; $month <= 12; $month++) {
-            $labels[] = Carbon::create()->month($month)->format('F');
-            $values[] = $messages->get($month)->count ?? 0;
+        $messageData = [];
+
+        // Creare i dati dei messaggi raggruppati per anno e mese
+        foreach ($messages as $key => $groupedMessages) {
+            $messageData[$key] = $groupedMessages->count();
         }
+
+        // Iterazione sui mesi dall'anno scorso fino al mese attuale
+        while ($lastYearcurMonth <= $currentMonth) {
+            $labels[] = $lastYearcurMonth->locale('it')->translatedFormat('F Y');
+            $key = $lastYearcurMonth->format('Y-m');
+            $values[] = $messageData[$key] ?? 0;
+            $lastYearcurMonth->addMonth();
+        }
+
         return view('admin.dashboard', compact('labels', 'values'));
     }
 }
