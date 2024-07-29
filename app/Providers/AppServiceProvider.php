@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Braintree\Gateway;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Carbon::setLocale('it');
         // Iniettiamo il Braintree, usando Singleton, permette di creare da una classe una sola Istanza, e il figlio nato può accedere a tutto
         
         /* $this->app->singleton(Gateway::class, function($app){

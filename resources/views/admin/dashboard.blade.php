@@ -81,6 +81,27 @@
                 </form>
             </div>
         </div>
+        {{-- /CARD --}}
+
+        @php
+            use App\Models\Message;
+            use Carbon\Carbon;
+            // Id degli appartamenti dell'utente loggato
+            $flatIds = Flat::where('user_id', Auth::id())->pluck('id');
+
+            // I messaggi solo dell'ultimo anno
+            $hasMessages = Message::whereIn('flat_id', $flatIds)
+                ->where('created_at', '>=', Carbon::now()->subYear())
+                ->exists();
+        @endphp
+
+        @if ($flatIds->count() > 0)
+            <div class="row mt-3 justify-content-center align-items-center">
+                @if ($hasMessages)
+                    <h5 class="text-center">Vediamo l'andamento dei tuoi appartamenti : <br></h5>
+                    @include('admin.partials.graph_flats')
+                @endif
+            </div>
+        @endif
     </div>
-    {{-- /CARD --}}
 @endsection
