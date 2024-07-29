@@ -455,6 +455,312 @@ class FlatsTableSeeder extends Seeder
                 "description" => "Spaziosa casa indipendente, ideale per vacanze in famiglia. A pochi minuti dalla spiaggia e dai ristoranti tipici di Bari.",
                 "user_id" => rand(1, 5)
             ],
+
+            // SEEDER AGGIUNTIVO
+
+
+            [
+                "title" => "Moncalieri Cozy Flat",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 55,
+                "address" => "Via Santa Maria, 5, 10024 Moncalieri TO",
+                "latitude" => 45.0094,
+                "longitude" => 7.7163,
+                "main_img" => "flats_img/thumbnail_MoncalieriCozyFlat.jpg",
+                "visible" => true,
+                "description" => "Appartamento accogliente a Moncalieri, vicino al castello e ai trasporti pubblici.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Settimo Torinese Modern Studio",
+                "max_guests" => 2,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 40,
+                "address" => "Via Italia, 12, 10036 Settimo Torinese TO",
+                "latitude" => 45.1814,
+                "longitude" => 7.6897,
+                "main_img" => "flats_img/thumbnail_SettimoTorineseStudio.jpg",
+                "visible" => true,
+                "description" => "Studio moderno e luminoso a Settimo Torinese, comodo per visitare Torino.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Nichelino Family Apartment",
+                "max_guests" => 6,
+                "rooms" => 3,
+                "beds" => 3,
+                "bathrooms" => 2,
+                "meters_square" => 85,
+                "address" => "Corso Torino, 30, 10042 Nichelino TO",
+                "latitude" => 44.9961,
+                "longitude" => 7.7126,
+                "main_img" => "flats_img/thumbnail_NichelinoFamilyApartment.jpg",
+                "visible" => true,
+                "description" => "Ampio appartamento ideale per famiglie, situato a Nichelino.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Carmagnola Elegant Loft",
+                "max_guests" => 3,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 50,
+                "address" => "Piazza S. Giovanni, 2, 10022 Carmagnola TO",
+                "latitude" => 44.9452,
+                "longitude" => 7.6812,
+                "main_img" => "flats_img/thumbnail_CarmagnolaLoft.jpg",
+                "visible" => true,
+                "description" => "Loft elegante e raffinato a Carmagnola, con ottimi collegamenti con Torino.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Torino Suburb Retreat",
+                "max_guests" => 5,
+                "rooms" => 3,
+                "beds" => 3,
+                "bathrooms" => 1,
+                "meters_square" => 70,
+                "address" => "Via Giardini, 15, 10144 Torino TO",
+                "latitude" => 45.0703,
+                "longitude" => 7.6869,
+                "main_img" => "flats_img/thumbnail_TorinoSuburbRetreat.jpg",
+                "visible" => true,
+                "description" => "Appartamento tranquillo nei dintorni di Torino, ideale per famiglie.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Frascati Countryside Flat",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 60,
+                "address" => "Via del Tempio di Diana, 8, 00044 Frascati RM",
+                "latitude" => 41.7893,
+                "longitude" => 12.6863,
+                "main_img" => "flats_img/thumbnail_FrascatiFlat.jpg",
+                "visible" => true,
+                "description" => "Appartamento immerso nella campagna romana, con facile accesso a Roma.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Tivoli Garden Apartment",
+                "max_guests" => 5,
+                "rooms" => 3,
+                "beds" => 3,
+                "bathrooms" => 2,
+                "meters_square" => 75,
+                "address" => "Via della Pace, 10, 00019 Tivoli RM",
+                "latitude" => 41.9578,
+                "longitude" => 12.7832,
+                "main_img" => "flats_img/thumbnail_TivoliGardenApartment.jpg",
+                "visible" => true,
+                "description" => "Spazioso appartamento con giardino a Tivoli, a pochi passi dalle ville storiche.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Ostia Lido Beach Flat",
+                "max_guests" => 3,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 45,
+                "address" => "Via dei Coralli, 5, 00122 Roma RM",
+                "latitude" => 41.7426,
+                "longitude" => 12.2878,
+                "main_img" => "flats_img/thumbnail_OstiaLidoBeachFlat.jpg",
+                "visible" => true,
+                "description" => "Appartamento vicino alla spiaggia di Ostia Lido, ideale per una vacanza al mare.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Guidonia Modern Loft",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 65,
+                "address" => "Via della Storia, 3, 00012 Guidonia RM",
+                "latitude" => 41.9895,
+                "longitude" => 12.7974,
+                "main_img" => "flats_img/thumbnail_GuidoniaLoft.jpg",
+                "visible" => true,
+                "description" => "Loft moderno e luminoso a Guidonia, comodo per raggiungere Roma.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Rieti Historic Studio",
+                "max_guests" => 2,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 35,
+                "address" => "Piazza Vittorio Emanuele, 4, 02100 Rieti RI",
+                "latitude" => 42.4054,
+                "longitude" => 12.8516,
+                "main_img" => "flats_img/thumbnail_RietiStudio.jpg",
+                "visible" => true,
+                "description" => "Studio storico nel centro di Rieti, ideale per esplorare la cittÃ .",
+                "user_id" => rand(1, 5)
+            ],
+
+            [
+                "title" => "Mestre Comfortable Apartment",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 60,
+                "address" => "Via Garibaldi, 12, 30171 Mestre VE",
+                "latitude" => 45.4983,
+                "longitude" => 12.2427,
+                "main_img" => "flats_img/thumbnail_MestreComfortableApartment.jpg",
+                "visible" => true,
+                "description" => "Appartamento confortevole a Mestre, ben collegato con il centro di Venezia.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Lido di Venezia Beachside Apt",
+                "max_guests" => 3,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 45,
+                "address" => "Via Dandolo, 8, 30126 Lido VE",
+                "latitude" => 45.4206,
+                "longitude" => 12.3507,
+                "main_img" => "flats_img/thumbnail_LidoBeachsideApt.jpg",
+                "visible" => true,
+                "description" => "Appartamento vicino alla spiaggia del Lido di Venezia, perfetto per una vacanza estiva.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Padova Historic Loft",
+                "max_guests" => 5,
+                "rooms" => 2,
+                "beds" => 3,
+                "bathrooms" => 1,
+                "meters_square" => 70,
+                "address" => "Piazza dei Signori, 10, 35139 Padova PD",
+                "latitude" => 45.4064,
+                "longitude" => 11.8768,
+                "main_img" => "flats_img/thumbnail_PadovaHistoricLoft.jpg",
+                "visible" => true,
+                "description" => "Loft storico nel centro di Padova, facilmente raggiungibile da Venezia.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Treviso Elegant Studio",
+                "max_guests" => 2,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 40,
+                "address" => "Via Roma, 20, 31100 Treviso TV",
+                "latitude" => 45.6661,
+                "longitude" => 12.2452,
+                "main_img" => "flats_img/thumbnail_TrevisoElegantStudio.jpg",
+                "visible" => true,
+                "description" => "Studio elegante a Treviso, una breve distanza in treno da Venezia.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Chioggia Seaside Apt",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 55,
+                "address" => "Corso del Popolo, 5, 30015 Chioggia VE",
+                "latitude" => 45.2104,
+                "longitude" => 12.2600,
+                "main_img" => "flats_img/thumbnail_ChioggiaSeasideApt.jpg",
+                "visible" => true,
+                "description" => "Appartamento sul mare a Chioggia, ideale per una vacanza rilassante.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Prato Central Studio",
+                "max_guests" => 3,
+                "rooms" => 1,
+                "beds" => 1,
+                "bathrooms" => 1,
+                "meters_square" => 45,
+                "address" => "Piazza del Duomo, 3, 59100 Prato PO",
+                "latitude" => 43.8823,
+                "longitude" => 11.1022,
+                "main_img" => "flats_img/thumbnail_PratoCentralStudio.jpg",
+                "visible" => true,
+                "description" => "Studio centrale a Prato, a breve distanza da Firenze.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Sesto Fiorentino Modern Apt",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 60,
+                "address" => "Via Guglielmo Marconi, 10, 50019 Sesto Fiorentino FI",
+                "latitude" => 43.8696,
+                "longitude" => 11.2114,
+                "main_img" => "flats_img/thumbnail_SestoFiorentinoModernApt.jpg",
+                "visible" => true,
+                "description" => "Appartamento moderno a Sesto Fiorentino, ben collegato con il centro di Firenze.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Empoli Cozy Flat",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 55,
+                "address" => "Via Roma, 25, 50053 Empoli FI",
+                "latitude" => 43.7081,
+                "longitude" => 10.9364,
+                "main_img" => "flats_img/thumbnail_EmpoliCozyFlat.jpg",
+                "visible" => true,
+                "description" => "Appartamento accogliente a Empoli, ottimo punto di partenza per visitare Firenze.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Fiesole Elegant Apartment",
+                "max_guests" => 5,
+                "rooms" => 3,
+                "beds" => 3,
+                "bathrooms" => 2,
+                "meters_square" => 80,
+                "address" => "Piazza Mino, 1, 50014 Fiesole FI",
+                "latitude" => 43.8053,
+                "longitude" => 11.2855,
+                "main_img" => "flats_img/thumbnail_FiesoleElegantApartment.jpg",
+                "visible" => true,
+                "description" => "Elegante appartamento a Fiesole, con splendida vista su Firenze.",
+                "user_id" => rand(1, 5)
+            ],
+            [
+                "title" => "Bagno a Ripoli Charming Loft",
+                "max_guests" => 4,
+                "rooms" => 2,
+                "beds" => 2,
+                "bathrooms" => 1,
+                "meters_square" => 65,
+                "address" => "Via di Ripoli, 15, 50012 Bagno a Ripoli FI",
+                "latitude" => 43.7358,
+                "longitude" => 11.3233,
+                "main_img" => "flats_img/thumbnail_BagnoARipoliLoft.jpg",
+                "visible" => true,
+                "description" => "Loft affascinante a Bagno a Ripoli, a pochi minuti di auto dal centro di Firenze.",
+                "user_id" => rand(1, 5)
+            ]
+
         ];
 
 
@@ -464,18 +770,16 @@ class FlatsTableSeeder extends Seeder
             $newFlat = new Flat();
             $newFlat->fill($flat);
             $newFlat->save();
-            
+
             $services = [];
-            for ($i=0; $i < rand(5,20) ; $i++) { 
-                $num = rand(1,20);
-                if(!in_array($num, $services)) {
+            for ($i = 0; $i < rand(5, 20); $i++) {
+                $num = rand(1, 20);
+                if (!in_array($num, $services)) {
                     $services[] = $num;
                 }
             }
-    
+
             $newFlat->services()->attach($services);
         };
-
-    
     }
 }
