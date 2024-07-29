@@ -60,4 +60,14 @@ class FlatController extends Controller
         $flat = Flat::with(['services', 'photos'])->where("slug", $slug)->first();
         return response()->json($flat);
     }
+
+    public function sponsored() {
+        $currentDate = Carbon::now('Europe/Rome');
+
+        $flats = Flat::with('sponsors')->whereHas('sponsors', function ($query) use ($currentDate){
+            $query->where('end_date', '>=', $currentDate);
+        })->get();
+
+        return response()->json($flats);
+    }
 }
