@@ -10,25 +10,27 @@
 
 ### INTRODUZIONE:
 
-BoolBnB è una piattaforma che permette ai proprietari di appartamenti di registrarsi, inserire le informazioni delle proprietà e sponsorizzarle per far si che vengano evidenziate nella ricerca e nella HomePage. Gli utenti interessati possono visualizzare le varie strutture, fare ricerche filtrate in base ai loro interessi e conttattare i proprietari per maggiori informazioni.
+BoolBnB è una piattaforma che permette ai proprietari di appartamenti di registrarsi, inserire le informazioni delle proprietà e sponsorizzarle per far si che vengano evidenziate nella ricerca e nella HomePage. Gli utenti interessati possono visualizzare le varie strutture, fare ricerche filtrate in base ai loro interessi e contattare i proprietari per maggiori informazioni.
 
 ### REQUISITI:
 
--	Framework: Vue.js 3
--	CSS Framework: Bootstrap 5
--	Bundler: Vite
+-	PHP 7.4 o superiore
+-	Laravel 8 o superiore
+-	MySQL 5.7 o superiore
 
 ### SERVIZI ESTERNI UTILIZZATI:
 
--	TomTom API: Utilizzata per ottenere latitudine e longitudine a partire da un indirizzo e creazione della mappa.
+-	TomTom API: Utilizzata per ottenere latitudine e longitudine a partire da un indirizzo.
+-	Braintree Payments: Utilizzato per la gestione dei pagamenti.
 
 ### FUNZIONALITA’:
+-	Registrazione e autenticazione dei proprietari: I proprietari possono registrarsi, autenticarsi e gestire i propri profili.
+-	Gestione degli appartamenti: I proprietari possono aggiungere, modificare e rimuovere appartamenti.
+-	Ricerca degli appartamenti: Gli utenti possono cercare appartamenti e applicare filtri di ricerca.
+-	Messaggistica: Gli utenti possono inviare messaggi ai proprietari per richiedere informazioni.
+-	Sponsorizzazione degli appartamenti: I proprietari possono sponsorizzare i propri appartamenti per aumentarne la visibilità.
+-	Statistiche: I proprietari possono visualizzare le statistiche relative ai messaggi ricevuti per i propri appartamenti.
 
--	Homepage: Offre la possibilità di ricercare gli appartamenti e di accedere velocemente alle strutture disponibili nelle città partner in evidenza. Possibilità di accedere o registrarsi nella piattaforma.
--	Pagina di Ricerca Avanzata: Permette di visualizzare i risultati di ricerca, anche attraverso l’applicazione di filtri in base alle esigenze dell’utente.
--	Pagina Dettaglio Appartamento: Permette di visualizzare tutti i dettagli disponibili per un appartamento e permette l’invio di un messaggio al proprietario per avere ulteriori informazioni.
--	Sponsorizzazione degli appartamenti: gli appartamenti sponsorizzati sono evidenziati in una sezione dedicata.
--	
 ### CONTRIBUTORS:
 
 - [sabino-olivieri](https://github.com/sabino-olivieri)
