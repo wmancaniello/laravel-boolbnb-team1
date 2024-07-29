@@ -366,19 +366,18 @@
         var form = document.getElementById('payment-form');
 
         const radios = document.querySelectorAll('input[name="sponsor_id"]');
-        const isLoading = false;
         radios.forEach(radio => {
 
             radio.addEventListener('change', (event) => {
                 const dropinElem = document.querySelector('.braintree-card')
                 const loadingElem = document.querySelector('.isLoading');
-                loadingElem.classList.remove('ms_hidden');
-                loadingElem.classList.add('my-5');
+
 
                 if (event.target.checked && !dropinElem) {
 
                     /* console.log(`Selezionato: ${event.target.value}`); */
-
+                    loadingElem.classList.remove('ms_hidden');
+                    loadingElem.classList.add('my-5');
 
                     // Recupera il token del client dal server
                     fetch('{{ route('admin.client_token') }}')
