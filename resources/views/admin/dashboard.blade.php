@@ -98,7 +98,7 @@
         @if ($flatIds->count() > 0)
             <div class="row mt-3 justify-content-center align-items-center">
                 @if ($hasMessages)
-                    <h5 class="text-center">Vediamo l'andamento dei tuoi appartamenti : <br></h5>
+                    <h5 class="text-center">L'andamento dei tuoi appartamenti : <br></h5>
                     @include('admin.partials.graph_flats')
                 @endif
             </div>

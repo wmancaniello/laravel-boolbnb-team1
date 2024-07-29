@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFlatRequest;
 use App\Http\Requests\UpdateFlatRequest;
 use App\Models\Flat;
+use App\Models\Message;
 use App\Models\Photo;
 use App\Models\Service;
 use App\Models\Sponsor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -57,8 +59,41 @@ class FlatsController extends Controller
     {
         $sponsors = Sponsor::all();
         $photos = Photo::where('id', $flat->id)->get();
+
+        // Mese attuale
+        $currentMonth = Carbon::now()->endOfMonth();
+        $monthNum = $currentMonth->month;
+
+        // Mese attuale dell'anno passato
+        $lastYearcurMonth = Carbon::now()->subYear()->month($monthNum)->startOfMonth();
+
+        // Messaggi contati e filtrati per mese e anno per l'appartamento corrente
+        $messages = Message::where('flat_id', $flat->id)
+            ->whereBetween('created_at', [$lastYearcurMonth, $currentMonth])
+            ->get()
+            ->groupBy(function ($date) {
+                return Carbon::parse($date->created_at)->format('Y-m');
+            });
+
+        $labels = [];
+        $values = [];
+        $messageData = [];
+
+        // Creare i dati dei messaggi raggruppati per anno e mese
+        foreach ($messages as $key => $groupedMessages) {
+            $messageData[$key] = $groupedMessages->count();
+        }
+
+        // Iterazione sui mesi dall'anno scorso fino al mese attuale
+        while ($lastYearcurMonth <= $currentMonth) {
+            $labels[] = $lastYearcurMonth->format('m/Y');
+            $key = $lastYearcurMonth->format('Y-m');
+            $values[] = $messageData[$key] ?? 0;
+            $lastYearcurMonth->addMonth();
+        }
+
         if ($flat->user_id === Auth::id()) {
-            return view('admin.flats.show', compact('flat', 'sponsors', 'photos'));
+            return view('admin.flats.show', compact('flat', 'sponsors', 'photos', 'labels', 'values'));
         } else {
             abort(403);
         }
