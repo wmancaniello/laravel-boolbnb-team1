@@ -20,7 +20,7 @@ class MessagesController extends Controller
         $userId = Auth::id();
         $datas = Message::whereHas('flat', function ($query) use ($userId) {
             $query->where('user_id', $userId);
-        })->get();
+        })->orderBy('created_at', 'asc')->get();
         $selectedMessage = null;
 
         if ($request->has('selected_id')) {
