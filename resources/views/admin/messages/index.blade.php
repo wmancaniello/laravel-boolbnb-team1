@@ -151,7 +151,7 @@
                         </div>
                     </header>
 
-                    <div class="h80vh img_bg text-dark p-4 d-flex flex-column">
+                    <div class="ms_90vh img_bg text-dark p-4 d-flex flex-column">
                         <div class="mb-3">
                             <h4 class="mb-3">Dettagli:</h4>
                             <p class="mb-2"><strong>Email:</strong> ${data.email}</p>
@@ -178,6 +178,9 @@
         max-height: calc(100vh - 57.13px);
     }
 
+    .ms_90vh {
+        max-height: calc(90vh - 57.13px);
+    }
     
 </style>
 @endsection
