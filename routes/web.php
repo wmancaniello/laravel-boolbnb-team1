@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\FlatsController;
 use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\SponsorController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BraintreeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 
 Route::middleware('auth')
