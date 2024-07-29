@@ -1,5 +1,5 @@
-<div class="col-8 d-flex justify-content-center align-items-center">
-    <canvas id="flats_chart" style="max-width: 75%"></canvas>
+<div class="col-12 d-flex justify-content-center align-items-center">
+    <canvas id="flats_chart" style="max-width: 80%; max-height:350px;"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -16,7 +16,7 @@
         data: {
             labels: labels,
             datasets: [{
-                label: "# di Messaggi per Appartamenti",
+                label: "# di Messaggi ricevuti",
                 data: values,
                 borderWidth: 3,
                 borderRadius: 5,
