@@ -86,7 +86,7 @@ class FlatsController extends Controller
 
         // Iterazione sui mesi dall'anno scorso fino al mese attuale
         while ($lastYearcurMonth <= $currentMonth) {
-            $labels[] = $lastYearcurMonth->locale('it')->translatedFormat('F Y');
+            $labels[] = $lastYearcurMonth->format('m/Y');
             $key = $lastYearcurMonth->format('Y-m');
             $values[] = $messageData[$key] ?? 0;
             $lastYearcurMonth->addMonth();
