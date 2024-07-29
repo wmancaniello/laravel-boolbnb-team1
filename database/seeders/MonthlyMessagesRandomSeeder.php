@@ -33,7 +33,7 @@ class MonthlyMessagesRandomSeeder extends Seeder
                 'flat_id' => $flatId,
                 'email' => $faker->email,
                 'name' => $faker->name,
-                'text' => $faker->text,
+                'text' => "Ciao sono interessato all'appartamento",
                 'created_at' => $randomDate,
                 'updated_at' => $now,
             ]);
