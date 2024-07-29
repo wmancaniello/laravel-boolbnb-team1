@@ -148,15 +148,13 @@
                 ->where('created_at', '>=', Carbon::now()->subYear())
                 ->exists();
         @endphp
-
-        @if ($flatIds->count() > 0)
+        
             <div class="row mt-3 justify-content-center align-items-center">
                 @if ($hasMessages)
                     <h5 class="text-center">Vediamo l'andamento dell'appartamento {{ $flat->title }}: <br></h5>
                     @include('admin.partials.graph_flats')
                 @endif
             </div>
-        @endif
     </div>
 
     @include('admin.partials.toast')
