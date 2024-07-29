@@ -149,9 +149,9 @@
                 ->exists();
         @endphp
         
-            <div class="row mt-3 justify-content-center align-items-center">
+            <div class="row mt-5 justify-content-center align-items-center">
                 @if ($hasMessages)
-                    <h5 class="text-center">Vediamo l'andamento dell'appartamento {{ $flat->title }}: <br></h5>
+                    <h5 class="text-center">Vediamo l'andamento dell'appartamento <u><b>{{ $flat->title }}</b></u>: <br></h5>
                     @include('admin.partials.graph_flats')
                 @endif
             </div>
