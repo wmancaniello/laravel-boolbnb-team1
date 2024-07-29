@@ -182,6 +182,7 @@ if(logFormElem){
         const emailError = emailLog.parentElement.querySelector('.invalid-feedback');
         const pswError = pswLog.parentElement.querySelector('.invalid-feedback');
 
+        const error = false;
         //reset errori
         emailError.innerText = '';
         pswError.innerText = '';
@@ -192,18 +193,28 @@ if(logFormElem){
         if(!emailLog.value.trim()){
             emailError.innerText = 'Inserisci la mail';
             emailLog.classList.add('is-invalid');
+            error = true;
+        } else {
+            emailLog.classList.remove('is-invalid');
+
         }
 
         if(!pswLog.value.trim()){
             pswError.innerText = 'Inserire la password';
             pswLog.classList.add('is-invalid');
+            error = true;
         } else if(pswLog.value.length < 8){
             pswError.innerText = 'La password deve essere di almeno 8 caratteri';
             pswLog.classList.add('is-invalid');
+            error = true;
 
+        } else {
+            pswLog.classList.remove('is-invalid');
         }
 
-        logFormElem.submit();
+        if(!error) {
+            logFormElem.submit();
+        }
 
     })
 }

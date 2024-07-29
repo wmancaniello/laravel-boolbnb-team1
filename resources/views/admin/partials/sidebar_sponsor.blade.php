@@ -16,19 +16,21 @@
                             {{-- Colonna --}}
                             <input type="radio" class="d-none" name="sponsor_id" value="{{ $sponsor->id }}"
                                 id="{{ $sponsor->id }}" onclick="selectedSponsor(this)">
-                            <div class="col-sm-12 col-md-4 justify-content-center d-flex g-2 gap-2 ms_transition-7 px-3">
+                            <div
+                                class="col-sm-12 col-md-4 justify-content-center d-flex g-2 gap-2 ms_transition-7 px-3">
                                 <label for="{{ $sponsor->id }}" class="ms_transition-7 label-sponsor">
                                     {{-- Card --}}
                                     <div class="price-table ms_transition-7">
                                         {{-- Header --}}
-                                        <div class="price-head p-2" id="head-tab-pr" data-sponsor-id="{{ $sponsor->id }}">
+                                        <div class="price-head p-2" id="head-tab-pr"
+                                            data-sponsor-id="{{ $sponsor->id }}">
                                             <p class="fs-2" id="p-title-sponsor">{{ $plans[$loop->index] }}
                                                 @if ($plans[$loop->index] === 'Basic')
-                                                <i class="fa-solid fa-gears"></i>
+                                                    <i class="fa-solid fa-gears"></i>
                                                 @elseif ($plans[$loop->index] === 'Premium')
-                                                <i class="fa-regular fa-star"></i>
+                                                    <i class="fa-regular fa-star"></i>
                                                 @else
-                                                <i class="fa-regular fa-gem"></i>
+                                                    <i class="fa-regular fa-gem"></i>
                                                 @endif
                                             </p>
                                             <p class="d-md-none"><small class="description">Sponsorizzati in Homepage ed
@@ -38,7 +40,7 @@
                                         {{-- Corpo --}}
                                         <div class="price-content p-2">
                                             <small class="mb-2"> Presenza premium in HomePage!</small><br>
-                                                    <h2>€{{ $sponsor->price }}/{{ $amountH }}h</h2>
+                                            <h2 class="p-2">€{{ $sponsor->price }}/{{ $amountH }}h</h2>
                                         </div>
                                     </div>
                                     {{-- Fine Card --}}
@@ -50,6 +52,18 @@
                 </div>
 
             </div>
+
+            <div class="isLoading w-auto text-center mx-auto my-5 ms_hidden">
+                <div class="wrapper">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="shadow"></div>
+                    <div class="shadow"></div>
+                    <div class="shadow"></div>
+                </div>
+            </div>
+
             <input type="hidden" name="amount" id="amount" value="">
             <input type="hidden" name="flat_id" value="{{ $flat->id }}">
 
@@ -66,6 +80,101 @@
 
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    .ms_hidden {
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+
+    .wrapper {
+        width: 200px;
+        height: 60px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .circle {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        left: 15%;
+        transform-origin: 50%;
+        animation: circle7124 .5s alternate infinite ease;
+    }
+
+    @keyframes circle7124 {
+        0% {
+            top: 60px;
+            height: 5px;
+            border-radius: 50px 50px 25px 25px;
+            transform: scaleX(1.7);
+        }
+
+        40% {
+            height: 20px;
+            border-radius: 50%;
+            transform: scaleX(1);
+        }
+
+        100% {
+            top: 0%;
+        }
+    }
+
+    .circle:nth-child(2) {
+        left: 45%;
+        animation-delay: .2s;
+    }
+
+    .circle:nth-child(3) {
+        left: auto;
+        right: 15%;
+        animation-delay: .3s;
+    }
+
+    .shadow {
+        width: 20px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 62px;
+        transform-origin: 50%;
+        z-index: -1;
+        left: 15%;
+        filter: blur(1px);
+        animation: shadow046 .5s alternate infinite ease;
+    }
+
+    @keyframes shadow046 {
+        0% {
+            transform: scaleX(1.5);
+        }
+
+        40% {
+            transform: scaleX(1);
+            opacity: .7;
+        }
+
+        100% {
+            transform: scaleX(.2);
+            opacity: .4;
+        }
+    }
+
+    .shadow:nth-child(4) {
+        left: 45%;
+        animation-delay: .2s
+    }
+
+    .shadow:nth-child(5) {
+        left: auto;
+        right: 15%;
+        animation-delay: .3s;
+    }
 
 
     .ms_active {
@@ -89,12 +198,14 @@
         transition: all 0.7s;
 
     }
-    input[type="radio"]:checked+div label #head-tab-pr #p-title-sponsor{
+
+    input[type="radio"]:checked+div label #head-tab-pr #p-title-sponsor {
         text-transform: uppercase;
         font-weight: 600;
         transition: 0.7s;
     }
-/* 
+
+    /*
     input[type="radio"]:checked+div label #head-tab-pr p {
         text-decoration: underline;
     } */
@@ -162,26 +273,27 @@
         color: #777;
     }
 
-    
+
 
     /* Media query per schermi piccoli (telefoni) */
     @media (max-width: 767px) {
-        #head-tab-pr small{
-            display: none;
-        }
-        .price-content small{
+        #head-tab-pr small {
             display: none;
         }
 
-        .price-content ul{
+        .price-content small {
+            display: none;
+        }
+
+        .price-content ul {
             padding: 0;
         }
 
         input[type="radio"]:checked+div label h2 {
-        font-size: 2rem;
-        color: #777;
-        font-weight: 600;
-        transition: all 0.7s;
+            font-size: 2rem;
+            color: #777;
+            font-weight: 600;
+            transition: all 0.7s;
         }
 
         input[type="radio"]:checked+div label {
@@ -254,16 +366,18 @@
         var form = document.getElementById('payment-form');
 
         const radios = document.querySelectorAll('input[name="sponsor_id"]');
-
         radios.forEach(radio => {
 
             radio.addEventListener('change', (event) => {
                 const dropinElem = document.querySelector('.braintree-card')
+                const loadingElem = document.querySelector('.isLoading');
+
 
                 if (event.target.checked && !dropinElem) {
 
                     /* console.log(`Selezionato: ${event.target.value}`); */
-
+                    loadingElem.classList.remove('ms_hidden');
+                    loadingElem.classList.add('my-5');
 
                     // Recupera il token del client dal server
                     fetch('{{ route('admin.client_token') }}')
@@ -301,6 +415,8 @@
                                     });
                                 });
                             });
+                            loadingElem.classList.add('ms_hidden');
+                            loadingElem.classList.remove('my-5');
                         })
                         .catch(() => {
                             console.error('Errore nella transazione');
