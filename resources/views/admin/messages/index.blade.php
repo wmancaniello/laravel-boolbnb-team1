@@ -42,12 +42,12 @@
 
                             {{-- Info --}}
                             <div class="d-flex flex-column">
-                                <p class="">{{ $dataMessage->name }}</p>
+                                <p class="mb-1">{{ $dataMessage->name }}</p>
                                 @php
                                     $dateTime = \Carbon\Carbon::parse($dataMessage->created_at)->setTimezone(
                                         'Europe/Rome',
                                     );
-                                    $dateReceived = $dateTime->format('d/m');
+                                    $dateReceived = $dateTime->format('d/m/y');
                                     $hourReceived = $dateTime->format('H:i');
                                 @endphp
                                 <small class="ms_date text-muted"> Ricevuto il:
@@ -78,8 +78,8 @@
             </ul>
             {{-- /Lista messaggi ricevuti --}}
         </div>
-        <div class="col-8 h90vh bg-light overflow-scroll ms_overflow" id="message-details">
-            <div class="h90vh img_bg2 d-flex justify-content-center align-items-center">
+        <div class="col-8 ms_93vh bg-light overflow-scroll ms_overflow" id="message-details">
+            <div class="h-100 img_bg2 d-flex justify-content-center align-items-center">
                 <div class="bg-dark_ms w-100 h-100 d-flex align-items-center justify-content-center">
                     <div class="text-center text-white w-75">
                         <img src="{{ asset('storage/logo.png') }}" alt="">
@@ -151,7 +151,7 @@
                         </div>
                     </header>
 
-                    <div class="h80vh img_bg text-dark p-4 d-flex flex-column">
+                    <div class="ms_90vh img_bg text-dark p-4 d-flex flex-column">
                         <div class="mb-3">
                             <h4 class="mb-3">Dettagli:</h4>
                             <p class="mb-2"><strong>Email:</strong> ${data.email}</p>
@@ -175,7 +175,12 @@
     </script>
 <style>
     .ms_93vh{
-        max-height: 93vh;
+        max-height: calc(100vh - 57.13px);
     }
+
+    .ms_90vh {
+        max-height: calc(90vh - 57.13px);
+    }
+    
 </style>
 @endsection
