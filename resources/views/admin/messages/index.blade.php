@@ -3,7 +3,7 @@
 @section('content')
     <section class="d-flex">
 
-        <div class="col-4 overflow-scroll ms_overflow">
+        <div class="col-4 ms_93vh overflow-scroll ms_overflow">
         
             {{-- Lista messaggi ricevuti --}}
             <ul class="list-group">
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="alessio"> 
-                                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal${messageId}">
+                                <button class="btn d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#deleteModal${messageId}">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </div>
@@ -173,4 +173,9 @@
             });
         });
     </script>
+<style>
+    .ms_93vh{
+        max-height: 93vh;
+    }
+</style>
 @endsection
