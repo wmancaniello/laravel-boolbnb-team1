@@ -180,12 +180,12 @@ class FlatsController extends Controller
     }
 
     // ----------------- FUNC ------------------------
-    private function generateUniqueSlug($title, $id = 0)
+    private function generateUniqueSlug($title)
     {
         $slug = Str::slug($title);
         $originalSlug = $slug;
         $count = 1;
-        while (Flat::where('slug', $slug)->where('id', '!=', $id)->exists()) {
+        while (Flat::where('slug', $slug)->exists()) {
             $slug = $originalSlug . '-' . $count++;
         }
         return $slug;

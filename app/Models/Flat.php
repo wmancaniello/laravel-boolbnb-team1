@@ -59,7 +59,7 @@ class Flat extends Model
     // Mutators
 
     public function setTitleAttribute($title) {
-        $this->attributes['slug'] = Str::slug($title);
+        // $this->attributes['slug'] = Str::slug($title);
         $this->attributes['title'] = $title;
     }
 
