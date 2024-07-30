@@ -1,13 +1,14 @@
 .ms_sidebar {
-    position: absolute;
+    position: fixed;
     z-index: 9999;
     width: 100%;
+    height: 100vh;
     padding: 10px 0;
     overflow: auto;
     top: 0;
     right: 0;
     background-color: var(--bg-color);
-    min-height: 100%;
+    // min-height: 100%;
     transition: all 0.7s;
 
     .ms_close {
@@ -17,6 +18,7 @@
         font-size: 30px;
         color: var(--primary-color);
         padding: 20px;
+        z-index: 5;
         cursor: pointer;
     }
 
@@ -39,21 +41,6 @@
 
         .braintree-sheet__container {
 
-
-
-            // &::after {
-            //     content: '';
-            //     position: absolute;
-            //     z-index: -1;
-            //     bottom: 0px;
-            //     left: 0px;
-            //     height: 100%;
-            //     width: 100%;
-            //     border-radius: 20px;
-            //     background: linear-gradient(45deg, rgba(51, 49, 45, 1) 2%, rgba(112, 93, 63, 1) 60%, rgba(248, 242, 235, 1) 100%);
-            // }
-
-
             .braintree-icon--bordered {
                 border: 0;
             }
@@ -62,10 +49,6 @@
         .braintree-card {
             border: 0;
             border-radius: 20px;
-            // background-color: transparent;
-            // backdrop-filter: blur(100px);
-            // font-size: 20px;
-            // box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
             padding: 20px 30px 30px 30px;
             box-shadow: 2px 2px 0px var(--primary-color);
 
@@ -90,65 +73,8 @@
     z-index: -1;
 }
 
-/* Try*/
-
-/* Overlay */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    /* Colore e opacità dell'overlay */
-    z-index: 799;
-    /* Deve essere sotto la sidebar ma sopra il contenuto principale */
-    transition: opacity 0.3s ease;
-}
-
-/* Sidebar */
-.ms_sidebar {
-    position: fixed;
-    /* Usa fixed per mantenere la sidebar in vista durante lo scroll */
-    z-index: 9999;
-    /* Deve essere sopra l'overlay e il contenuto principale */
-    width: 100%;
-    // padding: 120px 0;
-    top: 0;
-    right: 0;
-    background-color: var(--bg-color);
-    min-height: 100%;
-    transition: all 0.7s;
-
-}
-
 .ms_hidden-sidebar {
 
     right: -100%;
     transition: all 0.7s;
-}
-
-.ms_visible-sidebar {
-    transform: translateX(0);
-}
-
-/* Overlay quando visibile */
-.overlay.visible {
-    display: block;
-}
-
-.overlay.hidden {
-    display: none;
-}
-
-.dimmed {
-    opacity: 0;
-}
-
-@media (max-width: 767px) {
-
-
-    .ms_sidebar {
-        position: absolute;
-    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <section class="d-flex">
+    <section class="d-flex ms_93vh">
 
         <div class="col-4 ms_93vh overflow-scroll ms_overflow">
         
@@ -175,7 +175,7 @@
     </script>
 <style>
     .ms_93vh{
-        max-height: calc(100vh - 57.13px);
+        height: calc(100vh - 57.13px);
     }
 
     .ms_90vh {
