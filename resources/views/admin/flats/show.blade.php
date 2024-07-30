@@ -19,7 +19,7 @@
                 {{-- Sponsor --}}
                 <button type="button" class="btn ms_brown_btn2 me-2" onclick="showSidebar()" id="sponsor-btn">
                     <i class="fa-solid fa-dollar-sign"></i> 
-                    <span class="d-none d-md-inline">Sponsor</span>
+                    <span class="d-none d-md-inline">Sponsorizza</span>
                 </button>
 
                 {{-- Modifica --}}
@@ -48,7 +48,7 @@
         <div class="card mb-4">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img class="img-fluid ms_rounded" src="{{ asset('storage/' . $flat->main_img) }}"
+                    <img class="img-fluid ms_rounded rounded" src="{{ asset('storage/' . $flat->main_img) }}"
                         alt="Immagine di {{ $flat->title }}" style="height: 100%; object-fit: cover;">
                 </div>
                 <div class="col-md-8">

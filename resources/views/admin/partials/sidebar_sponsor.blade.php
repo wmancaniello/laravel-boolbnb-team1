@@ -1,5 +1,5 @@
 <div class="ms_sidebar ms_hidden-sidebar d-flex align-items-center justify-content-center" id="pay-sidebar">
-    <div class="container-fluid">
+    <div class="container-fluid h-100 d-lg-flex justify-content-center">
         <i class="fa-solid fa-xmark ms_close" onclick="showSidebar()"></i>
         <form id="payment-form" action="{{ route('admin.checkout') }}"
             class="d-flex justify-content-center align-content-center flex-column" method="POST">
@@ -69,7 +69,7 @@
 
             <div id="dropin-container" class="mx-auto"></div>
             <input type="hidden" name="payment_method_nonce" id="payment_method_nonce">
-            <div class="d-flex align-items-center justify-content-center gap-3 d-none" id="pay-btns">
+            <div class="d-flex align-items-center justify-content-center gap-3 d-none mb-3" id="pay-btns">
                 <button type="button" class="btn btn-danger" onclick="showSidebar()">Annulla</button>
                 <button type="submit" class="btn ms_btn-sponsor">Sponsorizza</button>
             </div>
@@ -81,11 +81,7 @@
 <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-    /* .ms_hidden {
-        opacity: 0;
-        height: 0;
-        width: 0;
-    } */
+
 
     .wrapper {
         width: 200px;
@@ -205,10 +201,6 @@
         transition: 0.7s;
     }
 
-    /*
-    input[type="radio"]:checked+div label #head-tab-pr p {
-        text-decoration: underline;
-    } */
 
     input[type="radio"]:checked+div label h2 {
         color: #777;
@@ -315,23 +307,17 @@
 
     function showSidebar() {
         const sidebar = document.getElementById('pay-sidebar');
-        const overlay = document.getElementById('overlay');
+
         const parentContainer = document.querySelector('.container');
 
         if (sidebar.classList.contains('ms_hidden-sidebar')) {
             // Mostra la sidebar e l'overlay
             sidebar.classList.remove('ms_hidden-sidebar');
             sidebar.classList.add('ms_visible-sidebar');
-            overlay.classList.add('visible');
-            overlay.classList.remove('hidden');
-            parentContainer.classList.add('dimmed'); // Riduci l'opacità
         } else {
             // Nascondi la sidebar e l'overlay
             sidebar.classList.add('ms_hidden-sidebar');
             sidebar.classList.remove('ms_visible-sidebar');
-            overlay.classList.remove('visible');
-            overlay.classList.add('hidden');
-            parentContainer.classList.remove('dimmed'); // Ripristina l'opacità
         }
     }
 
